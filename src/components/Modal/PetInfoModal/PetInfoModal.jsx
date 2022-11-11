@@ -1,12 +1,12 @@
+import { PET_MODAL_KEYS } from "constants/petInfoKeys";
 import Backdrop from "../Backdrop";
 import { Container, ImageThumb, Title, InfoWrapper, InfoItem, Description } from "./PetInfoModal.styled";
 
-import modalImage from "../../../img/pet-modal-img.jpg";
-import { sampleData, sampleText } from "./sampleData";
+import modalImage from "../../../img/pet-photos/pet-modal-img.jpg";
+import { sampleData } from "./sampleData";
 
-// expects pet ID and/or DATA
-// and handleCloseBtnClick function
-const PetInfoModal = () => {
+// props = { id: string, handleModalToggle: ()=>{} }
+const PetInfoModal = ({ id, handleModalToggle }) => {
   return (
     <Backdrop>
       <Container>
@@ -15,13 +15,16 @@ const PetInfoModal = () => {
           <div>
             <Title>Сute dog looking for a home</Title>
             <ul>
-              {sampleData.map(({ label, data }) => (
-                <InfoItem key={label} label={label} data={data} />
+              {PET_MODAL_KEYS.map(({ label, key }) => (
+                <InfoItem key={key} label={label} data={sampleData[key]} />
               ))}
             </ul>
           </div>
         </InfoWrapper>
-        <Description text={sampleText} />
+        <Description text={sampleData.description} />
+
+        {/* will be replaced with styled button */}
+        <button onClick={handleModalToggle}>Close id {id}</button>
       </Container>
     </Backdrop>
   );

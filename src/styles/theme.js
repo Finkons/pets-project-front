@@ -49,7 +49,7 @@ const theme = {
     normal: "1px solid",
     inputModal: "2px solid",
   },
-  radii: {
+  radio: {
     none: "0",
     btn: "40px",
     inputModal: "20px",

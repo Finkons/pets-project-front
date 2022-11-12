@@ -1,13 +1,14 @@
-import { Container } from "./NoticesPage.styled";
+import { Container, Title } from "./NoticesPage.styled";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import NoticesCategoriesNav from "components/NoticesCategoriesNav";
+import NoticesCategoriesNav from "components/NoticesCategoriesNav";
 
 export default function NoticesPage() {
+  //   const [category, setCategory] = useState("sell");
   //   const [pets, setPets] = useState([]);
   const { categoryName } = useParams();
   useEffect(() => {
-    // NoticesCategoriesNav(categoryName).then(data => setPets(data));
+    // fetchPets(categoryName).then(data => setPets(data));
   }, [categoryName]);
 
   function handleSubmit(e) {
@@ -16,11 +17,12 @@ export default function NoticesPage() {
   }
   return (
     <Container>
-      <h2>Find your favorite pet</h2>
-      <form onSubmit={handleSubmit}>
+      <Title>Find your favorite pet</Title>
+      <form onSubmit={handleSubmit} style={{ marginBottom: 40 }}>
         <input type="text" name="query" placeholder="Search" />
         <button type="submit">Search</button>
       </form>
+      <NoticesCategoriesNav />
     </Container>
   );
 }

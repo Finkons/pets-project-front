@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 140px;
-  color: ${p => p.theme.colors.inputModal};
-  color: green;
+  position: absolute;
+  width: 624px;
+  height: 655px;
+  left: 656px;
+  top: 133px;
+  
   @media ${p => p.theme.media.tablet} {
     color: blue;
   }
@@ -15,3 +14,26 @@ export const Container = styled.div`
     color: red;
   }
 `;
+
+export const P = styled.div`
+position: absolute;
+width: 588px;
+height: 200px;
+// left: 16px;
+// top: 160px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 700;
+font-size: 68px;
+line-height: 100px;
+color: black;
+
+`;
+
+// export const Div = styled.div`
+
+// background: ${p => p.theme.colors.background};
+
+  
+// `;

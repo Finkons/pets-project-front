@@ -4,6 +4,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/src/img/homeImage/desktop-gradient-1-1x.png");
+  background-image: url("/src//img//homeImage/desktop-gradient-2-1x.png");
+  /* background-position: right top; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top top;
+  background-position: center calc(100% + 100px);
+  
+ 
+ 
 }
 
 code {

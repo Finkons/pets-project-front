@@ -34,7 +34,7 @@ export const PET_MODAL_KEYS = [
 export const NOTICE_ITEM_KEYS = [
   {
     label: "Breed:",
-    key: "breed",
+    key: "title",
   },
   {
     label: "Place:",

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { NOTICE_ITEM_KEYS } from "constants/petInfoKeys";
-import PetInfoModal from "components/Modal/PetInfoModal";
+import ModalNotice from "components/Modal/ModalNotice";
 import { Container, ImageThumb, InfoItem, InfoWrapper, Title } from "./NoticeCategoryItem.styled";
 
 import itemImage from "../../img/pet-photos/notice-item-img.jpg";
 import { sampleData } from "./sampleData";
 
-// props = { data: { }, ? category: string }
-const NoticeCategoryItem = ({ data = sampleData, category }) => {
+// props = { data: { }}
+const NoticeCategoryItem = ({ data = sampleData }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleModalToggle = () => {
@@ -17,7 +17,7 @@ const NoticeCategoryItem = ({ data = sampleData, category }) => {
   return (
     <>
       <Container>
-        <ImageThumb src={itemImage} category="lost/found" />
+        <ImageThumb src={itemImage} alt={data.title} category={data.category} />
         <InfoWrapper>
           <Title>Good boi looking for a home</Title>
           <ul>
@@ -31,7 +31,7 @@ const NoticeCategoryItem = ({ data = sampleData, category }) => {
         <button onClick={handleModalToggle}>Learn more</button>
       </Container>
 
-      {expanded && <PetInfoModal id={data.id} handleModalToggle={handleModalToggle} />}
+      {expanded && <ModalNotice id={data._id} handleModalToggle={handleModalToggle} />}
     </>
   );
 };

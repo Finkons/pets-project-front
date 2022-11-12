@@ -7,5 +7,5 @@ export const sampleData = {
   sex: "male",
   email: "user@mail.com",
   phone: "+380971234567",
-  description: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur  Lorem ipsum dolor sit amet, consectetur Lorem",
+  comments: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur  Lorem ipsum dolor sit amet, consectetur Lorem",
 };

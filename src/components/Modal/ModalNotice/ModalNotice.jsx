@@ -26,7 +26,7 @@ const ModalNotice = ({ id, handleModalToggle }) => {
     <Backdrop onClick={(e) => handleBackdropClick(e, handleModalToggle)}>
       <Container>
         <InfoWrapper>
-          <ImageThumb src={petData.avatar || modalImage} alt={petData.name} category={sampleData.category} />
+          <ImageThumb src={petData.avatar || modalImage} alt={petData.name} category={petData.category} />
           <div>
             <Title>Сute dog looking for a home</Title>
             <ul>
@@ -36,7 +36,7 @@ const ModalNotice = ({ id, handleModalToggle }) => {
             </ul>
           </div>
         </InfoWrapper>
-        <Description text={sampleData.description} />
+        <Description text={petData.comments} />
 
         {/* will be replaced with styled button */}
         <button onClick={handleModalToggle}>Close id {id}</button>

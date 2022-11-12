@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from "@emotion/react";
+import NoticesPage from "pages/NoticesPage";
 
 import theme from "styles/theme";
 
@@ -16,6 +17,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />
+              <Route path="notices/:categoryName" element={<NoticesPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

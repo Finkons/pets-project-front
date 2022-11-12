@@ -1,4 +1,5 @@
 export const sampleData = {
+  category: 'In good hands',
   name: "Rich",
   birthday: "21.09.2020",
   breed: "Pomeranian",

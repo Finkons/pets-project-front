@@ -5,7 +5,7 @@ export const Container = styled.div`
   top: 161px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: ${p => p.theme.radii.btn};
+  border-radius: ${p => p.theme.radio.btn};
   padding: 60px 20px 40px 20px;
   background-color: ${p => p.theme.colors.white};
 

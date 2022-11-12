@@ -8,6 +8,8 @@ import theme from "styles/theme";
 const SharedLayout = lazy(() => import("./SharedLayout"));
 const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 
 export const App = () => {
   return (
@@ -17,6 +19,8 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="notices/:categoryName" element={<NoticesPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>

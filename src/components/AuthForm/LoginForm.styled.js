@@ -1,0 +1,61 @@
+import styled from "@emotion/styled";
+import { Field } from "formik";
+
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const Text = styled.h1`
+  font-size: 24px;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  margin-top: 42px;
+  margin-bottom: 40px;
+`;
+
+export const Input = styled(Field)`
+  width: 280px;
+  height: 40px;
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 40px;
+  background: #fdf7f2;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(17, 17, 17, 0.6);
+  :hover {
+    border: 1px solid rgba(245, 146, 86, 0.5);
+  }
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
+  border-color: #f59256;
+  border-radius: 40px;
+  width: 280px;
+  height: 44px;
+  padding: 10px 28px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  background: #f59256;
+  margin-top: 40px;
+  :hover {
+    background-color: #995024;
+  }
+`;
+
+export const ErrorText = styled.p`
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+`;

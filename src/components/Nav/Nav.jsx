@@ -4,7 +4,7 @@ export default function Nav() {
   return (
     <nav className="navigation">
       <Link to="/">Home</Link>
-      <Link to="/notices/:categoryName">Find pet</Link>
+      <Link to="/notices/sell">Find pet</Link>
     </nav>
   );
 }

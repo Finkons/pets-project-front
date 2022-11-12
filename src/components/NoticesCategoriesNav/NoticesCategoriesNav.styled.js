@@ -27,3 +27,7 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `;
+
+export const Li = styled.li`
+  margin-right: 12px;
+`;

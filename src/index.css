@@ -6,6 +6,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 } 
@@ -13,7 +15,7 @@ code {
 
 ul,
 ol {
-   list-style: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }

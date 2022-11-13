@@ -8,7 +8,6 @@ export default function NoticesPage() {
   const [category, setCategory] = useState("");
   const [pets, setPets] = useState([]);
 
-
   console.log(pets);
   useEffect(() => {
     fetchPets(category).then(data => setPets(data));

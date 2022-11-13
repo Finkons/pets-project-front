@@ -1,1 +1,1 @@
-export {default} from './NoticesSearch.jsx'
+export { default } from "./NoticesSearch";

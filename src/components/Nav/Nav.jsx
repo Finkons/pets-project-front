@@ -1,9 +1,12 @@
-import { Link } from "./Nav.styled";
+import { NavHeader,Link,Text } from "./Nav.styled";
 
-export default function Nav() {
+const Nav = () => {
   return (
-    <nav className="navigation">
-      <Link to="/notices/sell">Find pet</Link>
-    </nav>
-  );
-}
+      <NavHeader>
+    <Link  to="/news"> <Text>News</Text></Link>
+    <Link  to="/notices/sell"> <Text>Find pet</Text></Link>
+    <Link  to="/friends"> <Text>Our friend</Text> </Link>
+      </NavHeader>
+)}
+
+export default Nav;

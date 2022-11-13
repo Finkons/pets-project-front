@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
-import AppBar from "components/AppBar"
+import Header from "components/Header/Header"
 
 import theme from "styles/theme";
 
@@ -17,7 +17,7 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/pets-project-front">
         <Suspense fallback={<div>Loading...</div>}>
-          <AppBar/>
+          <Header/>
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />

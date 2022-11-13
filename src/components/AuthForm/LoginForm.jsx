@@ -1,6 +1,6 @@
 import { Formik, Form, ErrorMessage } from "formik";
-import { Container, Text, Input, Button, ErrorText } from "./LoginForm.styled";
-import { loginSchema } from "schemas/loginSchema";
+import { Container, Text, Input, Button, ErrorText, LinkBox, Link } from "./LoginForm.styled";
+import { loginSchema } from "schemas/authSchema";
 // import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { useLocation } from "react-router-dom";
@@ -23,13 +23,16 @@ export const LoginForm = () => {
   // const error = useSelector(authSelectors.getUserError);
   // const location = useLocation().pathname;
 
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const handleSubmit = async (values, actions) => {
     console.log(values);
     console.log(actions);
+    // setEmail (values.email);
+    // setPassword (values.password);
     await new Promise(resolve => setTimeout(resolve, 1000));
+    // await onSubmit(values);
     actions.resetForm();
   };
 
@@ -40,11 +43,11 @@ export const LoginForm = () => {
         {({ isSubmitting }) => (
           <Form autoComplete="off">
             <label htmlFor="email">
-              <Input type="email" name="email" placeholder="Email" />
+              <Input type="email" name="email" id="email" placeholder="Email" />
               <FormError name="email" />
             </label>
             <label htmlFor="password">
-              <Input type="password" name="password" placeholder="Password" />
+              <Input type="password" name="password" id="password" placeholder="Password" />
               <FormError name="password" />
             </label>
             <Button disabled={isSubmitting} type="submit">
@@ -53,9 +56,9 @@ export const LoginForm = () => {
           </Form>
         )}
       </Formik>
-      <p>
-        Don't have an account? <span>Register</span>
-      </p>
+      <LinkBox>
+        Don't have an account? <Link to={"/register"}>Register</Link>
+      </LinkBox>
     </Container>
   );
 };

@@ -1,9 +1,17 @@
+import { NavLink } from "react-router-dom";
+import { Div } from "./UserNav.styled";
+
 const UserNav = () => {
-    return (
-        <div>
-            <button type="button" to="/user"> Account </button>
-            <button type="button">Log Out</button>
-        </div>
-)};
-    
+  return (
+    <Div>
+      <NavLink to="/user">
+        <button type="button">Account</button>
+      </NavLink>
+      <NavLink>
+        <button type="button">Log Out</button>
+      </NavLink>
+    </Div>
+  );
+};
+
 export default UserNav;

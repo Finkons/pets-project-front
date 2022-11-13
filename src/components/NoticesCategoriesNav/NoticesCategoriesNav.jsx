@@ -1,6 +1,18 @@
 import { Button, List, Li } from "./NoticesCategoriesNav.styled";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-export default function NoticesCategoriesNav() {
+export default function NoticesCategoriesNav({ onCategoryChange }) {
+  const { categoryName } = useParams();
+
+  useEffect(() => {
+    if (categoryName === "") {
+      return;
+    }
+    categoryName && onCategoryChange(categoryName);
+  }, [categoryName, onCategoryChange]);
+  // console.log(categoryName);
+
   return (
     <List>
       <Li>

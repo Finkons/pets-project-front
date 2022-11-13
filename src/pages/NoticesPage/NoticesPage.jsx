@@ -1,28 +1,24 @@
 import { Container, Title } from "./NoticesPage.styled";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchPets } from "api/fetchPets";
 import NoticesCategoriesNav from "components/NoticesCategoriesNav";
+import NoticesSearch from "components/NoticesSearch";
 
 export default function NoticesPage() {
-  //   const [category, setCategory] = useState("sell");
-  //   const [pets, setPets] = useState([]);
-  const { categoryName } = useParams();
-  useEffect(() => {
-    // fetchPets(categoryName).then(data => setPets(data));
-  }, [categoryName]);
+  const [category, setCategory] = useState("");
+  const [pets, setPets] = useState([]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // console.log(pets);
-  }
+
+  console.log(pets);
+  useEffect(() => {
+    fetchPets(category).then(data => setPets(data));
+  }, [category]);
+
   return (
     <Container>
       <Title>Find your favorite pet</Title>
-      <form onSubmit={handleSubmit} style={{ marginBottom: 40 }}>
-        <input type="text" name="query" placeholder="Search" />
-        <button type="submit">Search</button>
-      </form>
-      <NoticesCategoriesNav />
+      <NoticesSearch onChange={value => setPets(value)} />
+      <NoticesCategoriesNav onCategoryChange={value => setCategory(value)} />
     </Container>
   );
 }

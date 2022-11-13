@@ -1,5 +1,5 @@
 import { TrashBtn } from "./TrashButton.styled";
-import Icon from "./icons/index";
+import Icon from "../icons/index";
 
 
 export const TrashButton = () => {

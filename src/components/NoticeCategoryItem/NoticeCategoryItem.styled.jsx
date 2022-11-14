@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { LearnMoreButton } from "components/Button";
 import { HeartButton } from "components/Button/HeartButton/HeartButton";
 
 export const Container = styled.div`
@@ -82,4 +83,9 @@ export const AddToFavorites = styled(HeartButton)`
   position: absolute;
   top: 12px;
   right: 12px;
+`;
+
+export const LearnMore = styled(LearnMoreButton)`
+  display: block;
+  margin: 0 auto;
 `;

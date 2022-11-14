@@ -16,11 +16,11 @@ export const Container = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div`
   position: relative;
 `;
 
-const CategoryLabel = styled.div`
+export const CategoryLabel = styled.div`
   position: absolute;
   top: 20px;
   left: 0;
@@ -33,13 +33,6 @@ const CategoryLabel = styled.div`
   font-weight: ${p => p.theme.fontWeights.heading};
   line-height: ${p => p.theme.lineHeights.body};
 `;
-
-export const ImageThumb = ({ src, alt = "", category }) => (
-  <ImageWrapper>
-    <img src={src} alt={alt} />
-    {category && <CategoryLabel>{category}</CategoryLabel>}
-  </ImageWrapper>
-);
 
 export const InfoWrapper = styled.div`
   margin-bottom: 50px;

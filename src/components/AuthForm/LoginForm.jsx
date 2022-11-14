@@ -9,6 +9,8 @@ import { loginSchema } from "schemas/authSchema";
 // import { Container, Form, Text, Error } from './AuthorizationForm.styled';
 // import { Button, TextField } from '@mui/material';
 
+import { useLoginMutation } from "redux/auth/authApi";
+
 const initialValues = {
   email: "",
   password: "",
@@ -19,6 +21,7 @@ const FormError = ({ name }) => {
 };
 
 export const LoginForm = () => {
+  const [login, status] = useLoginMutation();
   // const dispatch = useDispatch();
   // const error = useSelector(authSelectors.getUserError);
   // const location = useLocation().pathname;
@@ -29,6 +32,15 @@ export const LoginForm = () => {
   const handleSubmit = async (values, actions) => {
     console.log(values);
     console.log(actions);
+    const { email, password } = values;
+    login({ email, password })
+      .unwrap()
+      .then(payload => {
+        console.log(`User successfully registered`);
+        // navigate("/"); if success - navigate user to userPage
+      })
+      .catch(() => console.log("Handle errors"));
+    console.log(status);
     // setEmail (values.email);
     // setPassword (values.password);
     await new Promise(resolve => setTimeout(resolve, 1000));

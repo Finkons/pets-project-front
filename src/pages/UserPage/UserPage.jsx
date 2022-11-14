@@ -1,4 +1,4 @@
-import { Logout, UserData, PetsData } from "components/User";
+import { PetsData } from "components/User";
 import { Container } from "./UserData/UserData.styled";
 
 const UserPage = () => {

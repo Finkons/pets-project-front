@@ -3,6 +3,8 @@ import { useState } from "react";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
 import { Container, Text, Input, Button, LinkBox, Link, ErrorText } from "./LoginForm.styled";
 
+import { useRegisterMutation } from "redux/auth/authApi";
+
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
 };
@@ -16,12 +18,24 @@ export const RegisterForm = () => {
     location: "",
     phone: "",
   });
+  const [register, status] = useRegisterMutation();
 
   const [currentStep, setCurrentStep] = useState(0);
   //   const [errors, setErrors] = useState({});
 
   const makeRequest = formData => {
     console.log(formData);
+
+    const { email, password, name, location: address, phone } = formData;
+    register({ email, password, name, address, phone })
+      .unwrap()
+      .then(payload => {
+        console.log(`User successfully registered`);
+        // navigate("/"); if success - navigate user to userPage
+      })
+      .catch(() => console.log("Handle errors"));
+
+    console.log(status);
   };
 
   const handleNextStep = (newData, final = false) => {
@@ -47,7 +61,7 @@ export const RegisterForm = () => {
     <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
   ];
 
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <Container>
@@ -72,7 +86,7 @@ export const RegisterForm = () => {
 
 const StepOne = props => {
   const handleSubmit = values => {
-    console.log(values);
+    // console.log(values);
     props.next(values);
   };
   return (

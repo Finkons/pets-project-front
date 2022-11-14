@@ -1,1 +1,1 @@
-export { default } from './EventBoardFriends';
+export { default } from "./EventBoardFriends";

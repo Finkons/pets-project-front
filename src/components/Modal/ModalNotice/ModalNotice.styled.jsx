@@ -167,8 +167,9 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalButton = styled(ModalBtn)`
-  width: 160px;
-  height: 40px;
+  @media ${props => props.theme.media.tabletDesktop} {
+    width: 160px;
+  }
 `;
 
 export const AddToFavorites = ({ authorized, onClick }) => (
@@ -179,8 +180,14 @@ export const AddToFavorites = ({ authorized, onClick }) => (
 );
 
 export const ActionButtons = styled.div`
-  width: 332px;
   display: flex;
-  gap: 8px;
-  margin-left: auto;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  @media ${props => props.theme.media.tabletDesktop} {
+    width: 332px;
+    flex-direction: row;
+    gap: 8px;
+    margin-left: auto;
+  }
 `;

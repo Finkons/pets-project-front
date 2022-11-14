@@ -1,11 +1,13 @@
-import { Logout, UserData } from "components/User";
+import { Logout, UserData, PetsData } from "components/User";
+import { Container } from "./UserData/UserData.styled";
 
 const UserPage = () => {
   return (
-    <>
-      <UserData />
-      <Logout />
-    </>
+    <Container>
+      {/* <UserData /> */}
+      {/* <Logout /> */}
+      <PetsData />
+    </Container>
   );
 };
 

@@ -24,18 +24,19 @@ export const Input = styled(Field)`
   height: 40px;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
-  background: #fdf7f2;
+  background: ${colors.colors.background};
   font-size: 14px;
-  line-height: 19px;
-  padding: 20px;
+  line-height: 1.4;
+  padding: 12px 14px;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-  color: rgba(17, 17, 17, 0.6);
-  :hover {
+  color: ${colors.colors.greyText};
+  /* :hover,
+  :focus {
     border: 1px solid rgba(245, 146, 86, 0.5);
-  }
+  } */
 `;
 
 export const Button = styled.button`
@@ -60,7 +61,8 @@ export const Button = styled.button`
 export const ErrorText = styled.p`
   color: red;
   text-align: center;
-  margin-top: 10px;
+  margin-top: -5px;
+  margin-bottom: 15px;
 `;
 
 export const LinkBox = styled.p`

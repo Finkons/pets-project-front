@@ -1,15 +1,9 @@
 import { Formik, Form, ErrorMessage } from "formik";
 import { Container, Text, Input, Button, ErrorText, LinkBox, Link } from "./LoginForm.styled";
 import { loginSchema } from "schemas/authSchema";
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useLocation } from "react-router-dom";
-// import authSelectors from 'redux/auth/authSelectors';
-// import { authOperations } from 'redux/auth';
-// import { Container, Form, Text, Error } from './AuthorizationForm.styled';
-// import { Button, TextField } from '@mui/material';
-
+import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth/authApi";
+import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -22,29 +16,24 @@ const FormError = ({ name }) => {
 
 export const LoginForm = () => {
   const [login, status] = useLoginMutation();
-  // const dispatch = useDispatch();
-  // const error = useSelector(authSelectors.getUserError);
-  // const location = useLocation().pathname;
-
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
-    console.log(values);
-    console.log(actions);
     const { email, password } = values;
     login({ email, password })
       .unwrap()
       .then(payload => {
         console.log(`User successfully registered`);
-        // navigate("/"); if success - navigate user to userPage
+        navigate("/");
       })
-      .catch(() => console.log("Handle errors"));
+      .catch(() => {
+        console.log("Handle errors");
+        toast.error("Sorry, your email or password is incorrect! Try again!");
+      });
+
     console.log(status);
-    // setEmail (values.email);
-    // setPassword (values.password);
+
     await new Promise(resolve => setTimeout(resolve, 1000));
-    // await onSubmit(values);
     actions.resetForm();
   };
 

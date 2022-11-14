@@ -1,9 +1,10 @@
 import { TrashBtn } from "./TrashButton.styled";
 import Icon from "../icons/index";
 
-
-export const TrashButton = () => {
-    return (
-        <TrashBtn><Icon.Trash /></TrashBtn>
-    )
+export const TrashButton = ({ onClick }) => {
+  return (
+    <TrashBtn onClick={onClick}>
+      <Icon.Trash />
+    </TrashBtn>
+  );
 };

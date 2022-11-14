@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpets_project_front=self.webpackChunkpets_project_front||[]).push([[928],{7928:function(n,r,t){t.r(r),t.d(r,{default:function(){return c}});var e=t(3329),u=function(){return(0,e.jsx)("div",{children:"Logout"})},s=function(){return(0,e.jsx)("div",{children:"User"})},c=function(){return(0,e.jsxs)(e.Fragment,{children:[(0,e.jsx)(s,{}),(0,e.jsx)(u,{})]})}}}]);
+//# sourceMappingURL=928.7c433b8d.chunk.js.map

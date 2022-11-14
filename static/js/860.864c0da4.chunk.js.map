@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/860.864c0da4.chunk.js","mappings":"wLAOA,EALiB,WAEf,OAAO,qCACT,C","sources":["pages/UserPage/UserPage.jsx"],"sourcesContent":["// import { User } from \"components/User\";\n\nconst UserPage = () => {\n  // return <User />;\n  return <h2>User page</h2>;\n};\n\nexport default UserPage;\n"],"names":[],"sourceRoot":""}

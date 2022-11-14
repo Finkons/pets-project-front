@@ -1,53 +1,120 @@
 import styled from '@emotion/styled';
+import mobileGradient from 'img/homePages-photos/mobile-gradient-1x.png'
+import HomePhotoDesktop from 'img/homePages-photos/desktop-girl-1x.png'
+
 
 
 export const Container = styled.div`
-position: absolute;
-width: 100%;
+
+position: relative;
+width: 320px;
+height: 100%;
 display: flex;
 justify-content: center;
+margin: 0 auto;
 align-items: center;
-font-size: 140px;
-background-color:${p => p.theme.colors.background};
+
+padding-left:20px;
+padding-right:20px;
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+    width: 1280px;
+    background-image: url(${HomePhotoDesktop});
+    
+}
 `
 
 export const Title = styled.div`
-position: absolute;
-width: 588px;
-height: 200px;
-left: 16px;
-top: 160px;
+
 
 font-family: 'Manrope';
 font-style: normal;
 font-weight: 700;
-font-size: 68px;
-line-height: 100px;
-color: black;
-`
 
-export const HomeWrapper = styled.div`
-position: relative;
-width:100%;
+font-size: 32px;
+line-height: 44px;
+color: black;
+
+align-items:center;
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+    position: absolute;
+    width: 588px;
+    height: 200px;
+    left: 16px;
+    top: 160px;
+    font-size: 68px;
+    line-height: 100px;
+    
+}
 `
 
 export const HomeImage = styled.img`
 position: absolute;
-width: 624px;
-height: 655px;
-left: 656px;
-top: 113px;
-z-index: 2;
+
+// width: 320px;
+// height: 337px;
+// left: 0px;
+top: 264px;
+background-image: url(${mobileGradient});
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+    width: 624px;
+    height: 655px;
+    left: 656px;
+    top: 113px;
+    bottom: 0;
+    z-index: 2;
+    overflow:hidden; 
+    // display:none;
+    background-image: url(${HomePhotoDesktop});
+}
 `
 
 export const Gradient = styled.img`
-position: absolute;
+
+display:none;
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+position:absolute;
+display:flex;
 z-index: 1;
-height: 685px;
-width: auto;
-top: 113px;
+
+// height: 538px;
+width: 100%;
+top: 230px;
+bottom: 0;
+repeat:no-repeat;
+}
+
 `
 
 export const Heart = styled.img`
+display:none;
 
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+    display:flex;
+    position: absolute;
+    width: 91.93px;
+    height: 89px;
+    left: 712px;
+    top: 170px;
+    z-index: 3;
+}
 `

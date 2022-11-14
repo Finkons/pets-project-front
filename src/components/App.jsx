@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
-import Header from "components/Header/Header";
+
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,7 +23,6 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/pets-project-front">
         <Suspense fallback={<div>Loading...</div>}>
-          <Header />
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />

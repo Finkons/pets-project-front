@@ -1,1 +1,1 @@
-export {default} from "./OurFriendsPage":
+export { default } from "./OurFriendsPage";

@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pets-project-front/static/css/main.e932afec.css",
-    "main.js": "/pets-project-front/static/js/main.b60c91d9.js",
+    "main.js": "/pets-project-front/static/js/main.3a4b94b5.js",
     "static/js/669.4c228a3f.chunk.js": "/pets-project-front/static/js/669.4c228a3f.chunk.js",
     "static/js/153.573b9cb5.chunk.js": "/pets-project-front/static/js/153.573b9cb5.chunk.js",
     "static/js/273.b0f12201.chunk.js": "/pets-project-front/static/js/273.b0f12201.chunk.js",
     "static/js/760.54771654.chunk.js": "/pets-project-front/static/js/760.54771654.chunk.js",
     "static/js/996.d2aafa41.chunk.js": "/pets-project-front/static/js/996.d2aafa41.chunk.js",
-    "static/js/949.e871b2b9.chunk.js": "/pets-project-front/static/js/949.e871b2b9.chunk.js",
+    "static/js/270.3565249d.chunk.js": "/pets-project-front/static/js/270.3565249d.chunk.js",
     "static/js/694.c892e811.chunk.js": "/pets-project-front/static/js/694.c892e811.chunk.js",
     "static/media/desktop-girl-1x.png": "/pets-project-front/static/media/desktop-girl-1x.bcab15858bbd3c3179c7.png",
     "static/media/Frame.png": "/pets-project-front/static/media/Frame.df1cc0963ddc18ddcc7d.png",
@@ -18,17 +18,17 @@
     "static/media/heart.svg": "/pets-project-front/static/media/heart.4f8d06da7e8d70223490103271ed2711.svg",
     "static/media/heartSmall.svg": "/pets-project-front/static/media/heartSmall.02aed6bf9b1f9a0794334590ad53901e.svg",
     "main.e932afec.css.map": "/pets-project-front/static/css/main.e932afec.css.map",
-    "main.b60c91d9.js.map": "/pets-project-front/static/js/main.b60c91d9.js.map",
+    "main.3a4b94b5.js.map": "/pets-project-front/static/js/main.3a4b94b5.js.map",
     "669.4c228a3f.chunk.js.map": "/pets-project-front/static/js/669.4c228a3f.chunk.js.map",
     "153.573b9cb5.chunk.js.map": "/pets-project-front/static/js/153.573b9cb5.chunk.js.map",
     "273.b0f12201.chunk.js.map": "/pets-project-front/static/js/273.b0f12201.chunk.js.map",
     "760.54771654.chunk.js.map": "/pets-project-front/static/js/760.54771654.chunk.js.map",
     "996.d2aafa41.chunk.js.map": "/pets-project-front/static/js/996.d2aafa41.chunk.js.map",
-    "949.e871b2b9.chunk.js.map": "/pets-project-front/static/js/949.e871b2b9.chunk.js.map",
+    "270.3565249d.chunk.js.map": "/pets-project-front/static/js/270.3565249d.chunk.js.map",
     "694.c892e811.chunk.js.map": "/pets-project-front/static/js/694.c892e811.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e932afec.css",
-    "static/js/main.b60c91d9.js"
+    "static/js/main.3a4b94b5.js"
   ]
 }

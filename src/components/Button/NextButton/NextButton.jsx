@@ -1,7 +1,5 @@
 import { NextBtn } from "./NextButton.styled";
 
-export const NextButton = () => {
-    return (
-        <NextBtn>Next</NextBtn>
-    )
+export const NextButton = ({ onClick }) => {
+  return <NextBtn onClick={onClick}>Next</NextBtn>;
 };

@@ -1,7 +1,5 @@
 import { LearnMoreBtn } from "./LearnMoreButton.styled";
 
-export const LearnMoreButton = () => {
-    return (
-        <LearnMoreBtn>Learn more</LearnMoreBtn>
-    )
+export const LearnMoreButton = ({ onClick }) => {
+  return <LearnMoreBtn onClick={onClick}>Learn more</LearnMoreBtn>;
 };

@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import Icon from "components/Button/icons";
+import { ModalBtn } from "components/Button/ModalButton/ModalButton.styled";
 
 export const Container = styled.div`
   position: relative;
@@ -156,3 +158,29 @@ export const Description = ({ text }) => (
     {text}
   </DescriptionText>
 );
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  border-radius: 50%;
+`;
+
+export const ModalButton = styled(ModalBtn)`
+  width: 160px;
+  height: 40px;
+`;
+
+export const AddToFavorites = ({ authorized, onClick }) => (
+  <ModalButton authorized={authorized} onClick={onClick}>
+    Add to
+    <Icon.SmallHeart />
+  </ModalButton>
+);
+
+export const ActionButtons = styled.div`
+  width: 332px;
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+`;

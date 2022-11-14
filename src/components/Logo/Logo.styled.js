@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Img = styled.div`
-
+export const LogoImg = styled.img`
+width: 94px;
+height: 48px;
 `;

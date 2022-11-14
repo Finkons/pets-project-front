@@ -27,6 +27,7 @@ export const Input = styled(Field)`
   background: #fdf7f2;
   font-size: 14px;
   line-height: 19px;
+  padding: 20px;
   margin-bottom: 16px;
   display: flex;
   align-items: center;

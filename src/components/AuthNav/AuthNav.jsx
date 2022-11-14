@@ -8,7 +8,7 @@ const AuthNav = () => {
                 <LoginBtn type="button">Login</LoginBtn>
             </NavLink>
             <NavLink to="/register">
-                <button type="button">Registration</button>
+                <LoginBtn type="button">Registration</LoginBtn>
             </NavLink>
         </Div>
 );

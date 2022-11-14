@@ -1,9 +1,22 @@
 import styled from '@emotion/styled';
 
 export const HeaderBar = styled.div`
-    display: flex;
-    background: ${p => p.theme.colors.background};
-    padding-top:20px;
-    padding-left:16px;
-    align-items: center;
+display: flex;
+margin: 0 auto;
+text-align: center;
+align-items: center;
+padding-left:20px;
+padding-top:16px;
+width: 320px;
+margin: 0 auto;
+text-align: center;
+margin-bottom:60px;
+
+@media ${p => p.theme.media.tablet} {
+    
+}
+@media ${p => p.theme.media.desktop} {
+    width: 1280px;
+    margin-bottom:92px;
+}
 `;

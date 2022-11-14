@@ -1,7 +1,5 @@
 import { CancelBtn } from "./CancelButton.styled";
 
-export const CancelButton = () => {
-    return (
-        <CancelBtn>Cancel</CancelBtn>
-    )
+export const CancelButton = ({ onClick }) => {
+  return <CancelBtn onClick={onClick}>Cancel</CancelBtn>;
 };

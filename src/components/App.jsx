@@ -4,6 +4,9 @@ import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
 import Header from "components/Header/Header";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import theme from "styles/theme";
 
 const SharedLayout = lazy(() => import("./SharedLayout"));
@@ -31,6 +34,7 @@ export const App = () => {
           </Routes>
         </Suspense>
       </BrowserRouter>
+      <ToastContainer />
     </ThemeProvider>
   );
 };

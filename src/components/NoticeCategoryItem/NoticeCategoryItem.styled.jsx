@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { HeartButton } from "components/Button/HeartButton/HeartButton";
 
 export const Container = styled.div`
   position: relative;
@@ -76,3 +77,9 @@ export const InfoItem = ({ label, data }) => (
     <Data>{data}</Data>
   </Info>
 );
+
+export const AddToFavorites = styled(HeartButton)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+`;

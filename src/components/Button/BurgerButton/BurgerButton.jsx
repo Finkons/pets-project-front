@@ -1,9 +1,9 @@
 import { BurgerBtn } from "./BurgerButton.styled";
 import Icon from "../icons/index";
 
-export const BurgerButton = () => {
+export const BurgerButton = ({onClick}) => {
   return (
-    <BurgerBtn>
+    <BurgerBtn onClick={onClick}>
       <Icon.Burger/>
     </BurgerBtn>
   );

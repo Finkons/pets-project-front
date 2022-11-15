@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 export const Div = styled.div`
 display: none;
 @media ${p => p.theme.media.tablet} {
-    
+    display: flex;
+    margin-left: 246px;
 }
 @media ${p => p.theme.media.desktop} {
     display: flex;
@@ -12,7 +13,7 @@ margin-left: 366px;
 
 `
 
-export const LoginBtn = styled.button`
+export const AuthBtn = styled.button`
 margin-right: 20px;
 font-size: 15px;
 border: 2px solid #f59256;
@@ -29,6 +30,14 @@ background-color: #ffffff;
 &:active {
     color: #ffffff;
     background-color: #f59256;
+}
+
+@media ${p => p.theme.media.tablet} {
+    margin-right: 0px;
+    margin-left: 20px;
+}
+@media ${p => p.theme.media.desktop} {
+
 }
 
 `

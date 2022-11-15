@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import mobileGradient from 'img/homePages-photos/mobile-gradient-1x.png'
 import HomePhotoDesktop from 'img/homePages-photos/desktop-girl-1x.png'
+import TabletGradient from 'img/homePages-photos/tablet-gradient-1x.png'
+
+
 
 
 
@@ -18,7 +21,7 @@ padding-left:20px;
 padding-right:20px;
 
 @media ${p => p.theme.media.tablet} {
-    
+    width: 768px;
 }
 @media ${p => p.theme.media.desktop} {
     width: 1280px;
@@ -28,7 +31,7 @@ padding-right:20px;
 `
 
 export const Title = styled.div`
-
+margin-bottom: 58px;
 
 font-family: 'Manrope';
 font-style: normal;
@@ -41,6 +44,12 @@ color: black;
 align-items:center;
 
 @media ${p => p.theme.media.tablet} {
+    width: 588px;
+    height: 200px;
+    left: 32px;
+    top: 160px;
+    font-size: 68px;
+    line-height: 100px;
     
 }
 @media ${p => p.theme.media.desktop} {
@@ -57,25 +66,27 @@ align-items:center;
 
 export const HomeImage = styled.img`
 position: absolute;
-
-// width: 320px;
-// height: 337px;
-// left: 0px;
-top: 264px;
+margin-top:264px;
 background-image: url(${mobileGradient});
 
+
 @media ${p => p.theme.media.tablet} {
+    background-image: url(${TabletGradient});
+    width:100%;
+    width: 699px;
+    margin-top:394px;
+height: 733px;
+top:0px;
     
 }
 @media ${p => p.theme.media.desktop} {
     width: 624px;
     height: 655px;
+    margin-top:46px;
     left: 656px;
-    top: 113px;
-    bottom: 0;
+    top: 30px;
     z-index: 2;
     overflow:hidden; 
-    // display:none;
     background-image: url(${HomePhotoDesktop});
 }
 `
@@ -91,8 +102,6 @@ display:none;
 position:absolute;
 display:flex;
 z-index: 1;
-
-// height: 538px;
 width: 100%;
 top: 230px;
 bottom: 0;

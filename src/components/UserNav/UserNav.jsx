@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Div } from "./UserNav.styled";
+import { Div, UserBtn, IconWrapper } from "./UserNav.styled";
 
 import { useLogoutMutation } from "redux/auth/authApi";
+import Icon from "../Button/icons/index";
 
 const UserNav = () => {
   const [logout] = useLogoutMutation();
@@ -9,12 +10,15 @@ const UserNav = () => {
   return (
     <Div>
       <NavLink to="/user">
-        <button type="button">Account</button>
+        <UserBtn type="button">
+          <IconWrapper>
+            <Icon.Account/>
+            </IconWrapper>Account</UserBtn>
       </NavLink>
       <NavLink>
-        <button type="button" onClick={() => logout()}>
+        <UserBtn type="button" onClick={() => logout()}>
           Log Out
-        </button>
+        </UserBtn>
       </NavLink>
     </Div>
   );

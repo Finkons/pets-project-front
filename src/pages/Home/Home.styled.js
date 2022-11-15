@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import mobileGradient from 'img/homePages-photos/mobile-gradient-1x.png'
-import HomePhotoDesktop from 'img/homePages-photos/desktop-girl-1x.png'
-import TabletGradient from 'img/homePages-photos/tablet-gradient-1x.png'
+import styled from "@emotion/styled";
+import mobileGradient from "img/homePages-photos/mobile-gradient-1x.png";
+import HomePhotoDesktop from "img/homePages-photos/desktop-girl-1x.png";
+import TabletGradient from "img/homePages-photos/tablet-gradient-1x.png";
 
 export const Container = styled.div`
 position: relative;

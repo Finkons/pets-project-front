@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding-bottom: 32px;
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   border-radius: 0px 0px 20px 20px;
-
+  background-color: #fff;
   @media ${p => p.theme.media.tablet} {
     width: 336px;
   }
@@ -17,11 +17,11 @@ export const Container = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div`
   position: relative;
 `;
 
-const CategoryLabel = styled.div`
+export const CategoryLabel = styled.div`
   position: absolute;
   top: 20px;
   left: 0;
@@ -34,13 +34,6 @@ const CategoryLabel = styled.div`
   font-weight: ${p => p.theme.fontWeights.heading};
   line-height: ${p => p.theme.lineHeights.body};
 `;
-
-export const ImageThumb = ({ src, alt = "", category }) => (
-  <ImageWrapper>
-    <img src={src} alt={alt} />
-    {category && <CategoryLabel>{category}</CategoryLabel>}
-  </ImageWrapper>
-);
 
 export const InfoWrapper = styled.div`
   margin-bottom: 50px;

@@ -2,7 +2,11 @@ import { useState } from "react";
 import { NOTICE_ITEM_KEYS } from "constants/petInfoKeys";
 import { notifyWarning } from "helpers/toastNotifications";
 import ModalNotice from "components/Modal/ModalNotice";
-import { Container, ImageThumb, InfoItem, InfoWrapper, Title, LearnMore, AddToFavorites } from "./NoticeCategoryItem.styled";
+
+import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
+import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
+
+
 import itemImage from "../../img/pet-photos/notice-item-img.jpg";
 import { sampleData } from "./sampleData";
 
@@ -21,13 +25,19 @@ const NoticeCategoryItem = ({ data = sampleData }) => {
     // ...do some logic...
     console.log("Added to favorites");
   };
-
+  const { category, title } = data;
   return (
     <>
       <Container>
-        <ImageThumb src={itemImage} alt={data.title} category={data.category} />
+        <ImageWrapper>
+          <img src={itemImage} alt={title} />
+          {category === "sell" && <CategoryLabel>Sell</CategoryLabel>}
+          {category === "lost-found" && <CategoryLabel>Lost/found</CategoryLabel>}
+          {category === "for-free" && <CategoryLabel>In good hands</CategoryLabel>}
+        </ImageWrapper>
+
         <InfoWrapper>
-          <Title>Good boi looking for a home</Title>
+          <Title>Cute dog looking for a home</Title>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key }) => (
               <InfoItem key={key} label={label} data={data[key]} />

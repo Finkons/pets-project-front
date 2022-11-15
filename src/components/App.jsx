@@ -2,7 +2,8 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
-import Header from "components/Header/Header";
+import OurFriendsPage from "pages/OurFriendsPage";
+
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,12 +17,12 @@ const LoginPage = lazy(() => import("../pages/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 const AccoutPage = lazy(() => import("../pages/UserPage"));
 
+
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/pets-project-front">
         <Suspense fallback={<div>Loading...</div>}>
-          <Header />
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />
@@ -29,6 +30,7 @@ export const App = () => {
               <Route path="register" element={<RegisterPage />} />
               <Route path="user" element={<AccoutPage />} />
               <Route path="notices/:categoryName" element={<NoticesPage />} />
+              <Route path="friends" element={<OurFriendsPage/>} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

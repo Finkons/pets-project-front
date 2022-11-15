@@ -5,8 +5,8 @@ export const ModalBtn = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 180px;
-  height: 44px;
+  width: 240px;
+  height: 40px;
   padding: 9px 41px;
   background: #ffffff;
   border: ${props => (props.authorized ? "2px solid #f59256" : "2px solid rgba(17, 17, 17, 0.1)")};
@@ -21,8 +21,14 @@ export const ModalBtn = styled.button`
 
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  color: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
+  color: ${props => (props.authorized ? "black" : "rgba(17, 17, 17, 0.1)")};
+  fill: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
   stroke: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
+
+  @media ${props => props.theme.media.tabletDesktop} {
+    width: 180px;
+    height: 44px;
+  }
 
   ${props =>
     props.primary &&

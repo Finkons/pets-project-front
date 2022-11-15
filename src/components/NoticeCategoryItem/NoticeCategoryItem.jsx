@@ -2,8 +2,10 @@ import { useState } from "react";
 import { NOTICE_ITEM_KEYS } from "constants/petInfoKeys";
 import { notifyWarning } from "helpers/toastNotifications";
 import ModalNotice from "components/Modal/ModalNotice";
+
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
+
 
 import itemImage from "../../img/pet-photos/notice-item-img.jpg";
 import { sampleData } from "./sampleData";
@@ -42,7 +44,7 @@ const NoticeCategoryItem = ({ data = sampleData }) => {
             ))}
           </ul>
         </InfoWrapper>
-        <LearnMoreBtn onClick={handleModalToggle}>Learn more</LearnMoreBtn>
+        <LearnMore onClick={handleModalToggle}>Learn more</LearnMore>
         <AddToFavorites onClick={handleAddToFavoritesClick} authorized={isLoggedIn} />
       </Container>
 

@@ -1,7 +1,10 @@
 import { Formik, Form, ErrorMessage } from "formik";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
 import { Container, Text, Input, Button, LinkBox, Link, ErrorText } from "./LoginForm.styled";
+import { toast } from "react-toastify";
+import { useRegisterMutation } from "redux/auth/authApi";
 
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
@@ -16,12 +19,28 @@ export const RegisterForm = () => {
     location: "",
     phone: "",
   });
+  const [register, status] = useRegisterMutation();
+  const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(0);
-  //   const [errors, setErrors] = useState({});
 
   const makeRequest = formData => {
     console.log(formData);
+
+    const { email, password, name, location: address, phone } = formData;
+    register({ email, password, name, address, phone })
+      .unwrap()
+      .then(payload => {
+        console.log(`User successfully registered`);
+        // navigate("/"); if success - navigate user to userPage
+        navigate("/");
+      })
+      .catch(() => {
+        console.log("Handle errors");
+        toast.error("Sorry, such email already exists");
+      });
+
+    console.log(status);
   };
 
   const handleNextStep = (newData, final = false) => {
@@ -47,7 +66,6 @@ export const RegisterForm = () => {
     <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
   ];
 
-  console.log(data);
   return (
     <>
       <Container>
@@ -60,19 +78,9 @@ export const RegisterForm = () => {
     </>
   );
 };
-//   const handleSubmit = async (values, actions) => {
-//     console.log(values);
-//     console.log(actions);
-//     // setEmail (values.email);
-//     // setPassword (values.password);
-//     await new Promise(resolve => setTimeout(resolve, 1000));
-//     // await onSubmit(values);
-//     actions.resetForm();
-//   };
 
 const StepOne = props => {
   const handleSubmit = values => {
-    console.log(values);
     props.next(values);
   };
   return (
@@ -99,8 +107,9 @@ const StepOne = props => {
 };
 
 const StepTwo = props => {
-  const handleSubmit = values => {
+  const handleSubmit = (values, actions) => {
     props.next(values, true);
+    actions.resetForm();
   };
   return (
     <Formik initialValues={props.data} validationSchema={stepTwoRegistSchema} onSubmit={handleSubmit}>

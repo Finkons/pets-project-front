@@ -1,7 +1,8 @@
 import * as yup from "yup";
 
 const passwordRules = /^(?!.* ).{7,32}$/;
-// const phoneRules = /^[+]d{3}s[(]d{2}[)]sd{3}[-]d{2}[-]d{2}/;
+const locationRules = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32},(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32}$/;
+const phoneRules = /[+380]+[0-9].{11}/;
 
 export const loginSchema = yup.object().shape({
   email: yup.string().email("Please enter a valid email").required(),
@@ -29,13 +30,6 @@ export const stepOneRegistSchema = yup.object().shape({
 
 export const stepTwoRegistSchema = yup.object().shape({
   name: yup.string().required(),
-  location: yup.array().of(yup.string()).nullable(),
-  phone: yup
-    .number()
-    .typeError("That doesn't look like a phone number")
-    .positive("A phone number can't start with a minus")
-    .integer("A phone number can't include a decimal point")
-    .min(8)
-    // .matches(phoneRules, { message: "Please enter a string in format +380671234567" })
-    .required("A phone number is required"),
+  location: yup.string().matches(locationRules, { message: "Please enter a string in format city, region" }).required(),
+  phone: yup.string().min(8).matches(phoneRules, { message: "Please enter a string in format +380671234567" }).required("A phone number is required"),
 });

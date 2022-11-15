@@ -21,3 +21,8 @@ export const Title = styled.h2`
   font-size: 48px;
   line-height: 66px;
 `;
+
+export const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

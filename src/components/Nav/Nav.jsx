@@ -1,5 +1,6 @@
 import { NavHeader,Link,Text } from "./Nav.styled";
 
+
 const Nav = () => {
   return (
       <NavHeader>

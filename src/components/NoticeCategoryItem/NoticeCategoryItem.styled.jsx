@@ -62,6 +62,7 @@ const Info = styled.li`
 `;
 
 const Data = styled.span`
+  text-align: left;
   width: 150px;
 `;
 

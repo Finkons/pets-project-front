@@ -8,3 +8,11 @@ export async function fetchPets(category) {
 export async function fetchByName(name) {
   return axios(`${BASE_URL}?query=${name}`).then(response => response.data);
 }
+
+export async function fetchById(id) {
+  return axios(`${BASE_URL}/id/${id}`).then(response => response.data);
+}
+
+export async function deleteById(id) {
+  return axios.delete(`${BASE_URL}/id/${id}`).then(response => response.data);
+}

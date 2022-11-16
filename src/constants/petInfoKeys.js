@@ -15,26 +15,37 @@ export const PET_MODAL_KEYS = [
   },
   {
     label: "Loсation:",
-    key: "location",
+    key: "place",
   },
   {
     label: "The sex:",
     key: "sex",
   },
   {
-    label: "Email:",
-    key: "email",
+    key: "owner",
+    nested: true,
+    values: [
+      {
+        label: "Email:",
+        field: "email",
+      },
+      {
+        label: "Phone:",
+        field: "phone",
+      },
+    ],
   },
   {
-    label: "Phone:",
-    key: "phone",
+    label: "Sell:",
+    key: "price",
+    category: "sell",
   },
 ];
 
 export const NOTICE_ITEM_KEYS = [
   {
     label: "Breed:",
-    key: "title",
+    key: "breed",
   },
   {
     label: "Place:",
@@ -44,4 +55,15 @@ export const NOTICE_ITEM_KEYS = [
     label: "Age:",
     key: "age",
   },
+  {
+    label: "Price:",
+    key: "price",
+    category: "sell",
+  },
 ];
+
+export const NOTICE_CATEGORY_LABELS = {
+  sell: "Sell",
+  "lost-found": "Lost/found",
+  "for-free": "In good hands",
+};

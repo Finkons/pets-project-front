@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { TrashButton } from "components/Button";
 import Icon from "components/Button/icons";
 import { ModalBtn } from "components/Button/ModalButton/ModalButton.styled";
 
@@ -135,6 +136,7 @@ export const InfoItem = ({ label, data }) => (
 
 const DescriptionText = styled.p`
   margin: 28px 0 40px 0;
+  text-align: left;
   font-size: ${p => p.theme.fontSizes.s};
   line-height: ${p => p.theme.lineHeights.body};
 
@@ -167,6 +169,12 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalButton = styled(ModalBtn)`
+  color: ${({ authorized, primary }) => {
+    if (!authorized && !primary) return "rgba(17, 17, 17, 0.1)";
+    if (primary) return "white";
+    return "#f59256";
+    // !props.authorized && props.primary ? "white" : "#f59256";
+  }};
   @media ${props => props.theme.media.tabletDesktop} {
     width: 160px;
   }
@@ -190,4 +198,10 @@ export const ActionButtons = styled.div`
     gap: 8px;
     margin-left: auto;
   }
+`;
+
+export const DeleteButton = styled(TrashButton)`
+  position: absolute;
+  top: 68px;
+  right: 20px;
 `;

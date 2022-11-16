@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import authSelectors from "redux/auth/authSelectors";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
-import { PET_MODAL_KEYS } from "constants/petInfoKeys";
+import { notifyError, notifySuccess } from "helpers/toastNotifications";
+import { fetchById, deleteById } from "api/fetchPets";
+import { PET_MODAL_KEYS, NOTICE_CATEGORY_LABELS } from "constants/petInfoKeys";
 import Backdrop from "../Backdrop";
 import {
   Container,
@@ -12,19 +16,23 @@ import {
   CloseButton,
   AddToFavorites,
   ModalButton,
+  DeleteButton,
   ActionButtons,
 } from "./ModalNotice.styled";
 
 import modalImage from "../../../img/pet-photos/pet-modal-img.jpg";
-import { sampleData } from "./sampleData";
 
-// props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}, authorized: bool }
-const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, authorized }) => {
-  const [petData] = useState(sampleData);
+// props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
+const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
+  const [petData, setPetData] = useState({});
+  const currentUserEmail = useSelector(authSelectors.getUserEmail);
+  const ownPet = useMemo(() => petData?.owner?.email === currentUserEmail, [currentUserEmail, petData?.owner?.email]);
 
   useEffect(() => {
-    // fetching pet data by id...
-    // ...setPetData(backendData)
+    (async () => {
+      const data = await fetchById(id);
+      setPetData(data);
+    })();
   }, [id]);
 
   useEffect(() => {
@@ -32,17 +40,31 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, authori
     return () => cleanup();
   }, [handleModalToggle]);
 
+  const handleDeleteClick = async () => {
+    try {
+      const result = await deleteById(id);
+      notifySuccess(result.message);
+    } catch ({ response: { data } }) {
+      notifyError(data.message);
+    }
+  };
+
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
       <Container>
         <InfoWrapper>
-          <ImageThumb src={petData.avatar || modalImage} alt={petData.name} category={petData.category} />
+          <ImageThumb src={petData.avatar || modalImage} alt={petData.name} category={NOTICE_CATEGORY_LABELS[petData.category]} />
           <div>
-            <Title>Сute dog looking for a home</Title>
+            <Title>{petData.title}</Title>
             <ul>
-              {PET_MODAL_KEYS.map(({ label, key }) => (
-                <InfoItem key={key} label={label} data={petData[key]} />
-              ))}
+              {PET_MODAL_KEYS.map(({ label, key, nested, values, category }) => {
+                if (nested) {
+                  return values.map(({ field, label }) => <InfoItem key={field} label={label} data={petData[key] && petData[key][field]} />);
+                }
+                if (category && category !== petData.category) return null;
+
+                return <InfoItem key={key} label={label} data={petData[key]} />;
+              })}
             </ul>
           </div>
         </InfoWrapper>
@@ -50,8 +72,9 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, authori
 
         {/* will be replaced with styled button */}
         <CloseButton onClick={handleModalToggle}>X</CloseButton>
+        {ownPet && <DeleteButton onClick={handleDeleteClick} />}
         <ActionButtons>
-          <AddToFavorites authorized={authorized} onClick={handleAddToFavoritesClick} />
+          <AddToFavorites authorized={Boolean(currentUserEmail)} onClick={handleAddToFavoritesClick} />
           <ModalButton primary>Contact</ModalButton>
         </ActionButtons>
       </Container>

@@ -49,11 +49,15 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
     }
   };
 
+  const handleContactClick = () => {
+    window.open(`tel:${petData.owner.phone}`);
+  };
+
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
       <Container>
         <InfoWrapper>
-          <ImageThumb src={petData.avatar || modalImage} alt={petData.name} category={NOTICE_CATEGORY_LABELS[petData.category]} />
+          <ImageThumb src={petData.avatarURL || modalImage} alt={petData.name} category={NOTICE_CATEGORY_LABELS[petData.category]} />
           <div>
             <Title>{petData.title}</Title>
             <ul>
@@ -75,7 +79,9 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
         {ownPet && <DeleteButton onClick={handleDeleteClick} />}
         <ActionButtons>
           <AddToFavorites authorized={Boolean(currentUserEmail)} onClick={handleAddToFavoritesClick} />
-          <ModalButton primary>Contact</ModalButton>
+          <ModalButton primary onClick={handleContactClick}>
+            Contact
+          </ModalButton>
         </ActionButtons>
       </Container>
     </Backdrop>

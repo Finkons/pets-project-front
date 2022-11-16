@@ -51,7 +51,6 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
 
   const handleContactClick = () => {
     window.open(`tel:${petData.owner.phone}`);
-    console.log(petData);
   };
 
   return (

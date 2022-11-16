@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
+import NewsPage from "pages/NewsPage";
 
 
 import { ToastContainer } from "react-toastify";
@@ -30,7 +31,8 @@ export const App = () => {
               <Route path="register" element={<RegisterPage />} />
               <Route path="user" element={<AccoutPage />} />
               <Route path="notices/:categoryName" element={<NoticesPage />} />
-              <Route path="friends" element={<OurFriendsPage/>} />
+              <Route path="friends" element={<OurFriendsPage />} />
+              <Route path="news" element={<NewsPage/>} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

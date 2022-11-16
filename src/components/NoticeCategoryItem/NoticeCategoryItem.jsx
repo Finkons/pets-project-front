@@ -9,10 +9,9 @@ import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, A
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
 
 import itemImage from "../../img/pet-photos/notice-item-img.jpg";
-import { sampleData } from "./sampleData";
 
 // props = { data: { }}
-const NoticeCategoryItem = ({ data = sampleData }) => {
+const NoticeCategoryItem = ({ data }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const [expanded, setExpanded] = useState(false);
 
@@ -30,12 +29,12 @@ const NoticeCategoryItem = ({ data = sampleData }) => {
     <>
       <Container>
         <ImageWrapper>
-          <img src={data.avatar || itemImage} alt={data?.title} />
+          <img src={data.avatar || itemImage} alt={data.title} />
           <CategoryLabel>{NOTICE_CATEGORY_LABELS[data?.category]}</CategoryLabel>
         </ImageWrapper>
 
         <InfoWrapper>
-          <Title>{data?.title}</Title>
+          <Title>{data.title}</Title>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== data.category) return null;

@@ -16,7 +16,10 @@ const NoticeCategoryItem = ({ data }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleModalToggle = () => {
-    setExpanded(!expanded);
+    setExpanded(prev => {
+      document.body.className = prev ? "" : "no-scroll";
+      return !prev;
+    });
   };
 
   const handleAddToFavoritesClick = () => {
@@ -29,7 +32,7 @@ const NoticeCategoryItem = ({ data }) => {
     <>
       <Container>
         <ImageWrapper>
-          <img src={data.avatar || itemImage} alt={data.title} />
+          <img src={data.avatarURL || itemImage} alt={data.title} />
           <CategoryLabel>{NOTICE_CATEGORY_LABELS[data?.category]}</CategoryLabel>
         </ImageWrapper>
 

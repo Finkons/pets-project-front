@@ -15,7 +15,7 @@ export const PET_MODAL_KEYS = [
   },
   {
     label: "Loсation:",
-    key: "place",
+    key: "location",
   },
   {
     label: "The sex:",
@@ -49,7 +49,7 @@ export const NOTICE_ITEM_KEYS = [
   },
   {
     label: "Place:",
-    key: "place",
+    key: "location",
   },
   {
     label: "Age:",

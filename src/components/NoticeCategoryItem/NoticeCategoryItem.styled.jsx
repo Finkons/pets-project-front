@@ -19,6 +19,8 @@ export const Container = styled.div`
 
 export const ImageWrapper = styled.div`
   position: relative;
+  height: 288px;
+  overflow: hidden;
 `;
 
 export const CategoryLabel = styled.div`

@@ -6,7 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: #fdf7f2;
-
 }
 
 code {
@@ -50,4 +49,8 @@ a {
   font-style: normal;
   color: inherit;
   display: block;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

@@ -16,3 +16,11 @@ export async function fetchById(id) {
 export async function deleteById(id) {
   return axios.delete(`${BASE_URL}/id/${id}`).then(response => response.data);
 }
+
+export async function fetchFavoritePets() {
+  return axios(`${BASE_URL}favorite`).then(response => response.data);
+}
+
+export async function fetchOwnPets() {
+  return axios(`${BASE_URL}own`).then(response => response.data);
+}

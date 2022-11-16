@@ -1,6 +1,6 @@
 import { Container, Title, Div } from "./NoticesPage.styled";
 import { useEffect, useState } from "react";
-import { fetchPets } from "api/fetchPets";
+import { fetchPets, fetchFavoritePets, fetchOwnPets } from "api/fetchPets";
 import NoticesCategoriesNav from "components/NoticesCategoriesNav";
 import NoticesSearch from "components/NoticesSearch";
 import NoticesCategoriesList from "components/NoticesCategoriesList";
@@ -12,6 +12,12 @@ export default function NoticesPage() {
 
   console.log(pets);
   useEffect(() => {
+    if (category === "favorite") {
+      fetchFavoritePets(category).then(data => setPets(data));
+    }
+    if (category === "own") {
+      fetchOwnPets(category).then(data => setPets(data));
+    }
     fetchPets(category).then(data => setPets(data));
   }, [category]);
 

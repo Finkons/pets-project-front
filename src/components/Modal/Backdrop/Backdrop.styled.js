@@ -9,5 +9,5 @@ export const BackdropLayer = styled.div`
   background-color: ${p => p.theme.colors.greyText};
   backdrop-filter: blur(10px);
   padding: 0 20px;
-  overflow: no-scroll;
+  overflow: scroll;
 `;

@@ -9,6 +9,7 @@ export const Container = styled.div`
   left: 50%;
   transform: translateX(-50%);
   max-height: 885px;
+  margin-bottom: 50px;
 
   @media ${p => p.theme.media.mobile} {
     // top: 158px;

@@ -32,11 +32,13 @@ export const authApi = createApi({
       providesTags: ["User"],
     }),
     getCurrentUser: build.query({
-      queryFn: (arg, { getState, abort }) => {
+      queryFn: async (arg, { getState, abort }, extraOptions, fetchBaseQuery) => {
         const { token } = getState().auth;
         if (!token) abort();
 
-        return "/user/current";
+        const { data } = await fetchBaseQuery("/user/current");
+
+        return { data: data.data[0] };
       },
       method: "GET",
       providesTags: ["User"],

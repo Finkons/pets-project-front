@@ -53,7 +53,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
     if (!petData?.owner?.phone) return notifyWarning("Owner hasn't provided phone number");
     window.open(`tel:${petData.owner.phone}`);
   };
-  console.log(petData);
+
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
       <Container>

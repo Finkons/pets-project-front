@@ -1,20 +1,43 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  background: ${p => p.theme.colors.background};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 26px;
+
   @media ${p => p.theme.media.tablet} {
-    min-width: 768px;
+    padding-top: 72px;
   }
+
   @media ${p => p.theme.media.desktop} {
-    min-width: 1281px;
+    padding-top: 38px;
   }
 `;
 
 
 export const Title = styled.h2`
-  padding-top: 50px;
-  padding-bottom: 40px;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 66px;
+  font-size: 24px;
+  line-height: 1.37;
+  margin-bottom: 28px;
+  
+  @media ${p => p.theme.media.tablet} {
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 1.37;
+  }
+
+  @media ${p => p.theme.media.desktop} {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.37;
+  }
+`;
+
+export const NewsBoard = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
 `;

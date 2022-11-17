@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
-import { notifyError, notifySuccess } from "helpers/toastNotifications";
+import { notifyError, notifySuccess, notifyWarning } from "helpers/toastNotifications";
 import { fetchById, deleteById } from "api/fetchPets";
 import { PET_MODAL_KEYS, NOTICE_CATEGORY_LABELS } from "constants/petInfoKeys";
 import Backdrop from "../Backdrop";
@@ -50,9 +50,10 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
   };
 
   const handleContactClick = () => {
+    if (!petData?.owner?.phone) return notifyWarning("Owner hasn't provided phone number");
     window.open(`tel:${petData.owner.phone}`);
   };
-
+  console.log(petData);
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
       <Container>

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
 import NewsPage from "pages/NewsPage";
+import { useGetCurrentUserQuery } from "redux/auth/authApi";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +20,8 @@ const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 const AccoutPage = lazy(() => import("../pages/UserPage"));
 
 export const App = () => {
+  useGetCurrentUserQuery();
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/pets-project-front">

@@ -6,3 +6,4 @@ export { NextButton } from "./NextButton/NextButton";
 export { ModalButton } from "./ModalButton/ModalButton";
 export { CameraButton } from "./CameraButton/CameraButton";
 export { PencilButton } from "./PencilButton/PencilButton";
+export { CloseButton } from "./CloseButton/CloseButton";

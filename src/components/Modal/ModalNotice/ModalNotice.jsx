@@ -13,7 +13,7 @@ import {
   InfoWrapper,
   InfoItem,
   Description,
-  CloseButton,
+  Close,
   AddToFavorites,
   ModalButton,
   DeleteButton,
@@ -73,9 +73,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
           </div>
         </InfoWrapper>
         <Description text={petData.comments} />
-
-        {/* will be replaced with styled button */}
-        <CloseButton onClick={handleModalToggle}>X</CloseButton>
+        <Close onClick={handleModalToggle} />
         {ownPet && <DeleteButton onClick={handleDeleteClick} />}
         <ActionButtons>
           <AddToFavorites authorized={Boolean(currentUserEmail)} onClick={handleAddToFavoritesClick} />

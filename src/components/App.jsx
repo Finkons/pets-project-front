@@ -1,10 +1,10 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import PrivateRoute from "components/Routes/PrivateRoute.js";
 import { ThemeProvider } from "@emotion/react";
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
 import NewsPage from "pages/NewsPage";
-
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +18,6 @@ const LoginPage = lazy(() => import("../pages/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 const AccoutPage = lazy(() => import("../pages/UserPage"));
 
-
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -29,10 +28,17 @@ export const App = () => {
               <Route index element={<Home />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
-              <Route path="user" element={<AccoutPage />} />
+              <Route
+                path="user"
+                element={
+                  <PrivateRoute>
+                    <AccoutPage />
+                  </PrivateRoute>
+                }
+              />
               <Route path="notices/:categoryName" element={<NoticesPage />} />
               <Route path="friends" element={<OurFriendsPage />} />
-              <Route path="news" element={<NewsPage/>} />
+              <Route path="news" element={<NewsPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

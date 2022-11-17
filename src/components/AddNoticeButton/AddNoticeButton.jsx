@@ -3,6 +3,7 @@ import { notifyWarning } from "helpers/toastNotifications";
 import { Div, Label, Button } from "./AddNoticeButton.styled";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
+import AddNoticeModal from "components/Modal/AddNoticeModal";
 
 export default function AddNoticeButton() {
   const [expanded, setExpanded] = useState(false);
@@ -11,8 +12,10 @@ export default function AddNoticeButton() {
 
   const handleModalToggle = () => {
     if (!isLoggedIn) return notifyWarning("You need to log in to perform this action");
-    setExpanded(!expanded);
-    console.log("log in");
+    setExpanded(prev => {
+      document.body.className = prev ? "" : "no-scroll";
+      return !prev;
+    });
   };
   return (
     <Div>
@@ -20,6 +23,7 @@ export default function AddNoticeButton() {
       <Button type="button" onClick={handleModalToggle}>
         +
       </Button>
+      {expanded && <AddNoticeModal handleModalToggle={handleModalToggle} />}
     </Div>
   );
 }

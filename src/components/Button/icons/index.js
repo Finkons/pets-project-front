@@ -6,6 +6,7 @@ import { ReactComponent as Account } from "./account.svg";
 import { ReactComponent as Camera } from "./camera.svg";
 import { ReactComponent as Exit } from "./exit.svg";
 import { ReactComponent as Pencil } from "./pencil.svg";
+import { ReactComponent as Close } from "./close.svg";
 
 const Icon = {
   Heart,
@@ -16,6 +17,7 @@ const Icon = {
   Camera,
   Exit,
   Pencil,
+  Close,
 };
 
 export default Icon;

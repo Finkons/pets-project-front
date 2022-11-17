@@ -242,9 +242,6 @@ export const SexInput = styled(Field)`
   }
 `;
 
-export const SexImage = styled.label.img`
-margin:0;`;
-
 export const SexLabel = styled.label`
 display: inline-block;
 font-family: 'Manrope';

@@ -7,6 +7,10 @@ const toastConfig = {
   closeOnClick: true,
   pauseOnHover: true,
   draggable: false,
+  style: {
+    backgroundColor: "#f59256",
+    color: "black",
+  },
 };
 
 export const notifySuccess = message => toast.success(message, { ...toastConfig, toastId: message });

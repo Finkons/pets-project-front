@@ -12,7 +12,6 @@ import {
   TextLabel,
   BreedWrap,
   SexWrap,
-  SexImage,
   SexInput,
   SexLabel,
   FileButton,
@@ -176,14 +175,14 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               <div role="group" aria-labelledby="radio-group">
                 <SexLabel>
                   <div>
-                    <SexImage src={Male} alt="male" width="54" height="54" />
+                    <img src={Male} alt="male" width="54" height="54" />
                   </div>
                   <SexInput type="radio" name="sex" value="male" checked />
                   Male
                 </SexLabel>
                 <SexLabel>
                   <div>
-                    <SexImage src={Female} alt="female" width="39" height="60" />
+                    <img src={Female} alt="female" width="39" height="60" />
                   </div>
                   <SexInput type="radio" name="sex" value="female" />
                   Female

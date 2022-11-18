@@ -35,9 +35,9 @@ export const authApi = createApi({
       queryFn: async (arg, { getState, abort }, extraOptions, fetchBaseQuery) => {
         const { token } = getState().auth;
         if (!token) abort();
-        const { data } = await fetchBaseQuery("/user");
+        const { data, error } = await fetchBaseQuery("/user");
 
-        return { data: data?.data[0] };
+        return { data: error?.status === 401 ? null : data?.data[0] };
       },
       method: "GET",
       providesTags: ["User"],

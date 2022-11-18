@@ -7,6 +7,28 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 280px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  @media ${p => p.theme.media.tablet} {
+    width: 608px;
+    /* top: 114px; */
+    background-color: ${colors.colors.white};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 7px 4px 14px rgba(0, 0, 0, 0.11);
+    border-radius: 40px;
+    padding: 60px 80px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    width: 618px;
+    background-color: ${colors.colors.white};
+    box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+    border-radius: 40px;
+    padding: 60px 80px;
+    margin-top: 46px;
+  }
 `;
 
 export const Text = styled.h1`
@@ -15,8 +37,15 @@ export const Text = styled.h1`
   color: ${colors.colors.primaryBtnText};
   line-height: 1.4;
   letter-spacing: 0.04em;
-  margin-top: 42px;
   margin-bottom: 40px;
+  @media ${p => p.theme.media.tablet} {
+    font-size: 36px;
+    font-weight: 500;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 36px;
+    font-weight: 500;
+  }
 `;
 
 export const Input = styled(Field)`
@@ -33,28 +62,64 @@ export const Input = styled(Field)`
   align-items: center;
   letter-spacing: 0.04em;
   color: ${colors.colors.greyText};
-  /* :hover,
+  outline: none;
+  :hover,
   :focus {
-    border: 1px solid rgba(245, 146, 86, 0.5);
-  } */
+    border: 3px solid rgba(245, 146, 86, 0.5);
+  }
+
+  @media ${p => p.theme.media.desktop} {
+    width: 458px;
+    height: 52px;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 14px 32px;
+  }
 `;
 
 export const Button = styled.button`
   cursor: pointer;
-  border-color: #f59256;
+  border-color: ${colors.colors.accent};
   border-radius: 40px;
   width: 280px;
   height: 44px;
   padding: 10px 28px;
-  color: white;
+  color: ${colors.colors.white};
   font-weight: 500;
   font-size: 20px;
   line-height: 1.4;
   letter-spacing: 0.04em;
   background: ${colors.colors.accent};
-  margin-top: 40px;
+  margin-top: 24px;
   :hover {
-    background-color: #995024;
+    background-color: #ed5a03;
+  }
+  @media ${p => p.theme.media.desktop} {
+    width: 458px;
+    height: 48px;
+  }
+`;
+
+export const ButtonBack = styled.button`
+  display: none;
+  @media ${p => p.theme.media.desktop} {
+    display: block;
+    cursor: pointer;
+    border: 2px solid ${colors.colors.accent};
+    border-radius: 40px;
+    width: 458px;
+    height: 48px;
+    padding: 10px 28px;
+    color: ${colors.colors.black};
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    background: ${colors.colors.white};
+    margin-top: 16px;
+    :hover {
+      background-color: #ed5a03;
+    }
   }
 `;
 

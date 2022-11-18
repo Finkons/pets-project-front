@@ -2,7 +2,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
-import { Container, Text, Input, Button, LinkBox, Link, ErrorText } from "./LoginForm.styled";
+import { Container, Text, Input, Button, ButtonBack, LinkBox, Link, ErrorText } from "./RegisterForm.styled";
 import { toast } from "react-toastify";
 import { useRegisterMutation } from "redux/auth/authApi";
 
@@ -67,15 +67,13 @@ export const RegisterForm = () => {
   ];
 
   return (
-    <>
-      <Container>
-        <Text>Registration</Text>
-        {steps[currentStep]}
-        <LinkBox>
-          Already have an account? <Link to={"/login"}>Login</Link>
-        </LinkBox>
-      </Container>
-    </>
+    <Container>
+      <Text>Registration</Text>
+      {steps[currentStep]}
+      <LinkBox>
+        Already have an account? <Link to={"/login"}>Login</Link>
+      </LinkBox>
+    </Container>
   );
 };
 
@@ -127,10 +125,10 @@ const StepTwo = props => {
             <Input type="tel" name="phone" id="phone" placeholder="Mobile phone" />
             <FormError name="phone" />
           </label>
-          <Button type="button" onClick={() => props.prev(values)}>
-            Back
-          </Button>
           <Button type="submit">Register</Button>
+          <ButtonBack type="button" onClick={() => props.prev(values)}>
+            Back
+          </ButtonBack>
         </Form>
       )}
     </Formik>

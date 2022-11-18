@@ -13,10 +13,11 @@ export const News = styled.div`
   @media ${p => p.theme.media.desktop} {
     width: 394px;
     margin-left: 34px;
+    
   }
 `;
 
-export const Decor = styled.div`
+export const DecorLine = styled.div`
   width: 200px;
   height: 4px;
   background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);

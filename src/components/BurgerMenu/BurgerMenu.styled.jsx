@@ -5,10 +5,10 @@ export const MenuContainer = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
-  top: 0;
+  top: 70px;
   left: 0;
   // z-index: 1;
-  padding: 10rem 0;
+  padding: 90px 0;
   flex-direction: column;
 
   @media ${p => p.theme.media.tablet} {

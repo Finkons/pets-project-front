@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Div,AuthBtn, } from "./AuthNav.styled";
+import { Div,AuthBtn } from "./AuthNav.styled";
 
 
 const AuthNav = () => {

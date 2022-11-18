@@ -1,21 +1,55 @@
 import styled from "@emotion/styled";
 
-export const Div = styled.div``;
-
-export const Label = styled.span`
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
-  margin-right: 22px;
+export const Div = styled.div`
+  display: flex;
+  align-items: center;
+  min-width: 140px;
 `;
 
+export const Label = styled.span`
+  display: none;
+  @media ${p => p.theme.media.tabletDesktop} {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+    margin-right: 22px;
+  }
+`;
+
+export const LabelMob = styled.span`
+  font-size: 12px;
+  @media ${p => p.theme.media.tabletDesktop} {
+    display: none;
+  } ;
+`;
 export const Button = styled.button`
-  width: 44px;
-  height: 44px;
+  position: absolute;
+  bottom: -150px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
-  background-color: #f59256;
-  border: 1px solid #f59256;
   font-size: 26px;
   color: #fff;
+  background-color: #f59256;
+  border: 1px solid #f59256;
+  @media ${p => p.theme.media.tabletDesktop} {
+    position: static;
+    width: 45px;
+    height: 45px;
+  } ;
+`;
+
+export const Plus = styled.p`
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+  vertical-align: middle;
 `;

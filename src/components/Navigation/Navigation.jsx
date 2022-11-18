@@ -2,17 +2,17 @@ import { useSelector } from "react-redux";
 import Nav from "components/Nav/Nav";
 import AuthNav from "components/AuthNav/AuthNav";
 import UserNav from "components/UserNav/UserNav";
-import  authSelectors  from "redux/auth/authSelectors";
+import authSelectors from "redux/auth/authSelectors";
 
-const Navigation = () => {
-const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+const Navigation = ({ isMobile, isTablet, isDesktop }) => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-return (
+  return (
     <>
-        <Nav/>
-        {!isLoggedIn ? <AuthNav /> : <UserNav />  }
-        
+      {isDesktop && <Nav />}
+      {!isMobile && <>{!isLoggedIn ? <AuthNav /> : <UserNav />}</>}
     </>
-)};
+  );
+};
 
 export default Navigation;

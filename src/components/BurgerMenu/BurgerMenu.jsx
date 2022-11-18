@@ -8,13 +8,12 @@ import authSelectors from "redux/auth/authSelectors";
 
 const modalRoot = document.getElementById("modal-root");
 
-const BurgerMenu = ({ toggleBurgerMenu }) => {
+const BurgerMenu = ({ toggleBurgerMenu, isMobile }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return createPortal(
     <MenuContainer>
-      <button onClick={toggleBurgerMenu}>CLOSE</button>
-      <ButtonWrapper onClick={toggleBurgerMenu}>{isLoggedIn ? <UserNav /> : <AuthNav />}</ButtonWrapper>
+      {isMobile && <ButtonWrapper onClick={toggleBurgerMenu}>{isLoggedIn ? <UserNav /> : <AuthNav />}</ButtonWrapper>}
       <NavHeader onClick={toggleBurgerMenu}>
         <Link to="/news">
           {" "}

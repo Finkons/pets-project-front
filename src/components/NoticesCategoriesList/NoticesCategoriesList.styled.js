@@ -4,7 +4,8 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: -32px;
+  align-items: center;
+  margin: -32px;
   @media ${p => p.theme.media.tablet} {
     flex-direction: row;
     flex-wrap: wrap;

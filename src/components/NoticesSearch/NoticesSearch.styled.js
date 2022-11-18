@@ -8,7 +8,6 @@ export const Form = styled.form`
 
 export const InputContainer = styled.div`
   position: relative;
-  width: 608px;
 `;
 
 export const Input = styled.input`
@@ -19,6 +18,9 @@ export const Input = styled.input`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #111111;
   border: 2px solid #fff;
+  @media (max-width: 760px) {
+    width: 280px;
+  }
 `;
 
 export const Button = styled.button`

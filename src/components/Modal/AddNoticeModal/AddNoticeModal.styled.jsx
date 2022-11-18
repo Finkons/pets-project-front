@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 import { Field } from "formik";
 import { CloseButton } from "components/Button";
 
@@ -11,24 +11,22 @@ export const Container = styled.div`
   max-height: 885px;
   margin-bottom: 50px;
 
+
   @media ${p => p.theme.media.mobile} {
-    // top: 158px;
     width: 280px;
-    height: 885px;
+    height: ${props => (props.extended ? "855px" : "800px")};
     padding: 40px 20px;
     border-radius: 20px;
   }
   @media ${p => p.theme.media.tablet} {
-    // top: 264px;
     width: 608px;
-    height: 885px;
+    height: ${props => (props.extended ? "1044px" : "885px")};
     padding: 40px 80px;
     border-radius: 40px;
   }
   @media ${p => p.theme.media.desktop} {
-    // top: 329px;
     width: 608px;
-    height: 885px;
+    height: ${props => (props.extended ? "1044px" : "885px")};
     padding: 40px 80px;
     border-radius: 40px;
   }
@@ -116,27 +114,28 @@ export const CategoryLabel = styled.label`
   padding: 10px 28px;
   background-color: "#ffffff";
   font-weight: 500;
+  font-size: 20px;
   border-radius: 40px;
+  font-style: normal;
+  line-height: 1.3;
   border: 2px solid ${p => p.theme.colors.accent};
   font-family: ${p => p.theme.fonts.body};
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1.3;
-  // @media ${p => p.theme.media.mobile} {
-  //   font-size: 14px;
-  // }
-  // @media ${p => p.theme.media.tablet} {
-  //   font-size: 20px;
-  // }
-  // @media ${p => p.theme.media.desktop} {
-  //   font-size: 20px;
-  // }
+
+  @media ${p => p.theme.media.mobile} {
+    font-size: 14px;
+  }
+  @media ${p => p.theme.media.tablet} {
+    font-size: 20px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 20px;
+  }
 `;
 
 export const CategoryInput = styled(Field)`
   display: none;
-  &:checked + CategoryLabel {
-    background-color: tomato;
+  &:checked + ${CategoryLabel} {
+    background-color: #f59256;
   }
 `;
 
@@ -192,19 +191,18 @@ margin-bottom: 8px;
  font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
+font-size: 24px;             
   }
   @media ${p => p.theme.media.mobile} {
     font-size: 18px;
 line-height: 1.3;
   }
   @media ${p => p.theme.media.tablet} {
-    display:inline-block;
     margin-bottom: 12px;
     font-size: 24px;
 line-height: 1.4;
   }
   @media ${p => p.theme.media.desktop} {
-    display:inline-block;
     margin-bottom: 12px;
     font-size: 24px;
 line-height: 1.4;
@@ -218,6 +216,7 @@ export const BreedWrap = styled.div`
 export const SexWrap = styled.div`
   margin-bottom: 40px;
   p {
+    margin-bottom: 14px;
     font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
@@ -227,7 +226,7 @@ font-weight: 500;
 line-height: 1.3;
   }
   @media ${p => p.theme.media.tablet} {
-    
+    font-size: 24px;
 line-height: 1.4;
   }
   @media ${p => p.theme.media.desktop} {
@@ -236,18 +235,20 @@ line-height: 1.4;
   }
   }
 `;
-export const SexInput = styled(Field)`
-  display: none;
-  &:checked + CategoryLabel {
-    color: tomato;
-  }
+
+export const SexImage = styled.img`
+  margin: 0;
 `;
 
 export const SexLabel = styled.label`
 display: inline-block;
+margin-right: 39px;
 font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
+div {
+  margin-bottom:23px;
+}
   }
   @media ${p => p.theme.media.mobile} {
     font-size: 18px;
@@ -258,8 +259,16 @@ line-height: 1.3;
 line-height: 1.4;
   }
   @media ${p => p.theme.media.desktop} {
+    margin-right: 95px;
     font-size: 20px;
 line-height: 1.4;
+  }
+`;
+
+export const SexInput = styled(Field)`
+  display: none;
+  &:checked + ${SexLabel} {
+    color: #f59256;
   }
 `;
 

@@ -13,13 +13,13 @@ import {
   BreedWrap,
   SexWrap,
   SexInput,
+  SexImage,
   SexLabel,
   FileButton,
   CommentsWrap,
   CommentsFild,
 } from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
-import { ErrorMessage } from "formik";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
 import Male from "../../../img/addnotice/male.svg";
 import Female from "../../../img/addnotice/female.svg";
@@ -73,7 +73,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
-      <Container>
+      <Container extended={isSell}>
         <ModalCloseButton onClick={handleModalToggle} />
         <Title>Add pet</Title>
 
@@ -93,21 +93,15 @@ const AddNoticeModal = ({ handleModalToggle }) => {
             <Text>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </Text>
             <div>
               <CategoryWrap role="group" aria-labelledby="my-radio-group">
-                <CategoryLabel>
-                  <CategoryInput type="radio" name="category" value="lost/found" />
-                  lost/found
-                </CategoryLabel>
+                <CategoryInput id="lost/found" type="radio" name="category" value="lost/found" />
+                <CategoryLabel htmlFor="lost/found">lost/found</CategoryLabel>
 
-                <CategoryLabel>
-                  <CategoryInput type="radio" name="category" value="in good hands" />
-                  in good hands
-                </CategoryLabel>
-                <CategoryLabel>
-                  <CategoryInput type="radio" name="category" value="sell" />
-                  sell
-                </CategoryLabel>
+                <CategoryInput id="in good hands" type="radio" name="category" value="in good hands" />
+                <CategoryLabel htmlFor="in good hands">in good hands</CategoryLabel>
+
+                <CategoryInput id="sell" type="radio" name="category" value="sell" />
+                <CategoryLabel htmlFor="sell">sell</CategoryLabel>
               </CategoryWrap>
-              <ErrorMessage className="error" component="div" name="category" />
             </div>
             <TextWrap>
               <TextLabel type="text" htmlFor="title">
@@ -173,18 +167,19 @@ const AddNoticeModal = ({ handleModalToggle }) => {
             <SexWrap>
               <p>The sex*:</p>
               <div role="group" aria-labelledby="radio-group">
-                <SexLabel>
+                <SexInput id="male" type="radio" name="sex" value="male" />
+                <SexLabel htmlFor="male">
                   <div>
-                    <img src={Male} alt="male" width="54" height="54" />
+                    <SexImage src={Male} alt="male" width="54" height="54" />
                   </div>
-                  <SexInput type="radio" name="sex" value="male" checked />
                   Male
                 </SexLabel>
-                <SexLabel>
+
+                <SexInput id="female" type="radio" name="sex" value="female" />
+                <SexLabel htmlFor="female">
                   <div>
-                    <img src={Female} alt="female" width="39" height="60" />
+                    <SexImage src={Female} alt="female" width="39" height="60" />
                   </div>
-                  <SexInput type="radio" name="sex" value="female" />
                   Female
                 </SexLabel>
               </div>
@@ -217,7 +212,15 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               <TextLabel type="text" htmlFor="comments">
                 Comments
               </TextLabel>
-              <CommentsFild id="comments" name="comments" placeholder="Type comment" required />
+              <CommentsFild
+                id="comments"
+                name="comments"
+                placeholder="Type comment"
+                minLength="8"
+                maxLength="120"
+                title="Comments should have minimum 8 letters"
+                required
+              />
             </CommentsWrap>
           </WizardStep>
         </Wizard>

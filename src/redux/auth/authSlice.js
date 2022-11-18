@@ -24,9 +24,9 @@ export const authSlice = createSlice({
       state.token = token;
     });
     builder.addMatcher(authApi.endpoints.getCurrentUser.matchFulfilled, (state, { payload }) => {
-      state.name = payload?.data[0].name;
-      state.email = payload?.data[0].email;
-      state.isLoggedIn = true;
+      state.name = payload ? payload.name : state.name;
+      state.email = payload ? payload.email : state.email;
+      state.isLoggedIn = payload ? true : false;
     });
     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, state => {
       state.email = null;

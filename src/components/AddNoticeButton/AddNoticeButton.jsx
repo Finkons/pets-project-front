@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { notifyWarning } from "helpers/toastNotifications";
-import { Div, Label, Button } from "./AddNoticeButton.styled";
+import { Div, Label, Button, LabelMob, Plus } from "./AddNoticeButton.styled";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import AddNoticeModal from "components/Modal/AddNoticeModal";
@@ -21,7 +21,8 @@ export default function AddNoticeButton() {
     <Div>
       <Label>Add pet</Label>
       <Button type="button" onClick={handleModalToggle}>
-        +
+        <Plus>+</Plus>
+        <LabelMob>Add pet</LabelMob>
       </Button>
       {expanded && <AddNoticeModal handleModalToggle={handleModalToggle} />}
     </Div>

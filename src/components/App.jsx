@@ -24,7 +24,7 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/pets-project-front">
+      <BrowserRouter basename="">
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<SharedLayout />}>

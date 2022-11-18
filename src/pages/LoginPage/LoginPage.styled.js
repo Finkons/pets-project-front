@@ -17,6 +17,6 @@ export const Container = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     background-image: url(${wavesDesktop});
-    min-height: calc(100vh - 30px);
+    min-height: calc(100vh - 70px);
   }
 `;

@@ -31,5 +31,5 @@ export const stepOneRegistSchema = yup.object().shape({
 export const stepTwoRegistSchema = yup.object().shape({
   name: yup.string().required(),
   location: yup.string().matches(locationRules, { message: "Please enter a string in format city, region" }).required(),
-  phone: yup.string().min(8).matches(phoneRules, { message: "Please enter a string in format +380671234567" }).required("A phone number is required"),
+  phone: yup.string().min(8).matches(phoneRules, { message: "Please enter a string in format +380XXXXXXXXX" }).required("A phone number is required"),
 });

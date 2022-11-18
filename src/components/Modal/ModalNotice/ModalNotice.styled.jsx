@@ -6,23 +6,24 @@ import { ModalBtn } from "components/Button/ModalButton/ModalButton.styled";
 
 export const Container = styled.div`
   position: relative;
-  top: 161px;
+  margin-top: 161px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: ${p => p.theme.radio.btn};
   padding: 60px 20px 40px 20px;
+  margin-bottom: 50px;
   background-color: ${p => p.theme.colors.white};
 
   @media (max-width: 767px) {
     max-width: 500px;
   }
   @media ${p => p.theme.media.tablet} {
-    // top: 262px;
+    // margin-top: 262px;
     padding: 32px 20px;
     width: 704px;
   }
   @media ${p => p.theme.media.desktop} {
-    // top: 400px;
+    // margin-top: 400px;
     padding: 32px 20px;
     width: 704px;
   }

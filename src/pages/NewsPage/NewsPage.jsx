@@ -1,21 +1,38 @@
 import React from "react";
-// import TitleFriends from "components/TitleFriends";
 import { Container, Title } from "./NewsPage.styled";
 import NoticesSearch from "components/NoticesSearch";
 import NewsBoard from "components/NewsBoard";
-import data from "./news-board.json";
+// import data from "./news-board.json";
 import { Outlet } from "react-router-dom";
 
+import { Component } from 'react';
 
-export default function NewsPage() {
-  return (
-    <Container>
-      <Title>
-        News
+export default class App extends Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    fetch('http://localhost:3001/api/news/')
+      .then(res => res.json())
+
+      .then(data => this.setState({ data }));
+  }
+
+  render() {
+    const { data } = this.state;
+
+
+    // export default function NewsPage() {
+    return (
+      <Container>
+        <Title>
+          News
         </Title>
-      <NoticesSearch />
-      <NewsBoard events={data} />
-      <Outlet />
-    </Container>
-  );
+        <NoticesSearch />
+        <NewsBoard events={data} />
+        <Outlet />
+      </Container>
+    );
+  }
 }

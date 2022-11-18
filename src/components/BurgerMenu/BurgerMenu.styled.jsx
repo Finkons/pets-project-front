@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
 export const MenuContainer= styled.div`
-background:red;
-width:100%;
-hight:100%;
+// background:blue;
+width:320px;
+hight:auto;
 position:absolute;
 top: 0;
 left: 0;
@@ -12,13 +12,15 @@ padding: 10rem 0;
 flex-direction: column;
 
 @media ${p => p.theme.media.tablet} {
+    width:768px;
 }
 @media ${p => p.theme.media.desktop} {
 
 }
 `;
 
-export const Link = styled.div`
+export const ButtonWrapper= styled.div`
+
 
 @media ${p => p.theme.media.tablet} {
 }

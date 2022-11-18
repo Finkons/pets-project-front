@@ -22,16 +22,17 @@ display: none;
 export const Link = styled(NavLink)`
 margin-left: 80px;
 cursor:pointer;
+&:active {
+    color: ${p => p.theme.colors.accent};
+    
+}
 `
 
 export const Text = styled.span`
 align-items: center;
 letter-spacing: 0.04em;
 color: black;
-&:active {
-    color: ${p => p.theme.colors.accent};
-    
-}
+
 &:hover {
     color: ${p => p.theme.colors.accent};
     

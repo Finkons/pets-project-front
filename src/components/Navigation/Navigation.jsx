@@ -10,8 +10,8 @@ const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 return (
     <>
         <Nav/>
-        {isLoggedIn ? <UserNav /> : <AuthNav />}
-        {/* <UserNav /> */}
+        {!isLoggedIn ? <AuthNav /> : <UserNav />  }
+        
     </>
 )};
 

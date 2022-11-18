@@ -9,7 +9,7 @@ const Home = () => {
     return (
       <>
   <Container>
-    <Title> Take good care of your small pets</Title>
+    <Title>Take good care of your small pets</Title>
         <HomeImage src={girl} alt="homePhoto"/>
         <Gradient src={gradient} alt="GradientTop"/>
         <Heart src={heart} alt="heart"/>

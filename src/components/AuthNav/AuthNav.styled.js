@@ -12,7 +12,6 @@ margin-left: 366px;
 }
 
 `
-
 export const AuthBtn = styled.button`
 margin-right: 20px;
 font-size: 15px;

@@ -35,7 +35,7 @@ export const authApi = createApi({
       queryFn: async (arg, { getState, abort }, extraOptions, fetchBaseQuery) => {
         const { token } = getState().auth;
         if (!token) abort();
-        const { data } = await fetchBaseQuery("/user/current");
+        const { data } = await fetchBaseQuery("/user");
 
         return { data: data?.data[0] };
       },
@@ -44,7 +44,7 @@ export const authApi = createApi({
     }),
     logout: build.mutation({
       query: () => ({
-        url: "/auth/user",
+        url: "/user/logout",
         method: "POST",
       }),
       // providesTags: ["User"],

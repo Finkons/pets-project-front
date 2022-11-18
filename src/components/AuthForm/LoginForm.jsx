@@ -3,7 +3,7 @@ import { Container, Text, Input, Button, ErrorText, LinkBox, Link } from "./Logi
 import { loginSchema } from "schemas/authSchema";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth/authApi";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -28,7 +28,7 @@ export const LoginForm = () => {
       })
       .catch(() => {
         console.log("Handle errors");
-        toast.error("Sorry, your email or password is incorrect! Try again!");
+        // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
 
     console.log(status);

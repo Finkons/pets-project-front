@@ -137,5 +137,17 @@ padding: 0;
 &:focus {
   color: #F59256;
   }
+  @media ${p => p.theme.media.tablet} {
+    font-size: 14px;
+    
+    line-height: 1.35;
+    color: #000000;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 16px;
+    line-height: 1.37;
+    
+  }
 `;
+
 

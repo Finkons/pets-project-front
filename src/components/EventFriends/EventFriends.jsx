@@ -17,11 +17,11 @@ export const EventFriends = ({ logo, name, link, workspace, adress, email, phone
           </Logo>
         </LogoPosition>
         <Info>
-          <li>Time:</li>
           <li>
             {" "}
             <Button onClick={() => setModalActive(true)} type="button">
-              {workspace}
+              <ContentPosition>Time:</ContentPosition>
+              <ContentPosition>{workspace}</ContentPosition>
             </Button>
           </li>
           <Item>Adress:</Item>

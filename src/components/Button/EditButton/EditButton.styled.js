@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PencilBtn = styled.button`
+export const EditBtn = styled.button`
   display: flex;
   align-items: center;
   margin: 0;

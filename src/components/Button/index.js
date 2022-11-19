@@ -5,5 +5,5 @@ export { CancelButton } from "./CancelButton/CancelButton";
 export { NextButton } from "./NextButton/NextButton";
 export { ModalButton } from "./ModalButton/ModalButton";
 export { CameraButton } from "./CameraButton/CameraButton";
-export { PencilButton } from "./PencilButton/PencilButton";
+export { EditButton } from "./EditButton/EditButton";
 export { CloseButton } from "./CloseButton/CloseButton";

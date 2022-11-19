@@ -5,8 +5,9 @@ import { ReactComponent as Burger } from "./burger.svg";
 import { ReactComponent as Account } from "./account.svg";
 import { ReactComponent as Camera } from "./camera.svg";
 import { ReactComponent as Exit } from "./exit.svg";
-import { ReactComponent as Pencil } from "./pencil.svg";
+import { ReactComponent as Edit } from "./edit.svg";
 import { ReactComponent as Close } from "./close.svg";
+import { ReactComponent as CheckMark } from "./checkMark.svg";
 
 const Icon = {
   Heart,
@@ -16,8 +17,9 @@ const Icon = {
   Account,
   Camera,
   Exit,
-  Pencil,
+  Edit,
   Close,
+  CheckMark,
 };
 
 export default Icon;

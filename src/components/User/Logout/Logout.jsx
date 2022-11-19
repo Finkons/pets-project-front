@@ -1,5 +1,8 @@
+import { useLogoutMutation } from "redux/auth/authApi";
+
 export const Logout = () => {
-  return <div>Logout</div>;
+  const [logout] = useLogoutMutation();
+  return <button onClick={() => logout()}>Logout</button>;
 };
 
 export default Logout;

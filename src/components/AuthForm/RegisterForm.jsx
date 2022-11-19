@@ -2,9 +2,10 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
-import { Container, Text, Input, Button, ButtonBack, LinkBox, Link, ErrorText } from "./RegisterForm.styled";
+import { Container, Text, Input, InputWrapper, IconEye, IconEyeConfirm, Button, ButtonBack, LinkBox, Link, ErrorText } from "./RegisterForm.styled";
 import { toast } from "react-toastify";
 import { useRegisterMutation } from "redux/auth/authApi";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
@@ -78,6 +79,16 @@ export const RegisterForm = () => {
 };
 
 const StepOne = props => {
+  const [visible, setVisible] = useState(false);
+  const [visibleConfirm, setVisibleConfirm] = useState(false);
+
+  const handleClickVisible = () => {
+    setVisible(!visible);
+  };
+  const handleClickVisibleConfirm = () => {
+    setVisibleConfirm(!visibleConfirm);
+  };
+
   const handleSubmit = values => {
     props.next(values);
   };
@@ -90,11 +101,17 @@ const StepOne = props => {
             <FormError name="email" />
           </label>
           <label htmlFor="password">
-            <Input type="password" name="password" id="password" placeholder="Password" />
+            <InputWrapper>
+              <Input type={visible ? "text" : "password"} name="password" id="password" placeholder="Password" />
+              <IconEye onClick={handleClickVisible}>{visible ? <ImEye /> : <ImEyeBlocked />}</IconEye>
+            </InputWrapper>
             <FormError name="password" />
           </label>
           <label htmlFor="confirmPassword">
-            <Input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
+            <InputWrapper>
+              <Input type={visibleConfirm ? "text" : "password"} name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
+              <IconEyeConfirm onClick={handleClickVisibleConfirm}>{visibleConfirm ? <ImEye /> : <ImEyeBlocked />}</IconEyeConfirm>
+            </InputWrapper>
             <FormError name="confirmPassword" />
           </label>
           <Button type="submit">Next</Button>

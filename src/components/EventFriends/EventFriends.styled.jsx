@@ -32,7 +32,6 @@ export const Title = styled.h3`
   line-height: 1.33;
   display: flex;
   justify-content: center;
-  text-decoration-line: underline;
   color: #f59256;
   @media ${p => p.theme.media.tablet} {
     margin-top: 16;
@@ -44,6 +43,11 @@ export const Title = styled.h3`
     font-size: 20px;
     line-height: 1.35;
   }
+`;
+
+export const LinkCompany = styled.a`
+  text-decoration-line: underline;
+  color: #f59256;
 `;
 
 export const Logo = styled.div`
@@ -117,3 +121,33 @@ export const InfoLink = styled.a`
     font-size: 16px;
   }
 `;
+
+export const Button = styled.button`
+outline: 0 !important;
+border: 0;
+background:none;
+font-family: 'Manrope';
+font-family: sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+padding: 0;
+&:hover,
+&:focus {
+  color: #F59256;
+  }
+  @media ${p => p.theme.media.tablet} {
+    font-size: 14px;
+    
+    line-height: 1.35;
+    color: #000000;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 16px;
+    line-height: 1.37;
+    
+  }
+`;
+
+

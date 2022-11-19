@@ -3,7 +3,7 @@ import girl from "img/homePages-photos/desktop-girl-1x.png";
 import background from "img/homePages-photos/mobile-gradient-2x.png";
 import heart from "img/homePages-photos/desktop-heart-1x.png";
 import gradient from "img/homePages-photos/Frame.png";
-// import BurgerMenu from "components/BurgerMenu/BurgerMenu";
+
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
 
       <ImgContainer>
         <HomeImage src={girl} alt="homePhoto" />
-        <BackgroundImage src={background} alt="homeBckg" />
+        <BackgroundImage src={background} alt="homeBack" />
         <Gradient src={gradient} alt="GradientTop" />
         <Heart src={heart} alt="heart" />
       </ImgContainer>

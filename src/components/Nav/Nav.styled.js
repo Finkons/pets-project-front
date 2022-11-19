@@ -2,34 +2,47 @@ import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
 export const NavHeader = styled.div`
-  //   display: none;
+  margin-top: 30px;
+  text-align: center;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+
   @media ${p => p.theme.media.tablet} {
+    margin-top: 60px;
+    font-size: 48px;
+    line-height: 66px;
+    align-items: center;
   }
   @media ${p => p.theme.media.desktop} {
-    color: black;
-    display: flex;
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 500;
     font-size: 20px;
     line-height: 27px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
   }
 `;
 
 export const Link = styled(NavLink)`
-  margin-left: 80px;
+  margin-bottom: 40px;
   cursor: pointer;
-  &:active {
-    color: ${p => p.theme.colors.accent};
-  }
-`;
-
-export const Text = styled.span`
-  align-items: center;
-  letter-spacing: 0.04em;
-  color: black;
-
   &:hover {
     color: ${p => p.theme.colors.accent};
+    text-decoration: underline;
   }
+  &:active {
+    color: ${p => p.theme.colors.accent};
+    text-decoration: underline;
+  }
+  
+  @media ${p => p.theme.media.tablet} {
+    
+  }
+  @media ${p => p.theme.media.desktop} {
+    margin-left: 80px;
 `;
+
+export const Text = styled.span``;

@@ -1,9 +1,11 @@
 import { Formik, Form, ErrorMessage } from "formik";
-import { Container, Text, Input, Button, ErrorText, LinkBox, Link } from "./LoginForm.styled";
+import { useState } from "react";
+import { Container, Text, Input, InputWrapper, IconEye, Button, ErrorText, LinkBox, Link } from "./LoginForm.styled";
 import { loginSchema } from "schemas/authSchema";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth/authApi";
 // import { toast } from "react-toastify";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 
 const initialValues = {
   email: "",
@@ -17,6 +19,12 @@ const FormError = ({ name }) => {
 export const LoginForm = () => {
   const [login, status] = useLoginMutation();
   const navigate = useNavigate();
+
+  const [visible, setVisible] = useState(false);
+
+  const handleClickVisible = () => {
+    setVisible(!visible);
+  };
 
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
@@ -48,7 +56,10 @@ export const LoginForm = () => {
               <FormError name="email" />
             </label>
             <label htmlFor="password">
-              <Input type="password" name="password" id="password" placeholder="Password" />
+              <InputWrapper>
+                <Input type={visible ? "text" : "password"} name="password" id="password" placeholder="Password" />
+                <IconEye onClick={handleClickVisible}>{visible ? <ImEye /> : <ImEyeBlocked />}</IconEye>
+              </InputWrapper>
               <FormError name="password" />
             </label>
             <Button disabled={isSubmitting} type="submit">

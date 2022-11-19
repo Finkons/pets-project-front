@@ -9,13 +9,11 @@ export const Container = styled.div`
   flex-direction: column;
   width: 280px;
   position: absolute;
-  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   @media ${p => p.theme.media.tablet} {
     width: 608px;
-    /* top: 114px; */
     background-color: ${colors.colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 7px 4px 14px rgba(0, 0, 0, 0.11);
     border-radius: 40px;
@@ -67,7 +65,13 @@ export const Input = styled(Field)`
   :focus {
     border: 3px solid rgba(245, 146, 86, 0.5);
   }
-
+  @media ${p => p.theme.media.tablet} {
+    width: 448px;
+    height: 52px;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 14px 32px;
+  }
   @media ${p => p.theme.media.desktop} {
     width: 458px;
     height: 52px;
@@ -93,6 +97,10 @@ export const Button = styled.button`
   margin-top: 24px;
   :hover {
     background-color: #ed5a03;
+  }
+  @media ${p => p.theme.media.tablet} {
+    width: 448px;
+    height: 44px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 458px;
@@ -126,8 +134,15 @@ export const ButtonBack = styled.button`
 export const ErrorText = styled.p`
   color: red;
   text-align: center;
-  margin-top: -5px;
-  margin-bottom: 15px;
+  font-size: 11px;
+  margin-top: -16px;
+  margin-bottom: 5px;
+  @media ${p => p.theme.media.tablet} {
+    font-size: 12px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 13px;
+  }
 `;
 
 export const LinkBox = styled.p`
@@ -145,4 +160,38 @@ export const Link = styled(link)`
   text-decoration-line: underline;
   color: blue;
   margin-left: 5px;
+`;
+
+export const IconEye = styled.span`
+  position: absolute;
+  padding-top: 11px;
+  left: 90%;
+  cursor: pointer;
+  @media ${p => p.theme.media.tablet} {
+    left: 80%;
+    padding-top: 16px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    left: 80%;
+    padding-top: 16px;
+  }
+`;
+
+export const IconEyeConfirm = styled.span`
+  position: absolute;
+  padding-top: 11px;
+  left: 90%;
+  cursor: pointer;
+  @media ${p => p.theme.media.tablet} {
+    left: 80%;
+    padding-top: 16px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    left: 80%;
+    padding-top: 16px;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
 `;

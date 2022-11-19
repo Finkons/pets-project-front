@@ -1,27 +1,15 @@
 import styled from "@emotion/styled";
-import mobileGradient from "img/homePages-photos/mobile-gradient-1x.png";
-import HomePhotoDesktop from "img/homePages-photos/desktop-girl-1x.png";
-import TabletGradient from "img/homePages-photos/tablet-gradient-1x.png";
 
 export const Container = styled.div`
   position: relative;
   min-width: 320px;
-  min-height: 600px;
   overflow: hidden;
-  //   display: flex;
-  //   justify-content: center;
   margin: 0 auto;
-  //   align-items: center;
-  //   padding: 0 20px;
-
   @media ${p => p.theme.media.tablet} {
-    // width: 768px;
     min-height: 768px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 1280px;
-    // min-height: 768px;
-    // background-image: url(${HomePhotoDesktop});
   }
 `;
 
@@ -35,6 +23,7 @@ export const ContentContainer = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 58px;
+  margin-left: 20px;
   font-family: "Manrope";
   font-style: normal;
   font-weight: 700;
@@ -42,10 +31,9 @@ export const Title = styled.h1`
   line-height: 44px;
   color: black;
   align-items: center;
-
   @media ${p => p.theme.media.tablet} {
-    // width: 588px;
-    // height: 200px;
+    width: 588px;
+    height: 200px;
     left: 32px;
     top: 160px;
     font-size: 68px;
@@ -56,11 +44,12 @@ export const Title = styled.h1`
     width: 588px;
     height: 200px;
     left: 16px;
-    top: 100px;
+    top: 50px;
     font-size: 68px;
     line-height: 100px;
   }
 `;
+
 export const ImgContainer = styled.div`
   position: relative;
   width: 100%;
@@ -68,40 +57,31 @@ export const ImgContainer = styled.div`
 `;
 
 export const HomeImage = styled.img`
-  //   position: absolute;
   bottom: 0;
-  //   background-image: url(${mobileGradient});
-  background-size: cover;
-
+  width: 320px;
   @media ${p => p.theme.media.tablet} {
-    // background-image: url(${TabletGradient});
     width: 100%;
-    // margin-top: 294px;
     bottom: 0;
     width: 699px;
-    // height: 733px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 624px;
-    // height: 655px;
-    // margin-top: 16px;
     left: 656px;
     bottom: 0;
     z-index: 2;
     overflow: hidden;
     margin-left: auto;
-    // background-image: url(${HomePhotoDesktop});
     background-position: right bottom;
   }
 `;
 
 export const BackgroundImage = styled.img`
   position: absolute;
-  bottom: -200px;
+  bottom: 0px;
   width: 100%;
   z-index: -1;
   @media ${p => p.theme.media.tablet} {
-    bottom: -400px;
+    bottom: -100px;
   }
   @media screen and (min-width: 900px) {
     bottom: -600px;
@@ -113,7 +93,6 @@ export const BackgroundImage = styled.img`
 
 export const Gradient = styled.img`
   display: none;
-
   @media ${p => p.theme.media.tablet} {
   }
   @media ${p => p.theme.media.desktop} {
@@ -135,7 +114,7 @@ export const Heart = styled.img`
     width: 91.93px;
     height: 89px;
     left: 700px;
-    top: 110px;
+    top: 60px;
     z-index: -1;
   }
 `;

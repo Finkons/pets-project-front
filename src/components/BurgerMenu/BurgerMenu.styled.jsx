@@ -7,12 +7,14 @@ export const MenuContainer = styled.div`
   position: absolute;
   top: 70px;
   left: 0;
-  // z-index: 1;
-  padding: 90px 0;
+  z-index: 1;
+  // padding: 90px 0;
+  margin-top: 30px;
   flex-direction: column;
 
   @media ${p => p.theme.media.tablet} {
-    // width: 768px;
+    width: 768px;
+    margin-top: 8px;
   }
   @media ${p => p.theme.media.desktop} {
   }
@@ -25,7 +27,7 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-export const Text = styled.div`
+export const Link = styled.div`
   @media ${p => p.theme.media.tablet} {
   }
   @media ${p => p.theme.media.desktop} {

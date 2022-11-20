@@ -47,7 +47,7 @@ export const authApi = createApi({
         url: "/user/logout",
         method: "POST",
       }),
-      // providesTags: ["User"],
+      providesTags: ["User"],
     }),
   }),
 });

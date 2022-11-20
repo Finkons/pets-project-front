@@ -30,10 +30,10 @@ export const noticesApi = createApi({
       providesTags: ["Notices"],
     }),
     addNotice: build.mutation({
-      query: body => ({
+      query: (file,data) => ({
         url: `/notices`,
         method: "POST",
-        body,
+        body:{file,...data},
       }),
       providesTags: ["Notices"],
     }),

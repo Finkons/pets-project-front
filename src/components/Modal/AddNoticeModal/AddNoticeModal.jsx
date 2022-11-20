@@ -26,19 +26,21 @@ import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
-// import { addNotice } from "api/addNotice";
 
 import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+// const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const WizardStep = ({ children }) => children;
 
 const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
+  const [upload, setUpload] = useState();
+  const [uploadUrl, setUploadUrl] = useState([]);
+  const [filename, setFileName] = useState("");
   const hiddenFileInput = useRef(null);
 
-  const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status 
+  const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status
 
   const initialValues = {
     category: "lost/found",
@@ -49,7 +51,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
     sex: "male",
     location: "",
     price: "",
-    avatarURL: "",
     comments: "",
   };
 
@@ -63,7 +64,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       setIsSell(true);
     }
     console.log("Step1 onSubmit", isSell);
-    console.log(value.category);
   };
 
   const handleUploadClick = event => {
@@ -71,8 +71,25 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   };
 
   const handleUploadChange = event => {
-    const fileUploaded = event.target.files[0];
-    console.log(fileUploaded);
+    if (event.target.files.length !== 0) {
+      setUploadUrl(uploadUrl => [...uploadUrl, URL.createObjectURL(event.target.files[0])]);
+      setFileName(event.target.files[0].name);
+      setUpload(event.target.files[0]);
+    }
+  };
+
+  const handleFormSubmit = async values => {
+    try {
+      let formData = new FormData();
+      formData.append("image", upload);
+      console.log(formData);
+
+      await addNotice(values); //rtk query hook for api
+      console.log(isAdding); // fetching status here
+      console.log("Form values", values);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -83,14 +100,15 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
         <Wizard
           initialValues={initialValues}
-          onSubmit={async values =>
-            sleep(300).then(() => {
-              addNotice(values); //rtk query hook for api
-              console.log(isAdding); // fetching status here
-              console.log("Wizard submit", values);
-            })
-          }
-          // onSubmit={async values => sleep(300).then(() => addNotice(values))}
+          // onSubmit={async values =>
+          //   sleep(300).then(() => {
+          //     addNotice(values); //rtk query hook for api
+          //     console.log(isAdding); // fetching status here
+          //     console.log("Wizard submit", values);
+          //     console.log(avatar);
+          //   })
+          // }
+          onSubmit={handleFormSubmit}
           handleCancelModal={handleModalToggle}
           handlePriceField={value => console.log("Next click", value)}
         >
@@ -210,13 +228,27 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 <TextFild id="price" name="price" placeholder="Type price" pattern="^[1-9][0-9]*$" title="Price should be integer" />
               </TextWrap>
             )}
-            <TextWrap>
-              <TextLabel htmlFor="">Load the pet’s image:</TextLabel>
-              <input type="file" name="avatar" style={{ display: "none" }} ref={hiddenFileInput} onChange={handleUploadChange} />
-              <FileButton type="button" onClick={handleUploadClick}>
-                <img src={Upload} alt="upload file" width="48" height="48" />
-              </FileButton>
-            </TextWrap>
+            <div>
+              <TextWrap>
+                <TextLabel htmlFor="">Load the pet’s image:</TextLabel>
+                <input
+                  type="file"
+                  encType="multipart/form-data"
+                  name="avatar"
+                  style={{ display: "none" }}
+                  ref={hiddenFileInput}
+                  onChange={handleUploadChange}
+                />
+
+                <FileButton type="button" onClick={handleUploadClick}>
+                  <img src={Upload} alt="upload file" width="48" height="48" />
+                </FileButton>
+              </TextWrap>
+              <div>
+                <img width="100" height="100" src={[...uploadUrl]} alt="avatar" />
+                <p>File: {filename} attached </p>
+              </div>
+            </div>
 
             <CommentsWrap>
               <TextLabel type="text" htmlFor="comments">

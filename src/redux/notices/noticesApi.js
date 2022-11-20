@@ -30,10 +30,10 @@ export const noticesApi = createApi({
       providesTags: ["Notices"],
     }),
     addNotice: build.mutation({
-      query: body => ({
+      query: formData => ({
         url: `/notices`,
         method: "POST",
-        body,
+        body: { ...formData },
         headers: {
           "Content-Type": "multipart/form-data",
         },

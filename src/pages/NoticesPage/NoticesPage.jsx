@@ -6,11 +6,18 @@ import NoticesSearch from "components/NoticesSearch";
 import NoticesCategoriesList from "components/NoticesCategoriesList";
 import AddNoticeButton from "components/AddNoticeButton";
 
+import { useParams } from "react-router-dom";
+import { useGetNoticesByCategoryQuery } from "redux/notices/noticesApi";
+
 export default function NoticesPage() {
   const [category, setCategory] = useState("");
   const [pets, setPets] = useState([]);
-
   console.log(pets);
+
+  const { categoryName } = useParams();
+  const { data: notices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName);
+  console.log(notices, isError, isFetching);
+
   useEffect(() => {
     if (category === "favorite") {
       fetchFavoritePets(category).then(data => setPets(data));

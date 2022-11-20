@@ -49,7 +49,14 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    editUserData: build.mutation({
+      query: data => ({
+        url: "/user",
+        method: "PUT",
+        body: { ...data },
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetCurrentUserQuery, useLogoutMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useGetCurrentUserQuery, useLogoutMutation, useEditUserDataMutation } = authApi;

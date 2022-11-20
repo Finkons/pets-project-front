@@ -22,7 +22,22 @@ export const noticesApi = createApi({
       }),
       providesTags: ["Notices"],
     }),
+    getNoticeById: build.query({
+      query: id => ({
+        url: `/notices/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["Notices"],
+    }),
+    addNotice: build.mutation({
+      query: body => ({
+        url: `/notices`,
+        method: "POST",
+        body,
+      }),
+      providesTags: ["Notices"],
+    }),
   }),
 });
 
-export const { useGetNoticesByCategoryQuery } = noticesApi;
+export const { useGetNoticesByCategoryQuery, useAddNoticeMutation } = noticesApi;

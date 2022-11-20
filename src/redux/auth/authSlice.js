@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "./authApi";
 
 const initialState = {
+  userId: null,
   name: null,
   email: null,
   isLoggedIn: false,
@@ -24,11 +25,13 @@ export const authSlice = createSlice({
       state.token = token;
     });
     builder.addMatcher(authApi.endpoints.getCurrentUser.matchFulfilled, (state, { payload }) => {
+      state.userId = payload ? payload._id : state.userId;
       state.name = payload ? payload.name : state.name;
       state.email = payload ? payload.email : state.email;
       state.isLoggedIn = payload ? true : false;
     });
     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, state => {
+      state.userId = null;
       state.email = null;
       state.name = null;
       state.isLoggedIn = false;

@@ -1,10 +1,18 @@
-import { useEffect } from "react";
 // import { useGetCurrentUserQuery } from "redux/auth/authApi";
+// import authSelectors from "redux/auth/authSelectors";
+// import { useSelector } from "react-redux";
 import { UserData, Logout, PetsData } from "components/User";
 import { Container, UserContainer } from "./UserPage.styled";
 
 const UserPage = () => {
-  useEffect(() => console.log("should refetch but useGetCurrentUserQuery doesn't fit here"));
+  // const { data: user = [], isError, isFetching } = useGetCurrentUserQuery();
+  // const userToken = useSelector(authSelectors.getUserToken);
+
+  // useGetCurrentUserQuery(undefined, {
+  //   skip: !userToken,
+  // });
+  // console.log(user, isError, isFetching);
+
   return (
     <Container>
       <UserContainer>

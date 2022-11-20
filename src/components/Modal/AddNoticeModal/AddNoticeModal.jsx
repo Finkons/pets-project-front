@@ -28,6 +28,8 @@ import Backdrop from "../Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 // import { addNotice } from "api/addNotice";
 
+import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
+
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const WizardStep = ({ children }) => children;
@@ -35,6 +37,8 @@ const WizardStep = ({ children }) => children;
 const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
   const hiddenFileInput = useRef(null);
+
+  const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status 
 
   const initialValues = {
     category: "lost/found",
@@ -45,7 +49,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
     sex: "male",
     location: "",
     price: "",
-    avatar: "",
+    avatarURL: "",
     comments: "",
   };
 
@@ -79,7 +83,13 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
         <Wizard
           initialValues={initialValues}
-          onSubmit={async values => sleep(300).then(() => console.log("Wizard submit", values))}
+          onSubmit={async values =>
+            sleep(300).then(() => {
+              addNotice(values); //rtk query hook for api
+              console.log(isAdding); // fetching status here
+              console.log("Wizard submit", values);
+            })
+          }
           // onSubmit={async values => sleep(300).then(() => addNotice(values))}
           handleCancelModal={handleModalToggle}
           handlePriceField={value => console.log("Next click", value)}

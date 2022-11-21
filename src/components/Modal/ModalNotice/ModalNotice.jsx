@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
+import { useGetNoticeByIdQuery, useDeleteNoticeMutation } from "redux/notices/noticesApi";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { notifyError, notifySuccess, notifyWarning } from "helpers/toastNotifications";
-import { fetchById, deleteById } from "api/fetchPets";
 import { PET_MODAL_KEYS, NOTICE_CATEGORY_LABELS } from "constants/petInfoKeys";
 import Backdrop from "../Backdrop";
 import {
@@ -23,17 +23,18 @@ import {
 import modalImage from "../../../img/pet-photos/pet-modal-img.jpg";
 
 // props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
-const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
+const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorite }) => {
+  const { data, isSuccess } = useGetNoticeByIdQuery(id);
   const [petData, setPetData] = useState({});
   const currentUserEmail = useSelector(authSelectors.getUserEmail);
   const ownPet = useMemo(() => petData?.owner?.email === currentUserEmail, [currentUserEmail, petData?.owner?.email]);
 
+  const [deleteNotice] = useDeleteNoticeMutation();
+
   useEffect(() => {
-    (async () => {
-      const data = await fetchById(id);
-      setPetData(data);
-    })();
-  }, [id]);
+    if (!isSuccess) return;
+    setPetData(data);
+  }, [data, isSuccess]);
 
   useEffect(() => {
     const cleanup = handleEscClick(handleModalToggle);
@@ -42,7 +43,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
 
   const handleDeleteClick = async () => {
     try {
-      const result = await deleteById(id);
+      const result = await deleteNotice(id);
       notifySuccess(result.message);
     } catch ({ response: { data } }) {
       notifyError(data.message);
@@ -52,6 +53,11 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
   const handleContactClick = () => {
     if (!petData?.owner?.phone) return notifyWarning("Owner hasn't provided phone number");
     window.open(`tel:${petData.owner.phone}`);
+  };
+
+  const handleAddToFavorites = async () => {
+    await handleAddToFavoritesClick();
+    notifySuccess("Added to favorites!");
   };
 
   return (
@@ -77,7 +83,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick }) => {
         <Close onClick={handleModalToggle} />
         {ownPet && <DeleteButton onClick={handleDeleteClick} />}
         <ActionButtons>
-          <AddToFavorites authorized={Boolean(currentUserEmail)} onClick={handleAddToFavoritesClick} />
+          <AddToFavorites authorized={!favorite && Boolean(currentUserEmail)} onClick={handleAddToFavorites} />
           <ModalButton primary onClick={handleContactClick}>
             Contact
           </ModalButton>

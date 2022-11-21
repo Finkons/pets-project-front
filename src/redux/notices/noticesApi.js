@@ -40,7 +40,22 @@ export const noticesApi = createApi({
       }),
       providesTags: ["Notices"],
     }),
+    addNoticeToFavorites: build.mutation({
+      query: noticeId => ({
+        url: `/notices/${noticeId}`,
+        method: "PUT",
+        providesTags: ["Notices"],
+      }),
+    }),
+    deleteNotice: build.mutation({
+      query: noticeId => ({
+        url: `/notices/${noticeId}`,
+        method: "DELETE",
+        providesTags: ["Notices"],
+      }),
+    }),
   }),
 });
 
-export const { useGetNoticesByCategoryQuery, useAddNoticeMutation } = noticesApi;
+export const { useGetNoticesByCategoryQuery, useAddNoticeMutation, useAddNoticeToFavoritesMutation, useGetNoticeByIdQuery, useDeleteNoticeMutation } =
+  noticesApi;

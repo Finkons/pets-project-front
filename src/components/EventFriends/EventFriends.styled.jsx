@@ -16,7 +16,7 @@ export const Event = styled.div`
     border-radius: 40px;
   }
   @media ${p => p.theme.media.desktop} {
-    width: 395px;
+    width: 394.5px;
     height: 287px;
     margin: 16px;
   }
@@ -49,6 +49,7 @@ export const LinkCompany = styled.a`
   text-decoration-line: underline;
   color: #f59256;
 `;
+
 
 export const Logo = styled.div`
   width: 110px;
@@ -136,6 +137,7 @@ padding: 0;
 &:hover,
 &:focus {
   color: #F59256;
+  cursor: pointer;
   }
   @media ${p => p.theme.media.tablet} {
     font-size: 14px;

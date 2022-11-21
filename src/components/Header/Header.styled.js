@@ -12,6 +12,8 @@ export const HeaderBar = styled.div`
   margin-bottom: 60px;
   @media ${p => p.theme.media.tablet} {
     width: 768px;
+    padding-left: 32px;
+    padding-top: 20px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 1280px;

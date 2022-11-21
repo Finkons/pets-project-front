@@ -13,7 +13,7 @@ export const Div = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     display: flex;
-    margin-left: 366px;
+    margin-left: auto;
     margin-right: 0;
   }
 `;
@@ -26,7 +26,7 @@ export const AuthBtn = styled.button`
   height: 35px;
   color: #111111;
   background-color: #ffffff;
-  margin-right: 12px;
+  margin-right: 20px;
   padding: 10px 28px;
   cursor: pointer;
 
@@ -36,10 +36,18 @@ export const AuthBtn = styled.button`
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
+  &:active {
+    color: #ffffff;
+    background-color: #f59256;
+  }
+  &:hover {
+    color: #ffffff;
+    background-color: #f59256;
+  }
 
   @media ${p => p.theme.media.tablet} {
-    margin-right: 0px;
-    margin-left: 20px;
+    margin-right: auto;
+    margin-left: 12px;
     font-size: 15px;
     height: 50px;
     padding: 10px 28px;

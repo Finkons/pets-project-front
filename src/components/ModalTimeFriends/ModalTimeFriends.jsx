@@ -1,13 +1,17 @@
 import './ModalTimeFriends.css';
+import { ModalContent } from './ModalTimeFriends.styled';
+
+
 const ModalTimeFriends = ({ active, setActive, children }) => {
   return (
     <div
       className={active ? 'modal active' : 'modal'}
+      
       onClick={() => setActive(false)}
     >
-      <div className="modal__content" onClick={e => e.stopPropagation()}>
+      <ModalContent onClick={e => e.stopPropagation()}>
         {children}
-      </div>
+      </ModalContent>
     </div>
   );
 };

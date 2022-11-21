@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Event, LinkCompany, Title, Logo, LogoPosition, Item, Info, InfoLink, ContentPosition, Button } from "./EventFriends.styled";
+import { ModalText, TextPosition, WorkspacePosition } from "components/ModalTimeFriends/ModalTimeFriends.styled";
 import ModalTimeFriends from "components/ModalTimeFriends";
 import { useState } from "react";
 
@@ -37,36 +38,36 @@ export const EventFriends = ({ logo, name, link, workspace, adress, email, phone
         </Info>
       </ContentPosition>
       <ModalTimeFriends active={modalActive} setActive={setModalActive}>
-        <ul className="modal__text">
-          <li className="text__position">
+        <ModalText>
+          <TextPosition>
             MN:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             TU:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             WE:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             TH:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             FR:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             SA:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-          <li className="text__position">
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+          <TextPosition>
             SU:
-            <span className="workspace__position">{workspace}</span>
-          </li>
-        </ul>
+            <WorkspacePosition>{workspace}</WorkspacePosition>
+          </TextPosition>
+        </ModalText>
       </ModalTimeFriends>
     </Event>
   );

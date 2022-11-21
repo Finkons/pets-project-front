@@ -29,6 +29,12 @@ export const noticesApi = createApi({
       }),
       providesTags: ["Notices"],
     }),
+    getUserNotices: build.query({
+      query: userId => ({
+        url: `/notices/owner/${userId}`,
+      }),
+      providesTags: ["Notices"],
+    }),
     getNoticeById: build.query({
       query: id => ({
         url: `/notices/${id}`,
@@ -71,4 +77,5 @@ export const {
   useGetNoticeByIdQuery,
   useDeleteNoticeMutation,
   useGetFavoriteNoticesQuery,
+  useGetUserNoticesQuery,
 } = noticesApi;

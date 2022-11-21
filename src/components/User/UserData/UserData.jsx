@@ -4,17 +4,8 @@ import { UserImage, ItemContainer, InfoItem, EditableInfo, Container } from "./U
 import PropTypes from "prop-types";
 import { InfoContainer } from "../UserCommon.styled";
 import { default as UserTitle } from "./UserDataTitle";
-
-const makeEditable = infoName => {
-  const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
-  editableInfo.toggleAttribute("contentEditable");
-  if (editableInfo.hasAttribute("contentEditable")) {
-    console.log("should change color of background");
-  }
-  if (!editableInfo.hasAttribute("contentEditable")) {
-    console.log(`${editableInfo.innerHTML} should be sent in request to be saved`);
-  }
-};
+import { notifyWarning } from "helpers/toastNotifications";
+import { useEditUserDataMutation } from "redux/auth/authApi";
 
 const UserData = ({ user }) => {
   const {
@@ -26,14 +17,29 @@ const UserData = ({ user }) => {
     address = "City, City",
   } = user;
 
-  const inputFile = useRef(null);
+  const [updateUserData, { isLoading }] = useEditUserDataMutation();
+  console.log(isLoading);
 
+  const makeEditable = async infoName => {
+    const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
+    editableInfo.toggleAttribute("contentEditable");
+    if (editableInfo.hasAttribute("contentEditable")) {
+      // console.log("should change color of background");
+    }
+    if (!editableInfo.hasAttribute("contentEditable")) {
+      // console.log(`${editableInfo.innerHTML} should be sent in request to be saved`);
+      const infoJson = `{"${infoName}": "${editableInfo.innerHTML}"}`;
+      const { data } = await updateUserData(infoJson);
+      console.log(data);
+    }
+  };
+
+  const inputFile = useRef(null);
   const onUploadClick = () => {
     inputFile.current.click();
   };
-
   const onChangeFile = e => {
-    console.log(e.target.files[0]);
+    !e.target.files[0] ? notifyWarning("Please choose a file") : console.log(e.target.files[0]);
   };
 
   return (
@@ -41,8 +47,7 @@ const UserData = ({ user }) => {
       <UserTitle />
       <Container>
         <UserImage src={avatarURL} alt="userImage" />
-        <input type="file" ref={inputFile} onChange={onChangeFile} style={{ display: "none" }} />
-        <CameraButton onClick={onUploadClick} />
+        <CameraButton onClick={onUploadClick} inputFile={inputFile} onChangeFile={onChangeFile} />
         <InfoContainer>
           <ItemContainer>
             <InfoItem>Name:</InfoItem>
@@ -66,8 +71,8 @@ const UserData = ({ user }) => {
           </ItemContainer>
           <ItemContainer>
             <InfoItem>City:</InfoItem>
-            <EditableInfo className="userEditable_city">{address}</EditableInfo>
-            <EditButton onClick={() => makeEditable("city")} />
+            <EditableInfo className="userEditable_address">{address}</EditableInfo>
+            <EditButton onClick={() => makeEditable("address")} />
           </ItemContainer>
         </InfoContainer>
       </Container>

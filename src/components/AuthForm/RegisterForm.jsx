@@ -64,6 +64,8 @@ export const RegisterForm = () => {
     <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
   ];
 
+  console.log(status);
+
   return (
     <Container>
       <Text>Registration</Text>

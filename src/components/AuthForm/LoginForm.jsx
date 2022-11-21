@@ -43,6 +43,8 @@ export const LoginForm = () => {
     actions.resetForm();
   };
 
+  console.log(status);
+
   return (
     <Container>
       <Text>Login</Text>

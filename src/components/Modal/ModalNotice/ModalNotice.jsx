@@ -32,7 +32,8 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
   const [deleteNotice] = useDeleteNoticeMutation();
 
   useEffect(() => {
-    if (isSuccess) setPetData(data);
+    if (!isSuccess) return;
+    setPetData(data);
   }, [data, isSuccess]);
 
   useEffect(() => {

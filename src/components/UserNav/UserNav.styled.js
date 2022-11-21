@@ -42,6 +42,7 @@ export const UserBtn = styled.button`
   @media ${p => p.theme.media.tablet} {
     width: 164px;
     height: 44px;
+    margin-left: 40px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 164px;
@@ -73,11 +74,12 @@ export const LogoutBtn = styled.button`
   }
   @media ${p => p.theme.media.tablet} {
     height: 44px;
-    margin: 0 30px;
+    margin: 0;
+    margin-left: 10px;
   }
   @media ${p => p.theme.media.desktop} {
     height: 44px;
-    margin: 0 20px;
+    margin: 0 10px;
   }
 `;
 

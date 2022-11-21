@@ -5,6 +5,7 @@ export const Container = styled.div`
   min-width: 320px;
   overflow: hidden;
   margin: 0 auto;
+
   @media ${p => p.theme.media.tablet} {
     min-height: 768px;
   }
@@ -18,6 +19,9 @@ export const ContentContainer = styled.div`
   width: 320px;
   @media ${p => p.theme.media.tablet} {
     width: 768px;
+    @media ${p => p.theme.media.desktop} {
+      width: 1280px;
+    }
   }
 `;
 
@@ -67,11 +71,10 @@ export const HomeImage = styled.img`
   @media ${p => p.theme.media.desktop} {
     width: 624px;
     left: 656px;
-    bottom: 0;
+    top: 0;
     z-index: 2;
     overflow: hidden;
     margin-left: auto;
-    background-position: right bottom;
   }
 `;
 
@@ -93,8 +96,7 @@ export const BackgroundImage = styled.img`
 
 export const Gradient = styled.img`
   display: none;
-  @media ${p => p.theme.media.tablet} {
-  }
+
   @media ${p => p.theme.media.desktop} {
     position: absolute;
     display: flex;

@@ -1,28 +1,4 @@
 import styled from "@emotion/styled";
-
-export const Modal = styled.div`
-width: 295px;
-height: 287px;
-transform: translate(25%,-60%);
-display: flex;
-align-items: center;
-justify-content: center;
-opacity: 0;
-pointer-events: none;
-transition: 0.5s;
-@media ${p => p.theme.media.desktop} {
-  width: 295px;
-  height: 287px;
-  transform: translate(35%,-80%);
-}
-`
-
-
-  /* height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0; */
  
   export const ModalContent = styled.div`
   padding: 12px;
@@ -30,7 +6,7 @@ transition: 0.5s;
   border: 1px solid #f59256;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  min-width: 96px;
+  min-width: 120px;
   `
 
   export const ModalText = styled.ul`

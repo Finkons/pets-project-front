@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
+import { useAddNoticeToFavoritesMutation } from "redux/notices/noticesApi";
 import { NOTICE_ITEM_KEYS, NOTICE_CATEGORY_LABELS } from "constants/petInfoKeys";
-import { notifyWarning } from "helpers/toastNotifications";
+import { notifyWarning, notifyError } from "helpers/toastNotifications";
 import ModalNotice from "components/Modal/ModalNotice";
 
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
@@ -13,7 +14,11 @@ import itemImage from "../../img/pet-photos/notice-item-img.jpg";
 // props = { data: { }}
 const NoticeCategoryItem = ({ data }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const userId = useSelector(authSelectors.getUserId);
+  const [addNoticeToFavorites, { isLoading }] = useAddNoticeToFavoritesMutation();
+
   const [expanded, setExpanded] = useState(false);
+  const [favorite, setFavorite] = useState(!isLoading && data.fans.includes(userId));
 
   const handleModalToggle = () => {
     setExpanded(prev => {
@@ -22,12 +27,16 @@ const NoticeCategoryItem = ({ data }) => {
     });
   };
 
-  const handleAddToFavoritesClick = () => {
+  const handleAddToFavoritesClick = async () => {
     if (!isLoggedIn) return notifyWarning("You need to log in to perform this action");
-
-    // ...do some logic...
-    console.log("Added to favorites");
+    try {
+      await addNoticeToFavorites(data._id);
+      setFavorite(!favorite);
+    } catch (error) {
+      notifyError(error);
+    }
   };
+
   return (
     <>
       <Container>
@@ -46,10 +55,12 @@ const NoticeCategoryItem = ({ data }) => {
           </ul>
         </InfoWrapper>
         <LearnMoreBtn onClick={handleModalToggle}>Learn more</LearnMoreBtn>
-        <AddToFavorites onClick={handleAddToFavoritesClick} authorized={isLoggedIn} />
+        <AddToFavorites onClick={handleAddToFavoritesClick} authorized={!isLoading && isLoggedIn} isFavorite={favorite} />
       </Container>
 
-      {expanded && <ModalNotice id={data._id} handleModalToggle={handleModalToggle} handleAddToFavoritesClick={handleAddToFavoritesClick} />}
+      {expanded && (
+        <ModalNotice id={data._id} handleModalToggle={handleModalToggle} handleAddToFavoritesClick={handleAddToFavoritesClick} favorite={favorite} />
+      )}
     </>
   );
 };

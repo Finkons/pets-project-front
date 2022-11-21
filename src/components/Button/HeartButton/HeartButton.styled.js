@@ -16,8 +16,7 @@ export const HeartBtn = styled.button`
 
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
     opacity: 1;
   }

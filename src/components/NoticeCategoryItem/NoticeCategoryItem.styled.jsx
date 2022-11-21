@@ -79,6 +79,11 @@ export const AddToFavorites = styled(HeartButton)`
   position: absolute;
   top: 12px;
   right: 12px;
+  ${p =>
+    p.isFavorite &&
+    `
+  color: red;
+  `}
 `;
 
 export const LearnMore = styled(LearnMoreButton)`

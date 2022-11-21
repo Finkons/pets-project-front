@@ -9,7 +9,7 @@ export const HeaderBar = styled.div`
   padding-top: 16px;
   width: 320px;
   text-align: center;
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
   @media ${p => p.theme.media.tablet} {
     width: 768px;
     padding-left: 32px;
@@ -17,6 +17,6 @@ export const HeaderBar = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     width: 1280px;
-    margin-bottom: 46px;
+    // margin-bottom: 46px;
   }
 `;

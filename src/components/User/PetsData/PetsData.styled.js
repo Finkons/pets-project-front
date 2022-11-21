@@ -1,31 +1,9 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const TitleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const AddPetButton = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-`;
-
-export const Title = styled.h1`
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
 `;
 
 export const PetsItem = styled.div`
@@ -46,8 +24,6 @@ export const PetsImage = styled.img`
   width: 240px;
   height: 240px;
 `;
-
-export const PetsItemInfo = styled.div``;
 
 export const PetsItemPara = styled.p`
   font-family: "Manrope";

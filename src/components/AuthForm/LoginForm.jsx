@@ -18,6 +18,7 @@ const FormError = ({ name }) => {
 
 export const LoginForm = () => {
   const [login, status] = useLoginMutation();
+  //status should be used for spinner
   const navigate = useNavigate();
 
   const [visible, setVisible] = useState(false);
@@ -30,16 +31,13 @@ export const LoginForm = () => {
     const { email, password } = values;
     login({ email, password })
       .unwrap()
-      .then(payload => {
-        console.log(`User successfully registered`);
-        navigate("/");
+      .then(() => {
+        navigate("/user");
       })
-      .catch(() => {
+      .catch(error => {
         console.log("Handle errors");
         // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
-
-    console.log(status);
 
     await new Promise(resolve => setTimeout(resolve, 1000));
     actions.resetForm();

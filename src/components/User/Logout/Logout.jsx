@@ -1,8 +1,13 @@
 import { useLogoutMutation } from "redux/auth/authApi";
+import { Container } from "./Logout.styled";
 
-export const Logout = () => {
+const Logout = () => {
   const [logout] = useLogoutMutation();
-  return <button onClick={() => logout()}>Logout</button>;
+  return (
+    <Container>
+      <button onClick={() => logout()}>Logout</button>
+    </Container>
+  );
 };
 
 export default Logout;

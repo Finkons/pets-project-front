@@ -8,15 +8,16 @@ import AddNoticeButton from "components/AddNoticeButton";
 
 // import { useParams } from "react-router-dom";
 // import { useGetNoticesByCategoryQuery } from "redux/notices/noticesApi";
+// import { useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
 
 export default function NoticesPage() {
   const [category, setCategory] = useState("");
   const [pets, setPets] = useState([]);
   // console.log(pets);
 
-  // const { categoryName } = useParams(); 
+  // const { categoryName } = useParams();
   // get category from url params
-  // const { data: notices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName); 
+  // const { data: notices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName);
   // creting fn for fetching data by category and status (error, fething)
   // console.log(notices, isError, isFetching);
 
@@ -29,6 +30,9 @@ export default function NoticesPage() {
     }
     fetchPets(category).then(data => setPets(data));
   }, [category]);
+
+  // const { data: favorite = [], isError, isFetching } = useGetFavoriteNoticesQuery();
+  // console.log(favorite, isError, isFetching);
 
   return (
     <Container>

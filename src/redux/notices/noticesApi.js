@@ -22,6 +22,13 @@ export const noticesApi = createApi({
       }),
       providesTags: ["Notices"],
     }),
+    getFavoriteNotices: build.query({
+      query: () => ({
+        url: `notices/owner/favorite`,
+        method: "GET",
+      }),
+      providesTags: ["Notices"],
+    }),
     getNoticeById: build.query({
       query: id => ({
         url: `/notices/${id}`,
@@ -37,25 +44,31 @@ export const noticesApi = createApi({
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        providesTags: ["Notices"],
       }),
-      providesTags: ["Notices"],
     }),
     addNoticeToFavorites: build.mutation({
       query: noticeId => ({
         url: `/notices/${noticeId}`,
         method: "PUT",
-        providesTags: ["Notices"],
       }),
+      providesTags: ["Notices"],
     }),
     deleteNotice: build.mutation({
       query: noticeId => ({
         url: `/notices/${noticeId}`,
         method: "DELETE",
-        providesTags: ["Notices"],
       }),
+      providesTags: ["Notices"],
     }),
   }),
 });
 
-export const { useGetNoticesByCategoryQuery, useAddNoticeMutation, useAddNoticeToFavoritesMutation, useGetNoticeByIdQuery, useDeleteNoticeMutation } =
-  noticesApi;
+export const {
+  useGetNoticesByCategoryQuery,
+  useAddNoticeMutation,
+  useAddNoticeToFavoritesMutation,
+  useGetNoticeByIdQuery,
+  useDeleteNoticeMutation,
+  useGetFavoriteNoticesQuery,
+} = noticesApi;

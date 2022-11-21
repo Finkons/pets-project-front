@@ -7,9 +7,8 @@ export const CameraBtn = styled.button`
   padding: 0;
   border: 0;
 
-  background: #fdf7f2;
+  background: #ffffff;
   cursor: pointer;
-  color: rgba(17, 17, 17, 0.6);
 
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -24,4 +23,5 @@ export const CameraText = styled.p`
   font-weight: normal;
   font-family: "Manrope";
   font-style: normal;
+  margin-left: 4px;
 `;

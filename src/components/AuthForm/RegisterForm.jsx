@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
 import { Container, Text, Input, InputWrapper, IconEye, IconEyeConfirm, Button, ButtonBack, LinkBox, Link, ErrorText } from "./RegisterForm.styled";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useRegisterMutation } from "redux/auth/authApi";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 
@@ -21,6 +21,7 @@ export const RegisterForm = () => {
     phone: "",
   });
   const [register, status] = useRegisterMutation();
+  //status should be used for spinner
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -31,17 +32,13 @@ export const RegisterForm = () => {
     const { email, password, name, location: address, phone } = formData;
     register({ email, password, name, address, phone })
       .unwrap()
-      .then(payload => {
-        console.log(`User successfully registered`);
-        // navigate("/"); if success - navigate user to userPage
-        navigate("/");
+      .then(() => {
+        navigate("/user");
       })
-      .catch(() => {
+      .catch(error => {
         console.log("Handle errors");
-        toast.error("Sorry, such email already exists");
+        // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
-
-    console.log(status);
   };
 
   const handleNextStep = (newData, final = false) => {

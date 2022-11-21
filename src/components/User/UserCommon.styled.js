@@ -18,7 +18,6 @@ export const Title = styled.h1`
   font-size: 20px;
   line-height: 27px;
   display: flex;
-  align-items: center;
   letter-spacing: 0.04em;
 `;
 

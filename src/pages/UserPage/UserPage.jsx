@@ -1,24 +1,19 @@
-// import { useGetCurrentUserQuery } from "redux/auth/authApi";
-// import authSelectors from "redux/auth/authSelectors";
-// import { useSelector } from "react-redux";
+import { useGetCurrentUserQuery } from "redux/auth/authApi";
+import authSelectors from "redux/auth/authSelectors";
+import { useSelector } from "react-redux";
 import { UserData, Logout, PetsData } from "components/User";
-import { Container, UserContainer } from "./UserPage.styled";
+import { Container } from "./UserPage.styled";
 
 const UserPage = () => {
-  // const { data: user = [], isError, isFetching } = useGetCurrentUserQuery();
-  // const userToken = useSelector(authSelectors.getUserToken);
-
-  // useGetCurrentUserQuery(undefined, {
-  //   skip: !userToken,
-  // });
-  // console.log(user, isError, isFetching);
+  const userToken = useSelector(authSelectors.getUserToken);
+  const { data: user = {}, isError, isFetching } = useGetCurrentUserQuery({ skip: userToken });
 
   return (
     <Container>
-      <UserContainer>
-        <UserData />
+      <div>
+        <UserData user={user} isError={isError} isFetching={isFetching} />
         <Logout />
-      </UserContainer>
+      </div>
       <PetsData />
     </Container>
   );

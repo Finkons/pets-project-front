@@ -16,8 +16,6 @@ export const MenuContainer = styled.div`
     width: 768px;
     margin-top: 8px;
   }
-  @media ${p => p.theme.media.desktop} {
-  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -28,6 +26,14 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Link = styled.div`
+  &:hover {
+    color: ${p => p.theme.colors.accent};
+    text-decoration: underline;
+  }
+  &:active {
+    color: ${p => p.theme.colors.accent};
+    text-decoration: underline;
+  }
   @media ${p => p.theme.media.tablet} {
   }
   @media ${p => p.theme.media.desktop} {

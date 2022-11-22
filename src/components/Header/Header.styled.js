@@ -7,6 +7,7 @@ export const HeaderBar = styled.div`
   align-items: center;
   padding-left: 20px;
   padding-top: 16px;
+  // padding-right: 16px;
   width: 320px;
   text-align: center;
   // margin-bottom: 60px;

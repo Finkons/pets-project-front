@@ -5,16 +5,15 @@ export const MenuContainer = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
-  top: 70px;
+  top: 60px;
   left: 0;
-  z-index: 1;
-  // padding: 90px 0;
+  z-index: 10;
   margin-top: 30px;
   flex-direction: column;
 
   @media ${p => p.theme.media.tablet} {
     width: 768px;
-    margin-top: 8px;
+    // margin-top: 0;
   }
 `;
 

@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
 export const NavHeader = styled.div`
-  // margin-top: 30px;
+  margin-top: 60px;
+
   text-align: center;
   font-family: "Manrope";
   font-style: normal;
@@ -12,7 +13,7 @@ export const NavHeader = styled.div`
   letter-spacing: 0.04em;
   align-items: center;
   @media ${p => p.theme.media.tablet} {
-    // margin-top: 60px;
+    margin-top: 88px;
     font-size: 48px;
     line-height: 66px;
     align-items: center;
@@ -22,7 +23,7 @@ export const NavHeader = styled.div`
     line-height: 27px;
     display: flex;
     align-items: center;
-    // margin-top: 30px;
+    margin-top: 0;
   }
 `;
 

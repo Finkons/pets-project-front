@@ -14,7 +14,6 @@ export const Div = styled.div`
   @media ${p => p.theme.media.desktop} {
     display: flex;
     margin-left: auto;
-    margin-right: 0;
   }
 `;
 
@@ -26,7 +25,7 @@ export const AuthBtn = styled.button`
   height: 35px;
   color: #111111;
   background-color: #ffffff;
-  margin-right: 20px;
+  margin-left: 12px;
   padding: 10px 28px;
   cursor: pointer;
 

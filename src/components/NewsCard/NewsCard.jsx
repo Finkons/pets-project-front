@@ -7,13 +7,9 @@ export const NewsCard = ({ title, description, date, url }) => {
       <DecorLine></DecorLine>
       <InfoContainer>
         <Title>{title}</Title>
-        <Text>
-          {description}
-        </Text>
+        <Text>{description}</Text>
         <SpecialContainer>
-          <Date>
-            <span>{date}</span>
-          </Date>
+         {{date}  ? <Date> {date} </Date> :  <Date><span> No date </span></Date>}
           <LinkNews href={url} target="_blank">
             Read more
           </LinkNews>

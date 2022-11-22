@@ -5,7 +5,7 @@ import wavesDesktop from "../../img/authPages-photos/waves-desktop.png";
 
 export const Container = styled.div`
   max-width: 100vw;
-  min-height: calc(100vh - 115px);
+  height: calc(100vh - 58px);
   background-image: url(${wavesMobile});
   background-repeat: no-repeat;
   background-size: contain;
@@ -13,10 +13,10 @@ export const Container = styled.div`
   background-color: ${p => p.theme.colors.background};
   @media ${p => p.theme.media.tablet} {
     background-image: url(${wavesTablet});
-    min-height: calc(100vh - 130px);
+    height: calc(100vh - 72px);
   }
   @media ${p => p.theme.media.desktop} {
     background-image: url(${wavesDesktop});
-    min-height: calc(100vh - 30px);
+    height: calc(100vh - 68px);
   }
 `;

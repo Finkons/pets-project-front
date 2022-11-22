@@ -2,8 +2,8 @@ import { Form, Input, Button, InputContainer } from "./NewsSearch.styled";
 import { searchIcon } from "img/svgIcons";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
-// import { fetchByName } from "api/fetchPets";
-// import { notifyWarning } from "helpers/toastNotifications";
+import { fetchByName } from "api/fetchPets";
+import { notifyWarning } from "helpers/toastNotifications";
 
 export default function NewsSearch({ onChange }) {
   const [searchParams, setSearchParams] = useSearchParams();

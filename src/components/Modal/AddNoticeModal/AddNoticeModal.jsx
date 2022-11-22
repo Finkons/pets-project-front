@@ -15,7 +15,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
   const [upload, setUpload] = useState();
   const [uploadUrl, setUploadUrl] = useState([]);
-  const [setFileName] = useState("");
+  const [filename, setFileName] = useState("");
   const hiddenFileInput = useRef(null);
 
   const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status
@@ -63,7 +63,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       console.log(upload);
 
       let formValues = new FormData();
-      formValues.append("file", upload);
+      formValues.append("avatar", upload);
 
       formValues.append(
         "data",

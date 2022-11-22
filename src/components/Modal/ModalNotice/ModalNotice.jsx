@@ -74,7 +74,11 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
                 }
                 if (category && category !== petData.category) return null;
 
-                return <InfoItem key={key} label={label} data={petData[key]} />;
+                return key === "location" ? (
+                  <InfoItem key={key} label={label} data={`${petData[key]?.city || "-"} ${petData[key]?.region || "-"} `} />
+                ) : (
+                  <InfoItem key={key} label={label} data={petData[key]} />
+                );
               })}
             </ul>
           </div>

@@ -34,6 +34,9 @@ const Wizard = ({ children, initialValues, onSubmit, handleCancelModal }) => {
     }
   };
 
+  console.log("stepNumber", stepNumber);
+  console.log("isLastStep", isLastStep);
+
   return (
     <Formik initialValues={snapshot} onSubmit={handleSubmit} validationSchema={step.props.validationSchema}>
       {formik => (

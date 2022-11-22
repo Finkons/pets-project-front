@@ -1,35 +1,14 @@
 import * as Yup from "yup";
-import {
-  Container,
-  ModalCloseButton,
-  Title,
-  Text,
-  CategoryWrap,
-  CategoryInput,
-  CategoryLabel,
-  TextWrap,
-  TextFild,
-  TextLabel,
-  BreedWrap,
-  SexWrap,
-  SexInput,
-  SexImage,
-  SexLabel,
-  FileButton,
-  CommentsWrap,
-  CommentsFild,
-} from "./AddNoticeModal.styled";
+import * as S from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
 import Male from "../../../img/addnotice/male.svg";
 import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
+import { NOTICE_CATEGORY_LABELS } from "../../../constants/petInfoKeys";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
-
 import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
-
-// const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const WizardStep = ({ children }) => children;
 
@@ -43,7 +22,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status
 
   const initialValues = {
-    category: "lost/found",
+    category: "lost-found",
     title: "",
     name: "",
     birthday: "",
@@ -80,11 +59,28 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
   const handleFormSubmit = async values => {
     try {
-      let formData = new FormData();
-      formData.append("image", upload);
-      console.log(formData);
+      const [fileURL] = uploadUrl;
+      console.log(fileURL);
+      console.log(upload);
 
-      await addNotice(values); //rtk query hook for api
+      let formValues = new FormData();
+      formValues.append("file", upload);
+
+      formValues.append(
+        "data",
+        JSON.stringify({
+          category: values.category,
+          title: values.title,
+          name: values.name,
+          birthday: values.birthday,
+          sex: values.sex,
+          location: values.location,
+          price: values.price,
+          comments: values.comments,
+        })
+      );
+
+      await addNotice(formValues); //rtk query hook for api
       console.log(isAdding); // fetching status here
       console.log("Form values", values);
     } catch (error) {
@@ -94,20 +90,12 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
   return (
     <Backdrop onClick={e => handleBackdropClick(e, handleModalToggle)}>
-      <Container extended={isSell}>
-        <ModalCloseButton onClick={handleModalToggle} />
-        <Title>Add pet</Title>
+      <S.Container extended={isSell}>
+        <S.ModalCloseButton onClick={handleModalToggle} />
+        <S.Title>Add pet</S.Title>
 
         <Wizard
           initialValues={initialValues}
-          // onSubmit={async values =>
-          //   sleep(300).then(() => {
-          //     addNotice(values); //rtk query hook for api
-          //     console.log(isAdding); // fetching status here
-          //     console.log("Wizard submit", values);
-          //     console.log(avatar);
-          //   })
-          // }
           onSubmit={handleFormSubmit}
           handleCancelModal={handleModalToggle}
           handlePriceField={value => console.log("Next click", value)}
@@ -118,24 +106,24 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               category: Yup.string().required("required"),
             })}
           >
-            <Text>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </Text>
+            <S.Text>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </S.Text>
             <div>
-              <CategoryWrap role="group" aria-labelledby="my-radio-group">
-                <CategoryInput id="lost/found" type="radio" name="category" value="lost/found" />
-                <CategoryLabel htmlFor="lost/found">lost/found</CategoryLabel>
+              <S.CategoryWrap role="group" aria-labelledby="my-radio-group">
+                <S.CategoryInput id="lost-found" type="radio" name="category" value="lost-found" />
+                <S.CategoryLabel htmlFor="lost-found">lost/found</S.CategoryLabel>
 
-                <CategoryInput id="in good hands" type="radio" name="category" value="in good hands" />
-                <CategoryLabel htmlFor="in good hands">in good hands</CategoryLabel>
+                <S.CategoryInput id="for-free" type="radio" name="category" value="for-free" />
+                <S.CategoryLabel htmlFor="for-free">in good hands</S.CategoryLabel>
 
-                <CategoryInput id="sell" type="radio" name="category" value="sell" />
-                <CategoryLabel htmlFor="sell">sell</CategoryLabel>
-              </CategoryWrap>
+                <S.CategoryInput id="sell" type="radio" name="category" value="sell" />
+                <S.CategoryLabel htmlFor="sell">sell</S.CategoryLabel>
+              </S.CategoryWrap>
             </div>
-            <TextWrap>
-              <TextLabel type="text" htmlFor="title">
+            <S.TextWrap>
+              <S.TextLabel type="text" htmlFor="title">
                 Title of ad <span>*</span>
-              </TextLabel>
-              <TextFild
+              </S.TextLabel>
+              <S.TextFild
                 id="title"
                 name="title"
                 placeholder="Type name"
@@ -144,13 +132,13 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 maxLength="48"
                 title="Length of title should be 2-16 letters"
               />
-            </TextWrap>
+            </S.TextWrap>
 
-            <TextWrap>
-              <TextLabel type="text" htmlFor="name">
+            <S.TextWrap>
+              <S.TextLabel type="text" htmlFor="name">
                 Name pet
-              </TextLabel>
-              <TextFild
+              </S.TextLabel>
+              <S.TextFild
                 id="name"
                 name="name"
                 placeholder="Type name pet"
@@ -160,13 +148,13 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 maxLength="16"
                 title="Name may contain only letters, apostrophe, dash and spaces.Length of name should be 2-16 letters"
               />
-            </TextWrap>
+            </S.TextWrap>
 
-            <TextWrap>
-              <TextLabel type="date" htmlFor="birthday">
+            <S.TextWrap>
+              <S.TextLabel type="date" htmlFor="birthday">
                 Date of birth
-              </TextLabel>
-              <TextFild
+              </S.TextLabel>
+              <S.TextFild
                 id="birthday"
                 name="birthday"
                 placeholder="Type date of birth"
@@ -174,13 +162,13 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 pattern="^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$"
                 title="Birthday should be in format dd.mm.yyyy"
               />
-            </TextWrap>
-            <BreedWrap>
-              <TextLabel type="text" htmlFor="breed">
+            </S.TextWrap>
+            <S.BreedWrap>
+              <S.TextLabel type="text" htmlFor="breed">
                 Breed
-              </TextLabel>
-              <TextFild id="breed" name="breed" placeholder="Type breed" required minLength="2" maxLength="24" />
-            </BreedWrap>
+              </S.TextLabel>
+              <S.TextFild id="breed" name="breed" placeholder="Type breed" required minLength="2" maxLength="24" />
+            </S.BreedWrap>
           </WizardStep>
 
           {/* SECOND STEP */}
@@ -192,45 +180,45 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               price: Yup.number().when("category", { is: "sell", then: Yup.number().required("Price required") }),
             })}
           >
-            <SexWrap>
+            <S.SexWrap>
               <p>The sex*:</p>
               <div role="group" aria-labelledby="radio-group">
-                <SexInput id="male" type="radio" name="sex" value="male" />
-                <SexLabel htmlFor="male">
+                <S.SexInput id="male" type="radio" name="sex" value="male" />
+                <S.SexLabel htmlFor="male">
                   <div>
-                    <SexImage src={Male} alt="male" width="54" height="54" />
+                    <S.SexImage src={Male} alt="male" width="54" height="54" />
                   </div>
                   Male
-                </SexLabel>
+                </S.SexLabel>
 
-                <SexInput id="female" type="radio" name="sex" value="female" />
-                <SexLabel htmlFor="female">
+                <S.SexInput id="female" type="radio" name="sex" value="female" />
+                <S.SexLabel htmlFor="female">
                   <div>
-                    <SexImage src={Female} alt="female" width="39" height="60" />
+                    <S.SexImage src={Female} alt="female" width="39" height="60" />
                   </div>
                   Female
-                </SexLabel>
+                </S.SexLabel>
               </div>
-            </SexWrap>
+            </S.SexWrap>
 
-            <TextWrap>
-              <TextLabel type="text" htmlFor="location">
+            <S.TextWrap>
+              <S.TextLabel type="text" htmlFor="location">
                 Location*:
-              </TextLabel>
-              <TextFild id="location" name="location" placeholder="Type location" required />
-            </TextWrap>
+              </S.TextLabel>
+              <S.TextFild id="location" name="location" placeholder="Type location" required />
+            </S.TextWrap>
 
             {isSell && (
-              <TextWrap>
-                <TextLabel type="number" htmlFor="price">
+              <S.TextWrap>
+                <S.TextLabel type="number" htmlFor="price">
                   Prices<span>*</span>:
-                </TextLabel>
-                <TextFild id="price" name="price" placeholder="Type price" pattern="^[1-9][0-9]*$" title="Price should be integer" />
-              </TextWrap>
+                </S.TextLabel>
+                <S.TextFild id="price" name="price" placeholder="Type price" pattern="^[1-9][0-9]*$" title="Price should be integer" />
+              </S.TextWrap>
             )}
-            <div>
-              <TextWrap>
-                <TextLabel htmlFor="">Load the pet’s image:</TextLabel>
+            <S.FileWrap>
+              <S.TextWrap>
+                <S.TextLabel htmlFor="">Load the pet’s image:</S.TextLabel>
                 <input
                   type="file"
                   encType="multipart/form-data"
@@ -240,21 +228,27 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                   onChange={handleUploadChange}
                 />
 
-                <FileButton type="button" onClick={handleUploadClick}>
+                <S.FileButton type="button" onClick={handleUploadClick}>
                   <img src={Upload} alt="upload file" width="48" height="48" />
-                </FileButton>
-              </TextWrap>
-              <div>
-                <img width="100" height="100" src={[...uploadUrl]} alt="avatar" />
-                <p>File: {filename} attached </p>
-              </div>
-            </div>
+                </S.FileButton>
+              </S.TextWrap>
+              {uploadUrl === [] ? (
+                <div>
+                  <p>No file attached</p>
+                </div>
+              ) : (
+                <S.Preview>
+                  <img width="140" height="140" src={[...uploadUrl]} alt="avatar" />
+                  <p>File attached </p>
+                </S.Preview>
+              )}
+            </S.FileWrap>
 
-            <CommentsWrap>
-              <TextLabel type="text" htmlFor="comments">
+            <S.CommentsWrap>
+              <S.TextLabel type="text" htmlFor="comments">
                 Comments
-              </TextLabel>
-              <CommentsFild
+              </S.TextLabel>
+              <S.CommentsFild
                 id="comments"
                 name="comments"
                 placeholder="Type comment"
@@ -263,10 +257,10 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 title="Comments should have minimum 8 letters"
                 required
               />
-            </CommentsWrap>
+            </S.CommentsWrap>
           </WizardStep>
         </Wizard>
-      </Container>
+      </S.Container>
     </Backdrop>
   );
 };

@@ -46,10 +46,8 @@ export const noticesApi = createApi({
       query: formData => ({
         url: `/notices`,
         method: "POST",
-        body: { ...formData },
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        body: formData ,
+       
         providesTags: ["Notices"],
       }),
     }),

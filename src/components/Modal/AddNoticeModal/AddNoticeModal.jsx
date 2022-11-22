@@ -15,7 +15,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
   const [upload, setUpload] = useState();
   const [uploadUrl, setUploadUrl] = useState([]);
-  const [filename, setFileName] = useState("");
   const hiddenFileInput = useRef(null);
 
   const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status
@@ -51,7 +50,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const handleUploadChange = event => {
     if (event.target.files.length !== 0) {
       setUploadUrl(uploadUrl => [...uploadUrl, URL.createObjectURL(event.target.files[0])]);
-      setFileName(event.target.files[0].name);
       setUpload(event.target.files[0]);
     }
   };

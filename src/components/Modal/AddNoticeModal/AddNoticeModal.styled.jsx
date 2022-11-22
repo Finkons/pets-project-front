@@ -8,27 +8,23 @@ export const Container = styled.div`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  max-height: 885px;
   margin-bottom: 50px;
-
+  border-radius: 20px;
 
   @media ${p => p.theme.media.mobile} {
     width: 280px;
-    height: ${props => (props.extended ? "855px" : "800px")};
+    max-height: ${props => (props.extended === true ? "855px" : "800px")};
     padding: 40px 20px;
-    border-radius: 20px;
   }
   @media ${p => p.theme.media.tablet} {
     width: 608px;
-    height: ${props => (props.extended ? "1044px" : "885px")};
+    max-height: ${props => (props.extended === true ? "1044px" : "885px")};
     padding: 40px 80px;
-    border-radius: 40px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 608px;
-    height: ${props => (props.extended ? "1044px" : "885px")};
+    max-height: ${props => (props.extended === true ? "1044px" : "885px")};
     padding: 40px 80px;
-    border-radius: 40px;
   }
 `;
 
@@ -269,6 +265,22 @@ export const SexInput = styled(Field)`
   display: none;
   &:checked + ${SexLabel} {
     color: #f59256;
+  }
+`;
+
+export const FileWrap = styled.div`
+  display: flex;
+`;
+
+export const Preview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  img {
+    border-radius: 20px;
+  }
+  p {
+    text-align: center;
   }
 `;
 

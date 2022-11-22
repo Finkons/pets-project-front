@@ -6,7 +6,6 @@ import Male from "../../../img/addnotice/male.svg";
 import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
-import { NOTICE_CATEGORY_LABELS } from "../../../constants/petInfoKeys";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
 
@@ -16,7 +15,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
   const [upload, setUpload] = useState();
   const [uploadUrl, setUploadUrl] = useState([]);
-  const [filename, setFileName] = useState("");
+  const [setFileName] = useState("");
   const hiddenFileInput = useRef(null);
 
   const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status

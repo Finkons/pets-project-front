@@ -27,7 +27,7 @@ export default function NewsSearch({ onChange }) {
   return (
     <Form onSubmit={handleSubmit}>
       <InputContainer>
-        <Input type="text" name="query" placeholder="Search" onChange={(event) => setValue (event.target.value)} />
+        <Input type="text" name="query" placeholder="Search" />
         <Button type="submit">{searchIcon}</Button>
       </InputContainer>
     </Form>

@@ -46,8 +46,8 @@ export const noticesApi = createApi({
       query: formData => ({
         url: `/notices`,
         method: "POST",
-        body: formData ,
-       
+        body: formData,
+
         providesTags: ["Notices"],
       }),
     }),

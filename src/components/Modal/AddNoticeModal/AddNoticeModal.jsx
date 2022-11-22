@@ -77,7 +77,8 @@ const AddNoticeModal = ({ handleModalToggle }) => {
         })
       );
 
-      await addNotice(formValues); //rtk query hook for api
+      await addNotice(formValues);
+      // await addNotice(values.category, formValues); //rtk query hook for api
       console.log(isAdding); // fetching status here
       console.log("Form values", values);
     } catch (error) {

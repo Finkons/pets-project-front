@@ -45,23 +45,14 @@ export const noticesApi = createApi({
     
     addNotice: build.mutation({
       query: formData => ({
-        url: `/notices/category/sell `,
+        url: `/category/addnotice `,
         method: "POST",
         body: formData,
 
         providesTags: ["Notices"],
       }),
     }),
-      
-    // addNotice: build.mutation({
-    //   query: (category,formData) => ({
-    //     url: `/notices/category/${category} `,
-    //     method: "POST",
-    //     body: formData ,
-       
-    //     providesTags: ["Notices"],
-    //   }),
-    // }),
+   
     addNoticeToFavorites: build.mutation({
       query: noticeId => ({
         url: `/${noticeId}`,

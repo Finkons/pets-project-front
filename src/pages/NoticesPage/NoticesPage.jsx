@@ -6,44 +6,56 @@ import NoticesSearch from "components/NoticesSearch";
 import NoticesCategoriesList from "components/NoticesCategoriesList";
 import AddNoticeButton from "components/AddNoticeButton";
 
-// import { useParams } from "react-router-dom";
-// import { useGetNoticesByCategoryQuery } from "redux/notices/noticesApi";
+import { useParams } from "react-router-dom";
+// import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
 // import { useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
+import { useSelector } from "react-redux";
+import authSelectors from "redux/auth/authSelectors";
 
 export default function NoticesPage() {
-  const [category, setCategory] = useState("");
-  const [pets, setPets] = useState([]);
+  const [notices, setNotices] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
   // console.log(pets);
+  const token = useSelector(authSelectors.getUserToken);
+  const { categoryName } = useParams();
 
-  // const { categoryName } = useParams();
-  // get category from url params
-  // const { data: notices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName);
+  // const { data: firstNotices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName);
+
+  // const { data: favorite = [] } = useGetFavoriteNoticesQuery();
+  // setNotices(favorite);
   // creting fn for fetching data by category and status (error, fething)
-  // console.log(notices, isError, isFetching);
+  console.log(notices, categoryName);
 
   useEffect(() => {
-    if (category === "favorite") {
-      fetchFavoritePets(category).then(data => setPets(data));
+    // if (firstNotices.length > 0) {
+    //   setNotices(firstNotices);
+    // }
+    // if (favorite.length > 0) {
+    //   setNotices(favorite);
+    // }
+    if (categoryName === "favorite") {
+      fetchFavoritePets(token).then(data => setNotices(data));
+      return;
     }
-    if (category === "own") {
-      fetchOwnPets(category).then(data => setPets(data));
+    if (categoryName === "own") {
+      fetchOwnPets(token).then(data => setNotices(data));
+      return;
     }
-    fetchPets(category).then(data => setPets(data));
-  }, [category]);
+    fetchPets(categoryName).then(data => setNotices(data));
+  }, [categoryName, token]);
 
-  // const { data: favorite = [], isError, isFetching } = useGetFavoriteNoticesQuery();
-  // console.log(favorite, isError, isFetching);
-
+  console.log(searchValue);
+  // const filterValue = searchValue ? notices.filter(({ title }) => title.toLowerCase().includes(searchValue)) : notices;
   return (
     <Container>
       <Title>Find your favorite pet</Title>
-      <NoticesSearch onChange={value => setPets(value)} />
+      <NoticesSearch onChange={value => setSearchValue(value)} />
       <Div>
-        <NoticesCategoriesNav onCategoryChange={value => setCategory(value)} />
+        <NoticesCategoriesNav />
         <AddNoticeButton />
       </Div>
 
-      <NoticesCategoriesList petsList={pets} />
+      <NoticesCategoriesList petsList={notices} />
     </Container>
   );
 }

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const noticesApi = createApi({
   reducerPath: "noticesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/api",
+    baseUrl: "http://localhost:3001/api/notices",
 
     prepareHeaders: (headers, { getState }) => {
       const { token } = getState().auth;
@@ -17,27 +17,27 @@ export const noticesApi = createApi({
   endpoints: build => ({
     getNoticesByCategory: build.query({
       query: category => ({
-        url: `/notices/${category}`,
+        url: `/category/${category}`,
         method: "GET",
       }),
       providesTags: ["Notices"],
     }),
     getFavoriteNotices: build.query({
       query: () => ({
-        url: `notices/owner/favorite`,
+        url: `/owner/favorite`,
         method: "GET",
       }),
       providesTags: ["Notices"],
     }),
     getUserNotices: build.query({
       query: userId => ({
-        url: `/notices/owner/${userId}`,
+        url: `/owner/${userId}`,
       }),
       providesTags: ["Notices"],
     }),
     getNoticeById: build.query({
       query: id => ({
-        url: `/notices/${id}`,
+        url: `/${id}`,
         method: "GET",
       }),
       providesTags: ["Notices"],
@@ -47,8 +47,8 @@ export const noticesApi = createApi({
       query: formData => ({
         url: `/notices/category/sell `,
         method: "POST",
-        body: formData ,
-       
+        body: formData,
+
         providesTags: ["Notices"],
       }),
     }),
@@ -64,14 +64,14 @@ export const noticesApi = createApi({
     // }),
     addNoticeToFavorites: build.mutation({
       query: noticeId => ({
-        url: `/notices/${noticeId}`,
+        url: `/${noticeId}`,
         method: "PUT",
       }),
       providesTags: ["Notices"],
     }),
     deleteNotice: build.mutation({
       query: noticeId => ({
-        url: `/notices/${noticeId}`,
+        url: `/${noticeId}`,
         method: "DELETE",
       }),
       providesTags: ["Notices"],

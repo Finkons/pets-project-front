@@ -9,12 +9,13 @@ export const Container = styled.div`
   flex-direction: column;
   width: 280px;
   position: absolute;
-  top: 100px;
+  padding-top: 42px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  @media ${p => p.theme.media.tablet} {
+  @media ${p => p.theme.media.tabletDesktop} {
     width: 608px;
+    top: 50%;
     background-color: ${colors.colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 7px 4px 14px rgba(0, 0, 0, 0.11);
     border-radius: 40px;
@@ -22,11 +23,7 @@ export const Container = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     width: 618px;
-    background-color: ${colors.colors.white};
-    box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
-    border-radius: 40px;
-    padding: 60px 80px;
-    margin-top: 46px;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -37,11 +34,7 @@ export const Text = styled.h1`
   line-height: 1.4;
   letter-spacing: 0.04em;
   margin-bottom: 40px;
-  @media ${p => p.theme.media.tablet} {
-    font-size: 36px;
-    font-weight: 500;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     font-size: 36px;
     font-weight: 500;
   }
@@ -66,7 +59,7 @@ export const Input = styled(Field)`
   :focus {
     border: 3px solid rgba(245, 146, 86, 0.5);
   }
-  @media ${p => p.theme.media.tablet} {
+  @media ${p => p.theme.media.tabletDesktop} {
     width: 448px;
     height: 52px;
     font-size: 18px;
@@ -75,10 +68,6 @@ export const Input = styled(Field)`
   }
   @media ${p => p.theme.media.desktop} {
     width: 458px;
-    height: 52px;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 14px 32px;
   }
 `;
 
@@ -145,11 +134,7 @@ export const IconEye = styled.span`
   padding-top: 11px;
   left: 90%;
   cursor: pointer;
-  @media ${p => p.theme.media.tablet} {
-    left: 80%;
-    padding-top: 16px;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     left: 80%;
     padding-top: 16px;
   }

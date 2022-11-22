@@ -51,5 +51,5 @@ export const Plus = styled.p`
   color: #fff;
   font-size: 35px;
   text-align: center;
-  vertical-align: middle;
+  margin-bottom: 6px;
 `;

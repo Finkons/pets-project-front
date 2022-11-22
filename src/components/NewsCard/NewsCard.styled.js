@@ -3,17 +3,17 @@ import styled from "@emotion/styled";
 export const News = styled.div`
   width: 280px;
   padding-bottom: 40px;
+  margin-left: 32px;
 
   @media ${p => p.theme.media.tablet} {
     width: 336px;
-    margin-right: 32px;
+
     padding-bottom: 60px;
   }
 
   @media ${p => p.theme.media.desktop} {
     width: 394px;
     margin-left: 34px;
-    
   }
 `;
 

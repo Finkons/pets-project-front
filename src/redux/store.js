@@ -5,6 +5,7 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import { authSlice } from "redux/auth/authSlice";
 import { authApi } from "redux/auth/authApi";
 import { noticesApi } from "redux/notices/noticesApi";
+import { userPetsApi } from "redux/userPets/userPetsApi";
 import { errorHandler } from "./errorHandler";
 
 const authPersistConfig = {
@@ -21,6 +22,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [authSlice.name]: persistedAuthReducer,
     [noticesApi.reducerPath]: noticesApi.reducer,
+    [userPetsApi.reducerPath]: userPetsApi.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

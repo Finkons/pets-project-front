@@ -53,7 +53,7 @@ export const NOTICE_ITEM_KEYS = [
   },
   {
     label: "Age:",
-    key: "age",
+    key: "birthday",
   },
   {
     label: "Price:",
@@ -62,8 +62,23 @@ export const NOTICE_ITEM_KEYS = [
   },
 ];
 
+export const NOTICE_CATEGORIES = {
+  sell: {
+    key: "sell",
+    label: "Sell",
+  },
+  lostFound: {
+    key: "lost-found",
+    label: "Lost/found",
+  },
+  forFree: {
+    key: "for-free",
+    label: "In good hands",
+  },
+};
+
 export const NOTICE_CATEGORY_LABELS = {
-  sell: "Sell",
-  "lost-found": "Lost/found",
-  "for-free": "In good hands",
+  [NOTICE_CATEGORIES.sell.key]: NOTICE_CATEGORIES.sell.label,
+  [NOTICE_CATEGORIES.lostFound.key]: NOTICE_CATEGORIES.lostFound.label,
+  [NOTICE_CATEGORIES.forFree.key]: NOTICE_CATEGORIES.forFree.label,
 };

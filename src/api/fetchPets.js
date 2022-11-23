@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3001/api/notices/";
+const BASE_URL = "http://pets-api-m614.onrender.com/api/notices/";
 
 export async function fetchPets(category) {
   const response = await axios(`${BASE_URL}category/${category}`);

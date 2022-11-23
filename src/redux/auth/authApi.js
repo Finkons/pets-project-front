@@ -53,10 +53,38 @@ export const authApi = createApi({
       query: data => ({
         url: "/user",
         method: "PUT",
-        body: { ...data },
+        body: data,
       }),
+      providesTags: ["User"],
+    }),
+    // editUserAvatar: build.mutation({
+    //   query: file => ({
+    //     url: "/user",
+    //     method: "PATCH",
+    //     credentials: "include",
+    //     body: { file },
+    //   }),
+    // providesTags: ["User"],
+    // }),
+    editUserAvatar: build.mutation({
+      query(body) {
+        console.log(body);
+        return {
+          url: "/user",
+          method: "PATCH",
+          body,
+        };
+      },
+      providesTags: ["User"],
     }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetCurrentUserQuery, useLogoutMutation, useEditUserDataMutation } = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetCurrentUserQuery,
+  useLogoutMutation,
+  useEditUserDataMutation,
+  useEditUserAvatarMutation,
+} = authApi;

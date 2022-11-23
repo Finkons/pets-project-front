@@ -7,12 +7,13 @@ import heart from "img/homePages-photos/desktop-heart-1x.png";
 const Home = () => {
   return (
     <BackgroundImageFix>
+      <HomeImage>
+        <img src={girl} alt="homePhoto" />
+      </HomeImage>
       <Container>
         <ContentContainer>
           <Title>Take good care of your small pets</Title>
         </ContentContainer>
-
-        <HomeImage src={girl} alt="homePhoto" />
         <BackgroundImage src={background} alt="homeBack" />
         {/* <Gradient src={gradient} alt="GradientTop" /> */}
         <Heart src={heart} alt="heart" />

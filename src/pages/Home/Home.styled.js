@@ -72,16 +72,23 @@ export const Title = styled.h1`
   }
 `;
 
-export const HomeImage = styled.img`
-  width: 320px;
-  margin: 0 auto;
+export const HomeImage = styled.div`
+  @media ${p => p.theme.media.mobile} {
+    min-width: 320px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+  }
   @media ${p => p.theme.media.tablet} {
-    width: 699px;
     margin: 0 auto;
   }
   @media ${p => p.theme.media.desktop} {
-    width: 624px;
-    margin: 46px 0 0 0;
+    img{
+      min-width: 80vh;
+    }
+    position: absolute;
+    bottom: 0;
+    right: 100px;
   }
 `;
 

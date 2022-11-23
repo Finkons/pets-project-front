@@ -70,6 +70,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
           title: values.title,
           name: values.name,
           birthday: values.birthday,
+          breed: values.breed,
           sex: values.sex,
           location: values.location,
           price: values.price,

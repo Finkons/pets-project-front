@@ -43,8 +43,9 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
 
   const handleDeleteClick = async () => {
     try {
-      const result = await deleteNotice(id);
-      notifySuccess(result.message);
+      await deleteNotice(id);
+      notifySuccess("Deleted!");
+      handleModalToggle();
     } catch ({ response: { data } }) {
       notifyError(data.message);
     }
@@ -74,11 +75,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
                 }
                 if (category && category !== petData.category) return null;
 
-                return key === "location" ? (
-                  <InfoItem key={key} label={label} data={`${petData[key]?.city || "-"} ${petData[key]?.region || "-"} `} />
-                ) : (
-                  <InfoItem key={key} label={label} data={petData[key]} />
-                );
+                return <InfoItem key={key} label={label} data={petData[key]} />;
               })}
             </ul>
           </div>

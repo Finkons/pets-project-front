@@ -48,14 +48,10 @@ const NoticeCategoryItem = ({ data }) => {
         <InfoWrapper>
           <Title>{data.title}</Title>
           <ul>
-            {NOTICE_ITEM_KEYS.map(({ label, key, category, dataKeys }) => {
+            {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== data.category) return null;
 
-              return key === "location" ? (
-                <InfoItem key={key} label={label} data={`${data[key]?.city || "-"} ${data[key]?.region || "-"} `} />
-              ) : (
-                <InfoItem key={key} label={label} data={data[key]} />
-              );
+              return <InfoItem key={key} label={label} data={data[key]} />;
             })}
           </ul>
         </InfoWrapper>

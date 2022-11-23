@@ -41,18 +41,18 @@ export const noticesApi = createApi({
         method: "GET",
       }),
       providesTags: ["Notices"],
-      }),
-    
+    }),
+
     addNotice: build.mutation({
       query: formData => ({
         url: `/category/addnotice `,
         method: "POST",
         body: formData,
 
-        providesTags: ["Notices"],
+        invalidatesTags: ["Notices"],
       }),
     }),
-   
+
     addNoticeToFavorites: build.mutation({
       query: noticeId => ({
         url: `/${noticeId}`,
@@ -65,7 +65,7 @@ export const noticesApi = createApi({
         url: `/${noticeId}`,
         method: "DELETE",
       }),
-      providesTags: ["Notices"],
+      // invalidatesTags: ["Notices"],
     }),
   }),
 });

@@ -84,7 +84,7 @@ export const HomeImage = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     img{
-      min-width: 80vh;
+      width: 80vh;
     }
     position: absolute;
     bottom: 0;

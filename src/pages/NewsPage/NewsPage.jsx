@@ -13,7 +13,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/news/')
+    fetch('https://pets-api-m614.onrender.com/api/news/')
       .then(res => res.json())
 
       .then(data => this.setState({ data }));

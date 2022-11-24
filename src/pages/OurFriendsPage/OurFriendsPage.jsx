@@ -22,7 +22,7 @@ export default class OurFriendsPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/friends/')
+    fetch('https://pets-api-m614.onrender.com/api/friends/')
       .then(res => res.json())
       // .then(console.log)
 

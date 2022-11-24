@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3001/api/";
+const BASE_URL = "https://pets-api-m614.onrender.com/api/";
 
 export async function addNotice(data) {
   try {

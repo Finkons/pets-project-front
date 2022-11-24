@@ -8,6 +8,7 @@ import Upload from "../../../img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
+import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
 const WizardStep = ({ children }) => children;
 
@@ -56,10 +57,9 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
   const handleFormSubmit = async values => {
     try {
-      const [fileURL] = uploadUrl;
-      console.log(fileURL);
-      console.log(upload);
-
+      // const [fileURL] = uploadUrl;
+      // console.log(fileURL);
+      // console.log(upload);
       let formValues = new FormData();
       formValues.append("avatar", upload);
 
@@ -79,10 +79,12 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       );
 
       await addNotice(formValues); //rtk query hook for api
-      console.log(isAdding); // fetching status here
-      console.log("Form values", values);
-    } catch (error) {
-      console.log(error.message);
+      notifySuccess("Notice has been added!");
+      handleModalToggle();
+      // console.log(isAdding); // fetching status here
+      // console.log("Form values", values);
+    } catch ({ response: { data } }) {
+      notifyError(data.message);
     }
   };
 
@@ -230,10 +232,10 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                   <img src={Upload} alt="upload file" width="48" height="48" />
                 </S.FileButton>
               </S.TextWrap>
-              {uploadUrl === [] ? (
-                <div>
-                  <p>No file attached</p>
-                </div>
+              {uploadUrl.length === 0 ? (
+                <S.Preview>
+                  <p>Please, attach the image</p>
+                </S.Preview>
               ) : (
                 <S.Preview>
                   <img width="140" height="140" src={[...uploadUrl]} alt="avatar" />

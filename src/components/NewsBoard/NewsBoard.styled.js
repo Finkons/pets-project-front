@@ -9,6 +9,6 @@ export const NewBoard = styled.div`
     [Title] {
       justify-content: center;
     }
-    justify-content: start;
+    justify-content: center;
   }
 `;

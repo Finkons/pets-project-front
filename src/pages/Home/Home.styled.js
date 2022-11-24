@@ -75,12 +75,12 @@ export const Title = styled.h1`
 export const HomeImage = styled.div`
   @media ${p => p.theme.media.mobile} {
     min-width: 320px;
-    margin: 0 auto;
     position: absolute;
     bottom: 0;
   }
   @media ${p => p.theme.media.tablet} {
     margin: 0 auto;
+    right: 50px;
   }
   @media ${p => p.theme.media.desktop} {
     img{
@@ -88,7 +88,7 @@ export const HomeImage = styled.div`
     }
     position: absolute;
     bottom: 0;
-    right: 100px;
+    right: 0;
   }
 `;
 

@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import PrivateRoute from "components/Routes/PrivateRoute.js";
 import { ThemeProvider } from "@emotion/react";
+import Loader from 'components/Loader/Loader';
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
 import NewsPage from "pages/NewsPage";
@@ -25,7 +26,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />

@@ -3,11 +3,11 @@ import { Field } from "formik";
 import { CloseButton } from "components/Button";
 
 export const Container = styled.div`
-  top: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: ${p => p.theme.colors.white};
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
   margin-bottom: 50px;
   border-radius: 20px;
 

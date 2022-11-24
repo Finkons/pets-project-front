@@ -2,6 +2,7 @@ import * as Yup from "yup";
 import * as S from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
+// import Loader from "components/Loader";
 import Male from "../../../img/addnotice/male.svg";
 import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
@@ -18,7 +19,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [uploadUrl, setUploadUrl] = useState([]);
   const hiddenFileInput = useRef(null);
 
-  const [addNotice, { isLoading: isAdding }] = useAddNoticeMutation(); // create fn for adding and get status
+  const [addNotice] = useAddNoticeMutation(); // create fn for adding and get status
 
   const initialValues = {
     category: "lost-found",

@@ -7,6 +7,7 @@ import { authApi } from "redux/auth/authApi";
 import { noticesApi } from "redux/notices/noticesApi";
 import { userPetsApi } from "redux/userPets/userPetsApi";
 import { errorHandler } from "./errorHandler";
+import { filterReducer } from "./filter";
 
 const authPersistConfig = {
   key: "auth",
@@ -23,6 +24,7 @@ export const store = configureStore({
     [authSlice.name]: persistedAuthReducer,
     [noticesApi.reducerPath]: noticesApi.reducer,
     [userPetsApi.reducerPath]: userPetsApi.reducer,
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

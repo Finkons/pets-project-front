@@ -42,6 +42,7 @@ export const Button = styled.button`
   border: 1px solid #f59256;
   @media ${p => p.theme.media.tabletDesktop} {
     position: static;
+    z-index: 0;
     width: 45px;
     height: 45px;
   } ;

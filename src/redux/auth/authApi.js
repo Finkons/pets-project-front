@@ -57,26 +57,26 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
-    // editUserAvatar: build.mutation({
-    //   query: file => ({
-    //     url: "/user",
-    //     method: "PATCH",
-    //     credentials: "include",
-    //     body: { file },
-    //   }),
-    // providesTags: ["User"],
-    // }),
     editUserAvatar: build.mutation({
-      query(body) {
-        console.log(body);
-        return {
-          url: "/user",
-          method: "PATCH",
-          body,
-        };
-      },
+      query: file => ({
+        url: "/user",
+        method: "PATCH",
+        credentials: "include",
+        body: { file },
+      }),
       providesTags: ["User"],
     }),
+    // editUserAvatar: build.mutation({
+    //   query(body) {
+    //     console.log(body);
+    //     return {
+    //       url: "/user",
+    //       method: "PATCH",
+    //       body,
+    //     };
+    //   },
+    //   providesTags: ["User"],
+    // }),
   }),
 });
 

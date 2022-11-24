@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import PrivateRoute from "components/Routes/PrivateRoute.js";
+import { PrivateRoute, PublicRoute } from "components/Routes";
 import { ThemeProvider } from "@emotion/react";
 import Loader from "components/Loader/Loader";
 import NoticesPage from "pages/NoticesPage";
@@ -30,8 +30,22 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
+              <Route
+                path="login"
+                element={
+                  <PublicRoute restricted>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="register"
+                element={
+                  <PublicRoute restricted>
+                    <RegisterPage />
+                  </PublicRoute>
+                }
+              />
               <Route
                 path="user"
                 element={

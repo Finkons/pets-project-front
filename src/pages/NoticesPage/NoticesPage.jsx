@@ -1,61 +1,78 @@
 import { Container, Title, Div } from "./NoticesPage.styled";
 import { useEffect, useState } from "react";
-import { fetchPets, fetchFavoritePets, fetchOwnPets } from "api/fetchPets";
+// import { fetchPets, fetchFavoritePets, fetchOwnPets } from "api/fetchPets";
 import NoticesCategoriesNav from "components/NoticesCategoriesNav";
 import NoticesSearch from "components/NoticesSearch";
 import NoticesCategoriesList from "components/NoticesCategoriesList";
 import AddNoticeButton from "components/AddNoticeButton";
 
 import { useParams } from "react-router-dom";
-// import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
-// import { useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
+import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery, useGetUserNoticesQuery } from "redux/notices/noticesApi";
+
 import { useSelector } from "react-redux";
-import authSelectors from "redux/auth/authSelectors";
+// import authSelectors from "redux/auth/authSelectors";
 
 export default function NoticesPage() {
-  const [notices, setNotices] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
-  // console.log(pets);
-  const token = useSelector(authSelectors.getUserToken);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  // const token = useSelector(authSelectors.getUserToken);
   const { categoryName } = useParams();
+  const filter = useSelector(state => state.filter.value);
 
-  // const { data: firstNotices = [], isError, isFetching } = useGetNoticesByCategoryQuery(categoryName);
+  const { data: firstNotices = [] } = useGetNoticesByCategoryQuery(categoryName);
+  const { data: favorite = [] } = useGetFavoriteNoticesQuery();
+  const { data: userNotices = [] } = useGetUserNoticesQuery();
 
-  // const { data: favorite = [] } = useGetFavoriteNoticesQuery();
-  // setNotices(favorite);
-  // creting fn for fetching data by category and status (error, fething)
-  console.log(notices, categoryName);
-
+  // console.log(favorite);
+  console.log(filteredItems);
   useEffect(() => {
-    // if (firstNotices.length > 0) {
-    //   setNotices(firstNotices);
-    // }
-    // if (favorite.length > 0) {
-    //   setNotices(favorite);
-    // }
+    const filterItems = arr => {
+      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter)) : arr;
+    };
+    if (categoryName === "sell" || "for-free" || "lost-found") {
+      setFilteredItems(filterItems(firstNotices));
+    }
     if (categoryName === "favorite") {
-      fetchFavoritePets(token).then(data => setNotices(data));
-      return;
+      setFilteredItems(filterItems(favorite));
     }
     if (categoryName === "own") {
-      fetchOwnPets(token).then(data => setNotices(data));
-      return;
+      setFilteredItems(filterItems(userNotices));
     }
-    fetchPets(categoryName).then(data => setNotices(data));
-  }, [categoryName, token]);
+  }, [categoryName, favorite, filter, firstNotices, setFilteredItems, userNotices]);
 
-  console.log(searchValue);
+  // useEffect(() => {
+  // if (categoryName === "favorite") {
+  //   setNotices(favorite);
+  //   return;
+  // }
+  // if (categoryName === "own") {
+  //   setNotices(userNotices);
+  //   return;
+  // }
+  // setNotices(firstNotices);
+
+  //   if (categoryName === "favorite") {
+  //     fetchFavoritePets(token).then(data => setNotices(data));
+  //     return;
+  //   }
+  //   if (categoryName === "own") {
+  //     fetchOwnPets(token).then(data => setNotices(data));
+  //     return;
+  //   }
+  //   fetchPets(categoryName).then(data => setNotices(data));
+  // }, [categoryName, token]);
+
   // const filterValue = searchValue ? notices.filter(({ title }) => title.toLowerCase().includes(searchValue)) : notices;
   return (
     <Container>
       <Title>Find your favorite pet</Title>
-      <NoticesSearch onChange={value => setSearchValue(value)} />
+      <NoticesSearch />
       <Div>
         <NoticesCategoriesNav />
         <AddNoticeButton />
       </Div>
 
-      <NoticesCategoriesList petsList={notices} />
+      <NoticesCategoriesList petsList={filteredItems} />
     </Container>
   );
 }

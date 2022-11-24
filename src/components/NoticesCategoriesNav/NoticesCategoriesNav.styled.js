@@ -31,7 +31,7 @@ export const Button = styled(NavLink)`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 60px;
 `;
 
 export const Li = styled.li`

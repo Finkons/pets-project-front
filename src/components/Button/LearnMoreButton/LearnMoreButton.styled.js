@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
 export const LearnMoreBtn = styled.button`
+  position: absolute;
+  bottom: 32px;
+  left: 20px;
   width: 248px;
   heigth: 38px;
   padding: 8px 79px;

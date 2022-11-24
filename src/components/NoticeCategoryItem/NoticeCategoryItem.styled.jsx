@@ -7,13 +7,14 @@ export const Container = styled.div`
   width: 280px;
   padding-bottom: 32px;
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 40px 40px;
   background-color: #fff;
   @media ${p => p.theme.media.tablet} {
     width: 336px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 288px;
+    height: 600px;
   }
 `;
 
@@ -88,5 +89,5 @@ export const AddToFavorites = styled(HeartButton)`
 
 export const LearnMore = styled(LearnMoreButton)`
   display: block;
-  margin: 0 auto;
+  margin: 30px;
 `;

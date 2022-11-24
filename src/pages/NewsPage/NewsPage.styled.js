@@ -14,6 +14,8 @@ export const Container = styled.div`
 
   @media ${p => p.theme.media.desktop} {
     padding-top: 38px;
+    width: 1300px;
+    margin: 0 auto;
   }
 `;
 

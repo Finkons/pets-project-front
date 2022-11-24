@@ -2,11 +2,14 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   text-align: center;
-  padding: 0 16px;
+  padding: 0 26px;
+  margin: 0 auto;
   @media ${p => p.theme.media.tablet} {
     // flex-direction: row;
   }
   @media ${p => p.theme.media.desktop} {
+    margin: 0 auto;
+    width: 1300px;
   }
 `;
 

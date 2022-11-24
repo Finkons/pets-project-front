@@ -17,5 +17,5 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  margin: 32px;
+  margin: 16px;
 `;

@@ -9,7 +9,7 @@ import ModalNotice from "components/Modal/ModalNotice";
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
 
-import itemImage from "../../img/pet-photos/notice-item-img.jpg";
+import itemImage from "../../img/pet-photos/default.jpg";
 
 // props = { data: { }}
 const NoticeCategoryItem = ({ data }) => {

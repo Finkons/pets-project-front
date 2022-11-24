@@ -20,7 +20,7 @@ import {
   ActionButtons,
 } from "./ModalNotice.styled";
 
-import modalImage from "../../../img/pet-photos/pet-modal-img.jpg";
+import modalImage from "../../../img/pet-photos/default.jpg";
 
 // props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
 const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorite }) => {

@@ -26,7 +26,7 @@ export const Title = styled.h2`
 
 export const Div = styled.div`
   position: relative;
-
+  padding-bottom: 60px;
   @media ${p => p.theme.media.tabletDesktop} {
     display: flex;
     justify-content: space-between;

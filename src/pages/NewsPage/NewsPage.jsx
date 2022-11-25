@@ -1,38 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Title } from "./NewsPage.styled";
 import NoticesSearch from "components/NoticesSearch";
 import NewsBoard from "components/NewsBoard";
-// import data from "./news-board.json";
+
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { Component } from 'react';
+export default function App() {
+  const [data, setData] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
 
-export default class App extends Component {
-  state = {
-    data: [],
-  };
-
-  componentDidMount() {
-    fetch('https://pets-api-m614.onrender.com/api/news/')
+  const filter = useSelector(state => state.filter.value);
+  useEffect(() => {
+    fetch("https://pets-api-m614.onrender.com/api/news/")
       .then(res => res.json())
+      .then(data => setData(data));
+  }, []);
+  useEffect(() => {
+    const filterItems = arr => {
+      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter)) : arr;
+    };
+    setFilteredItems(filterItems(data));
+  }, [filter, data]);
 
-      .then(data => this.setState({ data }));
-  }
-
-  render() {
-    const { data } = this.state;
-
-
-    // export default function NewsPage() {
-    return (
-      <Container>
-        <Title>
-          News
-        </Title>
-        <NoticesSearch />
-        <NewsBoard events={data} />
-        <Outlet />
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <Title>News</Title>
+      <NoticesSearch />
+      {filteredItems && <NewsBoard events={filteredItems} />}
+      <Outlet />
+    </Container>
+  );
 }

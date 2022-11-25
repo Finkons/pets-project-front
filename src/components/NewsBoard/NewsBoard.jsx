@@ -1,5 +1,5 @@
 import NewsCard from "components/NewsCard";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { NewBoard } from "./NewsBoard.styled";
 
 export const NewsBoard = ({ events }) => {
@@ -12,16 +12,16 @@ export const NewsBoard = ({ events }) => {
   );
 };
 
-NewsBoard.propTypes = {
-  events: PropTypes.arrayOf(
-    PropTypes.exact({
-      _id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    })
-  ),
-};
+// NewsBoard.propTypes = {
+//   events: PropTypes.arrayOf(
+//     PropTypes.exact({
+//       _id: PropTypes.string.isRequired,
+//       title: PropTypes.string.isRequired,
+//       description: PropTypes.string.isRequired,
+//       date: PropTypes.string.isRequired,
+//       url: PropTypes.string.isRequired,
+//     })
+//   ),
+// };
 
 export default NewsBoard;

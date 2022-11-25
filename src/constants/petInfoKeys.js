@@ -82,3 +82,11 @@ export const NOTICE_CATEGORY_LABELS = {
   [NOTICE_CATEGORIES.lostFound.key]: NOTICE_CATEGORIES.lostFound.label,
   [NOTICE_CATEGORIES.forFree.key]: NOTICE_CATEGORIES.forFree.label,
 };
+
+
+export const SUPPORTED_FORMATS =[
+    'image/jpg',
+    'image/jpeg',
+    'image/gif',
+    'image/png',
+  ];

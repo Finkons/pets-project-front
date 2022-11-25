@@ -56,11 +56,7 @@ export const Title = styled.h3`
     line-height: 1.4;
     text-align: center;
   }
-  @media ${p => p.theme.media.tablet} {
-    font-size: 36px;
-    font-weight: 600;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     font-size: 36px;
     font-weight: 600;
   }
@@ -77,12 +73,7 @@ export const Text = styled.p`
     text-align: center;
     letter-spacing: -0.01em;
   }
-  @media ${p => p.theme.media.tablet} {
-    margin-bottom: 28px;
-    margin-bottom: 34px;
-    font-size: 20px;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     margin-bottom: 28px;
     margin-bottom: 34px;
     font-size: 20px;
@@ -93,10 +84,7 @@ export const CategoryWrap = styled.div`
   @media ${p => p.theme.media.mobile} {
     margin-bottom: 16px;
   }
-  @media ${p => p.theme.media.tablet} {
-    margin-bottom: 28px;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     margin-bottom: 28px;
   }
 `;
@@ -120,12 +108,8 @@ export const CategoryLabel = styled.label`
   @media ${p => p.theme.media.mobile} {
     font-size: 14px;
   }
-  @media ${p => p.theme.media.tablet} {
+  @media ${p => p.theme.media.tabletDesktop} {
     font-size: 20px;
-  }
-  @media ${p => p.theme.media.desktop} {
-    font-size: 20px;
-  }
 `;
 
 export const CategoryInput = styled(Field)`
@@ -139,10 +123,7 @@ export const TextWrap = styled.div`
   @media ${p => p.theme.media.mobile} {
     margin-bottom: 16px;
   }
-  @media ${p => p.theme.media.tablet} {
-    margin-bottom: 28px;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     margin-bottom: 28px;
   }
 `;
@@ -165,14 +146,7 @@ export const TextFild = styled(Field)`
     width: 240px;
     height: 40px;
   }
-  @media ${p => p.theme.media.tablet} {
-    width: 448px;
-    height: 48px;
-    ::placeholder {
-      font-size: 16px;
-    }
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     width: 448px;
     height: 48px;
     ::placeholder {
@@ -193,12 +167,7 @@ font-size: 24px;
     font-size: 18px;
 line-height: 1.3;
   }
-  @media ${p => p.theme.media.tablet} {
-    margin-bottom: 12px;
-    font-size: 24px;
-line-height: 1.4;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     margin-bottom: 12px;
     font-size: 24px;
 line-height: 1.4;
@@ -221,11 +190,7 @@ font-weight: 500;
     font-size: 18px;
 line-height: 1.3;
   }
-  @media ${p => p.theme.media.tablet} {
-    font-size: 24px;
-line-height: 1.4;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     font-size: 24px;
 line-height: 1.4;
   }
@@ -238,7 +203,7 @@ export const SexImage = styled.img`
 
 export const SexLabel = styled.label`
 display: inline-block;
-margin-right: 39px;
+margin-right: 60px;
 font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
@@ -247,14 +212,11 @@ div {
 }
   }
   @media ${p => p.theme.media.mobile} {
+    margin-right: 49px;
     font-size: 18px;
 line-height: 1.3;
   }
-  @media ${p => p.theme.media.tablet} {
-    font-size: 20px;
-line-height: 1.4;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     margin-right: 95px;
     font-size: 20px;
 line-height: 1.4;
@@ -296,11 +258,7 @@ export const FileButton = styled.button`
     width: 116px;
     height: 116px;
   }
-  @media ${p => p.theme.media.tablet} {
-    width: 140px;
-    height: 140px;
-  }
-  @media ${p => p.theme.media.desktop} {
+  @media ${p => p.theme.media.tabletDesktop} {
     width: 140px;
     height: 140px;
   }
@@ -328,7 +286,7 @@ export const CommentsFild = styled(Field)`
     height: 40px;
     padding-left: 14px;
   }
-  @media ${p => p.theme.media.tablet} {
+  @media ${p => p.theme.media.tabletDesktop} {
     width: 448px;
     height: 113px;
     padding: 16px 186px 70px 18px;
@@ -336,12 +294,5 @@ export const CommentsFild = styled(Field)`
       font-size: 16px;
     }
   }
-  @media ${p => p.theme.media.desktop} {
-    width: 448px;
-    height: 113px;
-    padding: 16px 186px 70px 18px;
-    ::placeholder {
-      font-size: 16px;
-    }
   }
 `;

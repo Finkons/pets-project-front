@@ -46,7 +46,6 @@ const ModalAddsPet = ({ handleModalToggle }) => {
         "data",
         JSON.stringify({
           breed: values.breed,
-          title: values.title,
           name: values.name,
           birthday: values.birthday,
           location: values.location,
@@ -89,8 +88,8 @@ const ModalAddsPet = ({ handleModalToggle }) => {
             <S.TextWrap type="text" htmlFor="name">
               <S.TextLabel>Name pet</S.TextLabel>
               <S.TextField
-                id="title"
-                name="title"
+                id="name"
+                name="name"
                 placeholder="Type name pet"
                 required
                 minLength="2"

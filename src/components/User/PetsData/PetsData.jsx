@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { TrashButton } from "components/Button";
-import { AddPetButton, PetsItem, PetsImage, PetsItemPara } from "./PetsData.styled";
-import { TitleContainer, Title, InfoContainer, Container } from "../UserCommon.styled";
+import { AddPetButton, PetsItem, PetsImage, PetsItemPara, Plus, ButtonSection, DeleteButton, InfoContainer } from "./PetsData.styled";
+import { TitleContainer, Title, Container } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 
 const PetsData = () => {
@@ -19,10 +18,12 @@ const PetsData = () => {
       <Container>
         <TitleContainer>
           <Title>My pets:</Title>
-          <AddPetButton>
+          <ButtonSection>
             <Title>Add pet </Title>
-            <button onClick={handleModalToggle}>Add</button>
-          </AddPetButton>
+            <AddPetButton onClick={handleModalToggle}>
+              <Plus>+</Plus>
+            </AddPetButton>
+          </ButtonSection>
         </TitleContainer>
         <PetsItem>
           <PetsImage src="https://dummyimage.com/240x240/000/fff" alt="Dummy" />
@@ -31,7 +32,7 @@ const PetsData = () => {
             <PetsItemPara>Date of birth: Lorem, ipsum.</PetsItemPara>
             <PetsItemPara>Breed: Lorem, ipsum.</PetsItemPara>
             <PetsItemPara>Comments: Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, error!</PetsItemPara>
-            <TrashButton />
+            <DeleteButton />
           </InfoContainer>
         </PetsItem>
       </Container>

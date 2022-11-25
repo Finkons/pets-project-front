@@ -1,10 +1,16 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 61px 20px;
+  @media ${p => p.theme.media.tablet} {
+    padding: 88px 31px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    padding: 58px 17px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+  }
 `;
 
 export const Title = styled.h1`

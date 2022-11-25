@@ -32,6 +32,7 @@ export const ContentContainer = styled.div`
 
 export const BackgroundImageFix = styled.div`
   @media ${p => p.theme.media.desktop} {
+    transform: translateY(5px);
     background-image: url(${gradient});
     background-repeat: no-repeat;
     background-size: contain;

@@ -22,7 +22,6 @@ export const Button = styled(NavLink)`
     font-size: 20px;
     height: 50px;
     padding: 10px 28px;
-    margin-bottom: 0;
   }
   @media ${p => p.theme.media.desktop} {
   }
@@ -31,7 +30,7 @@ export const Button = styled(NavLink)`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 `;
 
 export const Li = styled.li`

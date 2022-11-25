@@ -4,7 +4,7 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   min-width: 140px;
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 `;
 
 export const Label = styled.span`

@@ -13,6 +13,7 @@ export const List = styled.ul`
   @media ${p => p.theme.media.desktop} {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 `;
 

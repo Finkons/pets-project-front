@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import * as S from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
-// import Loader from "components/Loader";
+import { SUPPORTED_FORMATS } from "../../../constants/petInfoKeys";
 import Male from "../../../img/addnotice/male.svg";
 import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
@@ -17,6 +17,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [isSell, setIsSell] = useState(false);
   const [upload, setUpload] = useState();
   const [uploadUrl, setUploadUrl] = useState([]);
+  const [isFomatValid, setIsFormatValid] = useState(true);
   const hiddenFileInput = useRef(null);
 
   const [addNotice] = useAddNoticeMutation(); // create fn for adding and get status
@@ -58,9 +59,18 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 
   const handleFormSubmit = async values => {
     try {
-      // const [fileURL] = uploadUrl;
-      // console.log(fileURL);
-      // console.log(upload);
+      if (!upload) {
+        notifyError("Please, load file");
+        return;
+      }
+
+      if (!SUPPORTED_FORMATS.includes(upload.type)) {
+        setIsFormatValid(false);
+        notifyError("Please, load image in .jpg,.jpeg,.png,.gif formats");
+        return;
+      }
+
+      console.log(upload);
       let formValues = new FormData();
       formValues.append("avatar", upload);
 
@@ -206,7 +216,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               <S.TextLabel type="text" htmlFor="location">
                 Location*:
               </S.TextLabel>
-              <S.TextFild id="location" name="location" placeholder="Type location" required />
+              <S.TextFild id="location" name="location" placeholder="Type location" required minLength="2" maxLength="48" />
             </S.TextWrap>
 
             {isSell && (
@@ -233,7 +243,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                   <img src={Upload} alt="upload file" width="48" height="48" />
                 </S.FileButton>
               </S.TextWrap>
-              {uploadUrl.length === 0 ? (
+              {uploadUrl.length === 0 || !isFomatValid ? (
                 <S.Preview>
                   <p>Please, attach the image</p>
                 </S.Preview>

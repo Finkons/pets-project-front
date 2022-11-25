@@ -4,7 +4,6 @@ import NoticesCategoriesNav from "components/NoticesCategoriesNav";
 import NoticesSearch from "components/NoticesSearch";
 import NoticesCategoriesList from "components/NoticesCategoriesList";
 import AddNoticeButton from "components/AddNoticeButton";
-import Loader from "components/Loader";
 import { useParams } from "react-router-dom";
 import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery, useGetUserNoticesQuery } from "redux/notices/noticesApi";
 import { useSelector } from "react-redux";
@@ -14,15 +13,11 @@ export default function NoticesPage() {
   const { categoryName } = useParams();
   const filter = useSelector(state => state.filter.value);
 
-  const {
-    data: firstNotices = [],
-
-    isLoading: firstNoticesLoad,
-  } = useGetNoticesByCategoryQuery(categoryName, {
+  const { data: firstNotices = [] } = useGetNoticesByCategoryQuery(categoryName, {
     skip: categoryName === "favorite" || categoryName === "own",
   });
-  const { data: favorite = [], isLoading: favoriteLoading } = useGetFavoriteNoticesQuery();
-  const { data: userNotices = [], isLoading: userNoticesLoading } = useGetUserNoticesQuery();
+  const { data: favorite = [] } = useGetFavoriteNoticesQuery();
+  const { data: userNotices = [] } = useGetUserNoticesQuery();
 
   useEffect(() => {
     const filterItems = arr => {
@@ -47,7 +42,7 @@ export default function NoticesPage() {
         <NoticesCategoriesNav />
         <AddNoticeButton />
       </Div>
-      {firstNoticesLoad || favoriteLoading || userNoticesLoading ? <Loader /> : <NoticesCategoriesList petsList={filteredItems} />}
+      <NoticesCategoriesList petsList={filteredItems} />
     </Container>
   );
 }

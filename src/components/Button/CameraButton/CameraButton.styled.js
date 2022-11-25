@@ -6,10 +6,8 @@ export const CameraBtn = styled.button`
   margin: 0;
   padding: 0;
   border: 0;
-
   background: #ffffff;
   cursor: pointer;
-
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,

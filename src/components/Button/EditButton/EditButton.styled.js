@@ -6,6 +6,8 @@ export const EditBtn = styled.button`
   margin: 0;
   padding: 0;
   border: 0;
+  padding: 16px;
+  border-radius: 50%;
 
   background: #fdf7f2;
   cursor: pointer;

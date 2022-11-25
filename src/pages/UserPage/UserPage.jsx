@@ -1,7 +1,7 @@
 import { useGetCurrentUserQuery } from "redux/auth/authApi";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { UserData, Logout, PetsData } from "components/User";
+import { UserData, PetsData } from "components/User";
 import { Container } from "./UserPage.styled";
 
 const UserPage = () => {
@@ -10,10 +10,7 @@ const UserPage = () => {
 
   return (
     <Container>
-      <div>
-        <UserData user={user} isError={isError} isFetching={isFetching} />
-        <Logout />
-      </div>
+      <UserData user={user} isError={isError} isFetching={isFetching} />
       <PetsData />
     </Container>
   );

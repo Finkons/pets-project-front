@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { CameraButton, EditButton } from "components/Button";
-import { UserImage, ItemContainer, InfoItem, EditableInfo, Container } from "./UserData.styled";
+import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer } from "./UserData.styled";
 import PropTypes from "prop-types";
-import { InfoContainer } from "../UserCommon.styled";
+import { InfoContainer, Container } from "../UserCommon.styled";
 import { default as UserTitle } from "./UserDataTitle";
 import { notifyWarning } from "helpers/toastNotifications";
 import { useEditUserDataMutation, useEditUserAvatarMutation } from "redux/auth/authApi";
+import { Logout } from "../Logout";
 
 const UserData = ({ user }) => {
   const {
@@ -42,11 +43,13 @@ const UserData = ({ user }) => {
   };
 
   return (
-    <>
+    <Container>
       <UserTitle />
-      <Container>
-        <UserImage src={avatarURL} alt="userImage" />
-        <CameraButton onClick={onUploadClick} inputFile={inputFile} onChangeFile={onChangeFile} />
+      <UserContainer>
+        <PhotoContainer>
+          <UserImage src={avatarURL} alt="userImage" />
+          <CameraButton onClick={onUploadClick} inputFile={inputFile} onChangeFile={onChangeFile} />
+        </PhotoContainer>
         <InfoContainer>
           <ItemContainer>
             <InfoItem>Name:</InfoItem>
@@ -74,8 +77,9 @@ const UserData = ({ user }) => {
             <EditButton onClick={() => editUserData("address")} />
           </ItemContainer>
         </InfoContainer>
-      </Container>
-    </>
+        <Logout />
+      </UserContainer>
+    </Container>
   );
 };
 

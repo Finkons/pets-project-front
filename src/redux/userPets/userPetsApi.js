@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userPetsApi = createApi({
   reducerPath: "userPetsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://pets-api-m614.onrender.com/api/user",
+    baseUrl: "https://pets-api-m614.onrender.com/api",
 
     prepareHeaders: (headers, { getState }) => {
       const { token } = getState().auth;
@@ -17,7 +17,7 @@ export const userPetsApi = createApi({
   endpoints: build => ({
     addPet: build.mutation({
       query: formData => ({
-        url: `/user/addpet `,
+        url: `/user `,
         method: "POST",
         body: formData,
 

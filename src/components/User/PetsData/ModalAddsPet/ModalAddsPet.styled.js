@@ -139,12 +139,11 @@ export const ModalCloseButton = styled(CloseButton)`
 `;
 
 export const Container = styled.div`
-  top: 20px;
   background-color: ${p => p.theme.colors.white};
   position: relative;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 50px;
+  transform: translate(-50%, -50%);
   border-radius: 20px;
 
   @media ${p => p.theme.media.mobile} {

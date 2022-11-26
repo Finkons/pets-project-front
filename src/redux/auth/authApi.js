@@ -49,15 +49,15 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
-    editUserData: build.mutation({
-      query: data => ({
+    updateUserData: build.mutation({
+      query: body => ({
         url: "/user",
         method: "PUT",
-        body: data,
+        body,
       }),
       providesTags: ["User"],
     }),
-    editUserAvatar: build.mutation({
+    updateUserAvatar: build.mutation({
       query: file => ({
         url: "/user",
         method: "PATCH",
@@ -66,17 +66,6 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
-    // editUserAvatar: build.mutation({
-    //   query(body) {
-    //     console.log(body);
-    //     return {
-    //       url: "/user",
-    //       method: "PATCH",
-    //       body,
-    //     };
-    //   },
-    //   providesTags: ["User"],
-    // }),
   }),
 });
 
@@ -85,6 +74,6 @@ export const {
   useLoginMutation,
   useGetCurrentUserQuery,
   useLogoutMutation,
-  useEditUserDataMutation,
-  useEditUserAvatarMutation,
+  useUpdateUserDataMutation,
+  useUpdateUserAvatarMutation,
 } = authApi;

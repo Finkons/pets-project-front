@@ -20,14 +20,14 @@ export const RegisterForm = () => {
     location: "",
     phone: "",
   });
-  const [register, status] = useRegisterMutation();
+  const [register] = useRegisterMutation();
   //status should be used for spinner
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(0);
 
   const makeRequest = formData => {
-    console.log(formData);
+    // console.log(formData);
 
     const { email, password, name, location: address, phone } = formData;
     register({ email, password, name, address, phone })
@@ -64,7 +64,7 @@ export const RegisterForm = () => {
     <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
   ];
 
-  console.log(status);
+  // console.log(status);
 
   return (
     <Container>

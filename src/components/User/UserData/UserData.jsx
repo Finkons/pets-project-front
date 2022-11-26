@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { InfoContainer, Container } from "../UserCommon.styled";
 import { default as UserTitle } from "./UserDataTitle";
 import { notifyWarning } from "helpers/toastNotifications";
-import { useEditUserDataMutation, useEditUserAvatarMutation } from "redux/auth/authApi";
+import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/auth/authApi";
 import { Logout } from "../Logout";
 
 const UserData = ({ user }) => {
@@ -18,18 +18,18 @@ const UserData = ({ user }) => {
     address = "City, City",
   } = user;
 
-  const [updateUserData] = useEditUserDataMutation();
-  const [updateUserAvatar] = useEditUserAvatarMutation();
+  const [updateUserData] = useUpdateUserDataMutation();
+  const [updateUserAvatar] = useUpdateUserAvatarMutation();
 
-  const editUserData = async infoName => {
+  const editUserData = infoName => {
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
     editableInfo.toggleAttribute("contentEditable");
     if (editableInfo.hasAttribute("contentEditable")) {
       // console.log("should change color of background");
     }
     if (!editableInfo.hasAttribute("contentEditable")) {
-      const infoJson = `{"${infoName}": "${editableInfo.innerHTML}"}`;
-      await updateUserData(infoJson);
+      const infoJson = `${infoName}: ${editableInfo.innerHTML}`;
+      updateUserData(infoJson);
     }
   };
 

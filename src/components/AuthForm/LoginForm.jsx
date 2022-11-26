@@ -17,7 +17,7 @@ const FormError = ({ name }) => {
 };
 
 export const LoginForm = () => {
-  const [login, status] = useLoginMutation();
+  const [login] = useLoginMutation();
   //status should be used for spinner
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export const LoginForm = () => {
     actions.resetForm();
   };
 
-  console.log(status);
+  // console.log(status);
 
   return (
     <Container>

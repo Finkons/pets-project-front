@@ -33,13 +33,12 @@ export const PetsItem = styled.div`
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
-  padding: 16px 20px 40px;
+  padding: 16px 20px;
   margin-top: 26px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   @media ${p => p.theme.media.tablet} {
     margin-top: 24px;
     flex-direction: row;
@@ -52,7 +51,6 @@ export const PetsItem = styled.div`
 
 export const PetsImage = styled.img`
   border-radius: 20px;
-  margin-bottom: 20px;
   width: 233px;
   height: 233px;
   @media ${p => p.theme.media.tablet} {

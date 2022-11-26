@@ -16,7 +16,7 @@ export const BurgerBtn = styled.button`
 
   @media ${p => p.theme.media.tablet} {
     display: flex;
-    margin-left: 25px;
+    margin-left: auto;
   }
   // @media ${p => p.theme.media.desktop} {
   //     display: none;

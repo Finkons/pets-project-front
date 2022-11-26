@@ -23,7 +23,7 @@ const Header = () => {
     <>
       <HeaderBar>
         <Logo />
-        {<Navigation isMobile={isMobile} isDesktop={isDesktop} />}
+        {<Navigation isMobile={isMobile} isDesktop={isDesktop} expanded={expanded} />}
         {!isDesktop && <BurgerButton onClick={toggleBurgerMenu} />}
       </HeaderBar>
       {expanded && <BurgerMenu toggleBurgerMenu={toggleBurgerMenu} isMobile={isMobile} />}

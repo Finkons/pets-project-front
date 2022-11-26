@@ -39,7 +39,7 @@ const UserData = ({ user }) => {
   };
   const onChangeFile = e => {
     const file = e.target.files[0];
-    !file ? notifyWarning("Please choose a file") : setTimeout(updateUserAvatar(file), 500);
+    !file && file.type.includes("image") ? notifyWarning("Please choose an image") : updateUserAvatar(file);
   };
 
   return (

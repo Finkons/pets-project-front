@@ -63,7 +63,7 @@ export const UserContainer = styled.div`
   padding-left: 16px;
   padding-top: 20px;
   padding-right: 12px;
-  padding-bottom: 44px;
+  padding-bottom: 20px;
   margin-top: 18px;
   font-size: 12px;
   line-height: 16px;

@@ -4,9 +4,8 @@ export const EditBtn = styled.button`
   display: flex;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   border: 0;
-  padding: 16px;
   border-radius: 50%;
 
   background: #fdf7f2;

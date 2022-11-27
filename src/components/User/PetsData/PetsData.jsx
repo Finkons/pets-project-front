@@ -1,25 +1,15 @@
 import React, { useState } from "react";
-import {
-  TitleContainer,
-  AddPetButton,
-  PetsItem,
-  PetsImage,
-  PetsItemPara,
-  Plus,
-  ButtonSection,
-  DeleteButton,
-  InfoContainer,
-  TitleAdd,
-} from "./PetsData.styled";
+import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./PetsData.styled";
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
+import { PetsUserItem } from "./PetsUserItem";
+// import { ImListNumbered } from "react-icons/im";
 
-import { useDeletePetByIdMutation } from "redux/userPets/userPetsApi";
+// import { useDeletePetByIdMutation } from "redux/userPets/userPetsApi";
 
 const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);
-
-  const [deletePet] = useDeletePetByIdMutation();
+  // const [deletePet] = useDeletePetByIdMutation();
 
   const handleModalToggle = () => {
     setExpanded(prev => {
@@ -40,7 +30,7 @@ const PetsData = ({ pets }) => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
-        {pets?.map(({ avatarURL, breed, comments, name, _id }) => (
+        {/* {pets?.map(({ avatarURL, breed, comments, name, _id }) => (
           <PetsItem key={_id}>
             <PetsImage src={avatarURL} alt="petAvatar" />
             <InfoContainer>
@@ -51,7 +41,14 @@ const PetsData = ({ pets }) => {
               <DeleteButton onClick={() => deletePet(_id)} />
             </InfoContainer>
           </PetsItem>
-        ))}
+        ))} */}
+        {pets ? (
+          pets.map(({ avatarURL, breed, comments, name, _id, date }) => (
+            <PetsUserItem avatarURL={avatarURL} breed={breed} comments={comments} name={name} key={_id} date={date} />
+          ))
+        ) : (
+          <p>No pets</p>
+        )}
       </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}

@@ -3,16 +3,20 @@ import * as S from "./ModalAddsPet.styled";
 import Backdrop from "components/Modal/Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddPetMutation } from "redux/userPets/userPetsApi";
+import { SUPPORTED_FORMATS } from "constants/petInfoKeys";
+import UploadIcon from "../../../../img/addnotice/uploadfile.svg";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
+import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
 const WizardStep = ({ children }) => children;
 
 const ModalAddsPet = ({ handleModalToggle }) => {
   const [upload, setUpload] = useState();
   const [uploadUrl, setUploadUrl] = useState([]);
+  const [isFormatValid, setIsFormatValid] = useState(true);
   const hiddenFileInput = useRef(null);
 
-  const [addPet, { isLoading: isAdding }] = useAddPetMutation(); // create fn for adding and get status
+  const [addPet] = useAddPetMutation(); // create fn for adding and get status
 
   const initialValues = {
     title: "",
@@ -35,9 +39,16 @@ const ModalAddsPet = ({ handleModalToggle }) => {
 
   const handleFormSubmit = async values => {
     try {
-      const [fileURL] = uploadUrl;
-      console.log(fileURL);
-      console.log(upload);
+      if (!upload) {
+        notifyError("Please, load file");
+        return;
+      }
+
+      if (!SUPPORTED_FORMATS.includes(upload.type)) {
+        setIsFormatValid(false);
+        notifyError("Please, load image in .jpg, .jpeg, .png, .gif formats");
+        return;
+      }
 
       let formValues = new FormData();
       formValues.append("avatar", upload);
@@ -53,11 +64,11 @@ const ModalAddsPet = ({ handleModalToggle }) => {
         })
       );
 
-      await addPet(formValues); //rtk query hook for api
-      console.log(isAdding); // fetching status here
-      console.log("Form values", values);
-    } catch (error) {
-      console.log(error.message);
+      await addPet(formValues);
+      notifySuccess("Pet has been added!");
+      handleModalToggle();
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -131,9 +142,9 @@ const ModalAddsPet = ({ handleModalToggle }) => {
                 />
               </S.TextWrap>
               <S.FileButton type="button" onClick={handleUploadClick}>
-                <img src="" alt="upload file" width="48" height="48" />
+                <img src={UploadIcon} alt="upload file" width="48" height="48" />
               </S.FileButton>
-              {uploadUrl === [] ? (
+              {uploadUrl.length === 0 || !isFormatValid ? (
                 <div>
                   <p>No file attached</p>
                 </div>

@@ -3,7 +3,8 @@ import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./P
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
-// import { ImListNumbered } from "react-icons/im";
+import { useDeletePetMutation } from "redux/userPets/userPetsApi";
+import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
 const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);
@@ -12,6 +13,17 @@ const PetsData = ({ pets }) => {
       document.body.className = prev ? "" : "no-scroll";
       return !prev;
     });
+  };
+
+  const [deletePet] = useDeletePetMutation();
+
+  const handleDeleteClick = async id => {
+    try {
+      await deletePet(id);
+      notifySuccess("Deleted!");
+    } catch ({ response: { data } }) {
+      notifyError(data.message);
+    }
   };
 
   return (
@@ -26,13 +38,18 @@ const PetsData = ({ pets }) => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
-        {pets ? (
-          pets.map(({ avatarURL, breed, comments, name, _id, date }) => (
-            <PetsUserItem avatarURL={avatarURL} breed={breed} comments={comments} name={name} key={_id} date={date} />
-          ))
-        ) : (
-          <p>No pets</p>
-        )}
+        {pets?.map(({ avatarURL, breed, comments, name, _id, date }) => (
+          <PetsUserItem
+            avatarURL={avatarURL}
+            breed={breed}
+            comments={comments}
+            name={name}
+            key={_id}
+            id={_id}
+            date={date}
+            deletePet={handleDeleteClick}
+          />
+        ))}
       </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}

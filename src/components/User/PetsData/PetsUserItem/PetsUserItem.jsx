@@ -2,7 +2,7 @@ import React from "react";
 
 import { DeleteButton, InfoContainer, PetsItem, PetsImage, PetsItemPara } from "./PetsUserItem.styled";
 
-const PetsUserItem = ({ avatarURL, breed, comments, name, date }) => {
+const PetsUserItem = ({ avatarURL, breed, comments, name, date, deletePet, id }) => {
   return (
     <PetsItem>
       <PetsImage src={avatarURL} alt="Avatar URL" />
@@ -11,7 +11,7 @@ const PetsUserItem = ({ avatarURL, breed, comments, name, date }) => {
         <PetsItemPara>Date of birth: {date}.</PetsItemPara>
         <PetsItemPara>Breed: {breed}</PetsItemPara>
         <PetsItemPara>Comments: {comments}</PetsItemPara>
-        <DeleteButton />
+        <DeleteButton onClick={() => deletePet(id)} />
       </InfoContainer>
     </PetsItem>
   );

@@ -31,7 +31,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authApi.middleware, noticesApi.middleware, errorHandler),
+    }).concat(authApi.middleware, noticesApi.middleware, userPetsApi.middleware, errorHandler),
 });
 
 export const persistor = persistStore(store);

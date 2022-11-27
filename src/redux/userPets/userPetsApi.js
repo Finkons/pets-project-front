@@ -24,7 +24,15 @@ export const userPetsApi = createApi({
         invalidatesTags: ["UserPets"],
       }),
     }),
+    deletePet: build.mutation({
+      query: petId => ({
+        url: `/${petId} `,
+        method: "POST",
+
+        invalidatesTags: ["UserPets"],
+      }),
+    }),
   }),
 });
 
-export const { useAddPetMutation } = userPetsApi;
+export const { useAddPetMutation, useDeletePetMutation } = userPetsApi;

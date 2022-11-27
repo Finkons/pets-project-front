@@ -29,13 +29,8 @@ export const NavHeader = styled.div`
 
 export const Link = styled(NavLink)`
   margin-bottom: 40px;
-
   cursor: pointer;
-  &:hover {
-    color: ${p => p.theme.colors.accent};
-    text-decoration: underline;
-  }
-  &:active {
+  &.active {
     color: ${p => p.theme.colors.accent};
     text-decoration: underline;
   }

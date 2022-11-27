@@ -67,8 +67,7 @@ export const LogoutBtn = styled.button`
   background-color: #ffffff;
   cursor: pointer;
 
-  &:active,
-  hover {
+  &:hover {
     color: #ffffff;
     background-color: #f59256;
   }
@@ -80,6 +79,10 @@ export const LogoutBtn = styled.button`
   @media ${p => p.theme.media.desktop} {
     height: 44px;
     margin: 0 10px;
+    // &:hover {
+    //   color: #ffffff;
+    //   background-color: #f59256;
+    // }
   }
 `;
 

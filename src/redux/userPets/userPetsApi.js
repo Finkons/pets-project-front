@@ -20,19 +20,17 @@ export const userPetsApi = createApi({
         url: `/user `,
         method: "POST",
         body: formData,
-
-        invalidatesTags: ["UserPets"],
       }),
+      invalidatesTags: ["UserPets"],
     }),
-    deletePet: build.mutation({
-      query: petId => ({
-        url: `/${petId} `,
-        method: "POST",
-
-        invalidatesTags: ["UserPets"],
+    deletePetById: build.mutation({
+      query: id => ({
+        url: `/user/${id} `,
+        method: "DELETE",
       }),
+      invalidatesTags: ["UserPets"],
     }),
   }),
 });
 
-export const { useAddPetMutation, useDeletePetMutation } = userPetsApi;
+export const { useAddPetMutation, useDeletePetByIdMutation } = userPetsApi;

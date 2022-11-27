@@ -27,6 +27,7 @@ export const authSlice = createSlice({
       state.userId = payload ? payload._id : state.userId;
       state.name = payload ? payload.name : state.name;
       state.email = payload ? payload.email : state.email;
+      state.userPets = payload ? payload.pets : state.userPets;
       state.isLoggedIn = payload ? true : false;
     });
     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, state => {

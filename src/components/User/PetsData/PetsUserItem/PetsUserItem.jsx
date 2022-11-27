@@ -11,8 +11,8 @@ const PetsUserItem = ({ avatarURL, breed, comments, name, date, deletePet, id })
         <PetsItemPara>Date of birth: {date}.</PetsItemPara>
         <PetsItemPara>Breed: {breed}</PetsItemPara>
         <PetsItemPara>Comments: {comments}</PetsItemPara>
-        <DeleteButton onClick={() => deletePet(id)} />
       </InfoContainer>
+      <DeleteButton onClick={() => deletePet(id)} />
     </PetsItem>
   );
 };

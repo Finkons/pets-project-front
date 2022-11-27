@@ -29,8 +29,8 @@ export const RegisterForm = () => {
   const makeRequest = formData => {
     // console.log(formData);
 
-    const { email, password, name, location: address, phone } = formData;
-    register({ email, password, name, address, phone })
+    const { email, password, confirmPassword, name, location: address, phone } = formData;
+    register({ email, password, confirmPassword, name, address, phone })
       .unwrap()
       .then(() => {
         navigate("/user");

@@ -3,19 +3,19 @@ import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./P
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
-import { useDeletePetMutation } from "redux/userPets/userPetsApi";
+import { useDeletePetByIdMutation } from "redux/userPets/userPetsApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
 const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);
+  const [deletePet] = useDeletePetByIdMutation();
+
   const handleModalToggle = () => {
     setExpanded(prev => {
       document.body.className = prev ? "" : "no-scroll";
       return !prev;
     });
   };
-
-  const [deletePet] = useDeletePetMutation();
 
   const handleDeleteClick = async id => {
     try {

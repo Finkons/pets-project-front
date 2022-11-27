@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 import { TrashButton } from "components/Button";
 
 export const PetsItem = styled.div`
+  position: relative;
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
+
   padding: 16px 20px;
   margin-top: 32px;
   display: flex;
@@ -14,11 +16,14 @@ export const PetsItem = styled.div`
   @media ${p => p.theme.media.tablet} {
     margin-top: 24px;
     flex-direction: row;
+    justify-content: flex-start;
     padding: 20px;
   }
   @media ${p => p.theme.media.desktop} {
     margin-top: 24px;
     flex-direction: row;
+    justify-content: flex-start;
+    width: 900px;
   }
 `;
 
@@ -26,7 +31,6 @@ export const PetsImage = styled.img`
   border-radius: 20px;
   width: 233px;
   height: 233px;
-  margin-bottom: 20px;
   @media ${p => p.theme.media.tablet} {
     border-radius: 40px;
     margin-right: 32px;
@@ -67,34 +71,31 @@ export const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  @media ${p => p.theme.media.desktop} {
-  }
+  margin-top: 20px;
 `;
 
 export const DeleteButton = styled(TrashButton)`
   position: absolute;
-  right: 30px;
-  top: -18px;
-  width: 0px;
   border: none;
+  bottom: 120px;
   font: inherit;
   background: rgba(17, 17, 17, 0.6);
   background-color: transparent;
+  right: 10px;
   @media ${p => p.theme.media.tablet} {
     background-color: #fdf7f2;
     backdrop-filter: blur(2px);
     // border: 1px solid red;
     width: 44px;
-    right: 10px;
-    top: 5px;
+    top: 20px;
+    right: 20px;
   }
   @media ${p => p.theme.media.desktop} {
     background-color: #fdf7f2;
     backdrop-filter: blur(2px);
     // border: 1px solid red;
     width: 44px;
-    right: 10px;
-    top: -20px;
+    top: 20px;
+    right: 20px;
   }
 `;

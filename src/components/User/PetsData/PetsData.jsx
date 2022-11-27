@@ -3,7 +3,7 @@ import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./P
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
-import { ImListNumbered } from "react-icons/im";
+// import { ImListNumbered } from "react-icons/im";
 
 const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);

@@ -11,7 +11,7 @@ const UserPage = () => {
   return (
     <Container>
       <UserData user={user} isError={isError} isFetching={isFetching} />
-      <PetsData />
+      <PetsData pets={user.pets} />
     </Container>
   );
 };

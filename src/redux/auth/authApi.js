@@ -49,17 +49,25 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    // updateUserData: build.mutation({
+    //   query: (address, birthday, email, name, phone) => ({
+    //     url: "/user",
+    //     method: "PATCH",
+    //     body: {
+    //       name,
+    //       email,
+    //       birthday,
+    //       address,
+    //       phone,
+    //     },
+    //   }),
+    //   providesTags: ["User"],
+    // }),
     updateUserData: build.mutation({
-      query: (address, birthday, email, name, phone) => ({
+      query: ({ ...data }) => ({
         url: "/user",
         method: "PATCH",
-        body: {
-          name,
-          email,
-          birthday,
-          address,
-          phone,
-        },
+        body: data,
       }),
       providesTags: ["User"],
     }),

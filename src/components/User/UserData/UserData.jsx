@@ -28,7 +28,7 @@ const UserData = ({ user }) => {
       // console.log("should change color of background");
     }
     if (!editableInfo.hasAttribute("contentEditable")) {
-      const infoJson = `${infoName}: ${editableInfo.innerHTML}`;
+      const infoJson = `${editableInfo.innerHTML}`;
       updateUserData(infoJson);
     }
   };

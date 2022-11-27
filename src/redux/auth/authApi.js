@@ -65,10 +65,9 @@ export const authApi = createApi({
     }),
     updateUserAvatar: build.mutation({
       query: file => ({
-        url: "/user",
+        url: "/user/avatar",
         method: "PATCH",
-        credentials: "include",
-        body: { file },
+        body: file,
       }),
       providesTags: ["User"],
     }),

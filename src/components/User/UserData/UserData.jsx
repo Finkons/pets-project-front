@@ -39,7 +39,9 @@ const UserData = ({ user }) => {
   };
   const onChangeFile = e => {
     const file = e.target.files[0];
-    !file && file.type.includes("image") ? notifyWarning("Please choose an image") : updateUserAvatar(file);
+    let uploadedFile = new FormData();
+    uploadedFile.append("avatar", file);
+    !file && file.type.includes("image") ? notifyWarning("Please choose an image") : updateUserAvatar(uploadedFile);
   };
 
   return (

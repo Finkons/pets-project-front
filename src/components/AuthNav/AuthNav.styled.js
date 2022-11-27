@@ -35,15 +35,11 @@ export const AuthBtn = styled.button`
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-  &:active {
+  &:hover,
+  active {
     color: #ffffff;
     background-color: #f59256;
   }
-  &:hover {
-    color: #ffffff;
-    background-color: #f59256;
-  }
-
   @media ${p => p.theme.media.tablet} {
     margin-right: auto;
     margin-left: 12px;
@@ -52,18 +48,19 @@ export const AuthBtn = styled.button`
     padding: 10px 28px;
     text-align: center;
     font-size: 20px;
-    &:active {
+    &:hover,
+    active {
       color: #ffffff;
       background-color: #f59256;
     }
   }
   @media ${p => p.theme.media.desktop} {
-    // margin-right: 20px;
     height: 50px;
     padding: 10px 28px;
     text-align: center;
     font-size: 20px;
-    &:active {
+    &:hover,
+    active {
       color: #ffffff;
       background-color: #f59256;
     }

@@ -11,6 +11,25 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 47px;
+  @media ${p => p.theme.media.desktop} {
+    margin-top: 0;
+  }
+`;
+
+export const TitleAdd = styled.div`
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  @media ${p => p.theme.media.tablet} {
+    font-size: 20px;
+    line-height: 27px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    font-size: 20px;
+    line-height: 27px;
+  }
 `;
 
 // export const Container = styled.div`
@@ -52,6 +71,7 @@ export const PetsItem = styled.div`
   @media ${p => p.theme.media.tablet} {
     margin-top: 24px;
     flex-direction: row;
+    padding: 20px;
   }
   @media ${p => p.theme.media.desktop} {
     margin-top: 24px;
@@ -88,8 +108,8 @@ export const PetsItemPara = styled.p`
   letter-spacing: 0.04em;
   color: #000000;
   margin-bottom: 12px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 22px;
   @media ${p => p.theme.media.tablet} {
     font-size: 18px;
     line-height: 25px;
@@ -105,6 +125,8 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media ${p => p.theme.media.desktop} {
+  }
 `;
 
 export const DeleteButton = styled(TrashButton)`

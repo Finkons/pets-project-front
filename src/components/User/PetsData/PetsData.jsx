@@ -1,6 +1,17 @@
 import React, { useState } from "react";
-import { TitleContainer, AddPetButton, PetsItem, PetsImage, PetsItemPara, Plus, ButtonSection, DeleteButton, InfoContainer } from "./PetsData.styled";
-import { Title, Container } from "../UserCommon.styled";
+import {
+  TitleContainer,
+  AddPetButton,
+  PetsItem,
+  PetsImage,
+  PetsItemPara,
+  Plus,
+  ButtonSection,
+  DeleteButton,
+  InfoContainer,
+  TitleAdd,
+} from "./PetsData.styled";
+import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 
 const PetsData = () => {
@@ -15,11 +26,11 @@ const PetsData = () => {
 
   return (
     <>
-      <Container>
+      <ContainerPets>
         <TitleContainer>
           <Title>My pets:</Title>
           <ButtonSection>
-            <Title>Add pet </Title>
+            <TitleAdd>Add pet </TitleAdd>
             <AddPetButton onClick={handleModalToggle}>
               <Plus>+</Plus>
             </AddPetButton>
@@ -35,7 +46,7 @@ const PetsData = () => {
             <DeleteButton />
           </InfoContainer>
         </PetsItem>
-      </Container>
+      </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}
     </>

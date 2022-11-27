@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  padding: 61px 20px;
+  // padding: 61px 20px;
   @media ${p => p.theme.media.tablet} {
-    padding: 88px 31px;
+    // padding: 88px 31px;
   }
   @media ${p => p.theme.media.desktop} {
-    padding: 58px 17px;
+    padding-top: 58px;
+    margin: auto;
     display: flex;
-    gap: 32px;
-    justify-content: center;
+    // gap: 32px;
+    // justify-content: center;
+    width: 1280px;
   }
 `;
 

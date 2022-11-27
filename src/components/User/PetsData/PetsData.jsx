@@ -14,8 +14,12 @@ import {
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 
-const PetsData = () => {
+import { useDeletePetByIdMutation } from "redux/userPets/userPetsApi";
+
+const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const [deletePet] = useDeletePetByIdMutation();
 
   const handleModalToggle = () => {
     setExpanded(prev => {
@@ -36,16 +40,18 @@ const PetsData = () => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
-        <PetsItem>
-          <PetsImage src="https://dummyimage.com/240x240/000/fff" alt="Dummy" />
-          <InfoContainer>
-            <PetsItemPara>Name: Lorem.</PetsItemPara>
-            <PetsItemPara>Date of birth: Lorem, ipsum.</PetsItemPara>
-            <PetsItemPara>Breed: Lorem, ipsum.</PetsItemPara>
-            <PetsItemPara>Comments: Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, error!</PetsItemPara>
-            <DeleteButton />
-          </InfoContainer>
-        </PetsItem>
+        {pets?.map(({ avatarURL, breed, comments, name, _id }) => (
+          <PetsItem key={_id}>
+            <PetsImage src={avatarURL} alt="petAvatar" />
+            <InfoContainer>
+              <PetsItemPara>Name: {name}.</PetsItemPara>
+              <PetsItemPara>Date of birth: Lorem, ipsum.</PetsItemPara>
+              <PetsItemPara>Breed: {breed}.</PetsItemPara>
+              <PetsItemPara>Comments: {comments}</PetsItemPara>
+              <DeleteButton onClick={() => deletePet(_id)} />
+            </InfoContainer>
+          </PetsItem>
+        ))}
       </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}

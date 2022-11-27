@@ -68,7 +68,7 @@ export const noticesApi = createApi({
         url: `/${noticeId}`,
         method: "DELETE",
       }),
-      // invalidatesTags: ["Notices"],
+      invalidatesTags: ["Notices"],
     }),
   }),
 });

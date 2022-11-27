@@ -1,22 +1,12 @@
 import React, { useState } from "react";
-import {
-  TitleContainer,
-  AddPetButton,
-  PetsItem,
-  PetsImage,
-  PetsItemPara,
-  Plus,
-  ButtonSection,
-  DeleteButton,
-  InfoContainer,
-  TitleAdd,
-} from "./PetsData.styled";
+import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./PetsData.styled";
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
+import { PetsUserItem } from "./PetsUserItem";
+import { ImListNumbered } from "react-icons/im";
 
-const PetsData = () => {
+const PetsData = ({ pets }) => {
   const [expanded, setExpanded] = useState(false);
-
   const handleModalToggle = () => {
     setExpanded(prev => {
       document.body.className = prev ? "" : "no-scroll";
@@ -36,16 +26,13 @@ const PetsData = () => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
-        <PetsItem>
-          <PetsImage src="https://dummyimage.com/240x240/000/fff" alt="Dummy" />
-          <InfoContainer>
-            <PetsItemPara>Name: Lorem.</PetsItemPara>
-            <PetsItemPara>Date of birth: Lorem, ipsum.</PetsItemPara>
-            <PetsItemPara>Breed: Lorem, ipsum.</PetsItemPara>
-            <PetsItemPara>Comments: Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, error!</PetsItemPara>
-            <DeleteButton />
-          </InfoContainer>
-        </PetsItem>
+        {pets ? (
+          pets.map(({ avatarURL, breed, comments, name, _id, date }) => (
+            <PetsUserItem avatarURL={avatarURL} breed={breed} comments={comments} name={name} key={_id} date={date} />
+          ))
+        ) : (
+          <p>No pets</p>
+        )}
       </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}

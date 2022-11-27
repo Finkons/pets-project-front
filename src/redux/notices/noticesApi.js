@@ -19,6 +19,7 @@ export const noticesApi = createApi({
       query: category => ({
         url: `/category/${category}`,
         method: "GET",
+        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),
@@ -26,12 +27,14 @@ export const noticesApi = createApi({
       query: () => ({
         url: `/owner/favorite`,
         method: "GET",
+        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),
     getUserNotices: build.query({
       query: userId => ({
         url: `/owner/${userId}`,
+        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),

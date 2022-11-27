@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
-import { useAddNoticeToFavoritesMutation } from "redux/notices/noticesApi";
+import { useAddNoticeToFavoritesMutation, useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery } from "redux/notices/noticesApi";
 import { NOTICE_ITEM_KEYS, NOTICE_CATEGORY_LABELS } from "constants/petInfoKeys";
 import { notifyWarning, notifyError } from "helpers/toastNotifications";
 import ModalNotice from "components/Modal/ModalNotice";
-
+import { useParams } from "react-router-dom";
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
 
@@ -16,7 +16,11 @@ const NoticeCategoryItem = ({ data }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userId = useSelector(authSelectors.getUserId);
   const [addNoticeToFavorites, { isLoading }] = useAddNoticeToFavoritesMutation();
-
+  const { refetch } = useGetFavoriteNoticesQuery();
+  const { categoryName } = useParams();
+  const { refetch: categoryRefetch } = useGetNoticesByCategoryQuery(categoryName, {
+    skip: categoryName === "favorite" || categoryName === "own",
+  });
   const [expanded, setExpanded] = useState(false);
   const [favorite, setFavorite] = useState(!isLoading && data.fans.includes(userId));
 
@@ -32,6 +36,8 @@ const NoticeCategoryItem = ({ data }) => {
     try {
       await addNoticeToFavorites(data._id);
       setFavorite(!favorite);
+      refetch();
+      categoryRefetch();
     } catch (error) {
       notifyError(error);
     }

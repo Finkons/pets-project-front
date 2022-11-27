@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { AddPetButton, PetsItem, PetsImage, PetsItemPara, Plus, ButtonSection, DeleteButton, InfoContainer } from "./PetsData.styled";
-import { TitleContainer, Title, Container } from "../UserCommon.styled";
+import { TitleContainer, AddPetButton, PetsItem, PetsImage, PetsItemPara, Plus, ButtonSection, DeleteButton, InfoContainer } from "./PetsData.styled";
+import { Title, Container } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 
 const PetsData = () => {

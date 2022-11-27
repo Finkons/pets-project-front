@@ -6,6 +6,16 @@ export const ButtonSection = styled.div`
   align-items: center;
   gap: 15px;
 `;
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 47px;
+`;
+
+// export const Container = styled.div`
+//   margin-top: 200px;
+// `;
 
 export const AddPetButton = styled.button`
   z-index: 10;
@@ -34,7 +44,7 @@ export const PetsItem = styled.div`
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
   padding: 16px 20px;
-  margin-top: 26px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,13 +63,18 @@ export const PetsImage = styled.img`
   border-radius: 20px;
   width: 233px;
   height: 233px;
+  margin-bottom: 20px;
   @media ${p => p.theme.media.tablet} {
     border-radius: 40px;
     margin-right: 32px;
+    width: 161px;
+    height: 161px;
   }
   @media ${p => p.theme.media.desktop} {
     border-radius: 40px;
     margin-right: 32px;
+    width: 240px;
+    height: 240px;
   }
 `;
 
@@ -72,7 +87,7 @@ export const PetsItemPara = styled.p`
   display: flex;
   letter-spacing: 0.04em;
   color: #000000;
-  margin-top: 12px;
+  margin-bottom: 12px;
   font-size: 12px;
   line-height: 16px;
   @media ${p => p.theme.media.tablet} {
@@ -94,6 +109,27 @@ export const InfoContainer = styled.div`
 
 export const DeleteButton = styled(TrashButton)`
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 30px;
+  top: -18px;
+  width: 0px;
+  border: none;
+  font: inherit;
+  background: rgba(17, 17, 17, 0.6);
+  background-color: transparent;
+  @media ${p => p.theme.media.tablet} {
+    background-color: #fdf7f2;
+    backdrop-filter: blur(2px);
+    // border: 1px solid red;
+    width: 44px;
+    right: 10px;
+    top: 5px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    background-color: #fdf7f2;
+    backdrop-filter: blur(2px);
+    // border: 1px solid red;
+    width: 44px;
+    right: 10px;
+    top: -20px;
+  }
 `;

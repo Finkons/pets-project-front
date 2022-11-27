@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const CameraBtn = styled.button`
   display: flex;
   align-items: center;
-  margin: 0;
+  margin-top: 12px;
+  margin-bottom: 36px;
   padding: 0;
   border: 0;
   background: #ffffff;

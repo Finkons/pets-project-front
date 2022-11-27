@@ -17,7 +17,7 @@ const UserNav = () => {
       </NavLink>
       <NavLink>
         <LogoutBtn type="button" onClick={() => logout()}>
-          Sign out
+          Log Out
         </LogoutBtn>
       </NavLink>
     </Div>

@@ -8,6 +8,7 @@ export const NextBtn = styled.button`
   border: 2px solid #f59256;
   border-radius: 40px;
   cursor: pointer;
+  // margin-bottom: 24px;
 
   font-family: "Manrope";
   font-style: normal;

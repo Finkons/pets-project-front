@@ -8,26 +8,23 @@ export const TitleContainer = styled.div`
 `;
 
 export const TextLabel = styled.label`
- display:inline-block;
-margin-bottom: 8px;
- font-family: 'Manrope';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;             
-  }
-  @media ${p => p.theme.media.mobile} {
-    font-size: 18px;
-line-height: 1.3;
-  }
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+
   @media ${p => p.theme.media.tablet} {
     margin-bottom: 12px;
     font-size: 24px;
-line-height: 1.4;
+    line-height: 1.4;
   }
   @media ${p => p.theme.media.desktop} {
     margin-bottom: 12px;
     font-size: 24px;
-line-height: 1.4;
+    line-height: 1.4;
   }
 `;
 
@@ -56,7 +53,7 @@ export const Text = styled.p`
 
 export const Title = styled.h3`
   @media ${p => p.theme.media.mobile} {
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     font-family: "Manrope";
     font-style: normal;
     font-weight: 500;
@@ -125,6 +122,8 @@ export const ModalCloseButton = styled(CloseButton)`
     position: absolute;
     top: 20px;
     right: 20px;
+    width: 34px;
+    height: 34px;
   }
   @media ${p => p.theme.media.tablet} {
     position: absolute;
@@ -145,12 +144,10 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
+  width: 280px;
+  max-height: ${props => (props.extended === true ? "855px" : "800px")};
+  padding: 40px 20px;
 
-  @media ${p => p.theme.media.mobile} {
-    width: 280px;
-    max-height: ${props => (props.extended === true ? "855px" : "800px")};
-    padding: 40px 20px;
-  }
   @media ${p => p.theme.media.tablet} {
     width: 608px;
     max-height: ${props => (props.extended === true ? "1044px" : "885px")};

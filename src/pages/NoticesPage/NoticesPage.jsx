@@ -17,11 +17,11 @@ export default function NoticesPage() {
     skip: categoryName === "favorite" || categoryName === "own",
   });
   const { data: favorite = [] } = useGetFavoriteNoticesQuery();
-  const { data: userNotices = [] } = useGetUserNoticesQuery();
+  const { data: userNotices = [], refetch } = useGetUserNoticesQuery();
 
   useEffect(() => {
     const filterItems = arr => {
-      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter)) : arr;
+      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter.toLowerCase())) : arr;
     };
     if (categoryName === "sell" || "for-free" || "lost-found") {
       setFilteredItems(filterItems(firstNotices));
@@ -39,7 +39,7 @@ export default function NoticesPage() {
       <Title>Find your favorite pet</Title>
       <NoticesSearch />
       <Div>
-        <NoticesCategoriesNav />
+        <NoticesCategoriesNav onRefetch={refetch} />
         <AddNoticeButton />
       </Div>
       <NoticesCategoriesList petsList={filteredItems} />

@@ -2,7 +2,7 @@ import { Button, List, Li } from "./NoticesCategoriesNav.styled";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 
-export default function NoticesCategoriesNav() {
+export default function NoticesCategoriesNav({ onRefetch }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <List>
@@ -21,7 +21,9 @@ export default function NoticesCategoriesNav() {
             <Button to="/notices/favorite">Favorite ads</Button>
           </Li>
           <Li>
-            <Button to="/notices/own">My ads</Button>
+            <Button onClick={() => onRefetch()} to="/notices/own">
+              My ads
+            </Button>
           </Li>
         </>
       )}

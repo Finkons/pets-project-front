@@ -186,14 +186,21 @@ export const FileButton = styled.button`
 
 export const FileWrap = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  flex-direction: column;
+  @media ${p => p.theme.media.tablet} {
+    flex-direction: row;
+  }
+  @media ${p => p.theme.media.desktop} {
+    flex-direction: row;
+  }
 `;
 
 export const Preview = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 40px;
   img {
     border-radius: 20px;
   }

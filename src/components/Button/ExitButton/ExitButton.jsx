@@ -6,7 +6,7 @@ export const ExitButton = ({ onClick }) => {
     <>
       <ExitBtn onClick={onClick}>
         <Icon.Exit />
-        <Text children={"Log out"}></Text>
+        <Text children={"Log Out"}></Text>
       </ExitBtn>
     </>
   );

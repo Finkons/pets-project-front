@@ -4,6 +4,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  // margin-top: 47px;
+  @media ${p => p.theme.media.tablet} {
+    justify-content: left;
+  }
+
   @media ${p => p.theme.media.desktop} {
     justify-content: flex-start;
   }
@@ -13,6 +18,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  // margin-top: 47px;
 `;
 
 export const Title = styled.h1`

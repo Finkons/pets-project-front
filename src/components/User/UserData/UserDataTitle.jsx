@@ -1,9 +1,9 @@
-import { TitleContainer, Title } from "../UserCommon.styled";
+import { TitleContainer, UserTitle } from "../UserCommon.styled";
 
 const UserDataTitle = () => {
   return (
     <TitleContainer>
-      <Title>My information:</Title>
+      <UserTitle>My information:</UserTitle>
     </TitleContainer>
   );
 };

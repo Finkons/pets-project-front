@@ -7,7 +7,7 @@ export const UserImage = styled.img`
 
 export const ItemContainer = styled.div`
   display: flex;
-  // justify-content: space-between;
+  // justify-content: start;
 `;
 
 export const InfoItem = styled.p`
@@ -45,7 +45,7 @@ export const EditableInfo = styled.p`
   font-size: 12px;
   line-height: 16px;
   text-align: left;
-  margin: 0 auto;
+  margin: auto;
   @media ${p => p.theme.media.tablet} {
     font-size: 18px;
     line-height: 25px;
@@ -53,12 +53,13 @@ export const EditableInfo = styled.p`
   @media ${p => p.theme.media.desktop} {
     font-size: 18px;
     line-height: 25px;
+    justify-self: center;
   }
 `;
 
 export const UserContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   align-items: center;
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
@@ -75,9 +76,12 @@ export const UserContainer = styled.div`
     flex-direction: row-reverse;
     margin-top: 40px;
     padding: 24px 40px;
+    width: 100%;
   }
   @media ${p => p.theme.media.desktop} {
     margin-top: 24px;
+
+    // margin-right: 20px;
   }
 `;
 
@@ -92,5 +96,13 @@ export const PhotoContainer = styled.div`
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 36px;
+  }
+`;
+
+export const Wrapper = styled.div`
+  @media ${p => p.theme.media.tablet} {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 auto;
   }
 `;

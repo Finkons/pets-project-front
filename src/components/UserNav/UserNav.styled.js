@@ -8,7 +8,7 @@ export const Div = styled.div`
   }
   @media ${p => p.theme.media.desktop} {
     display: flex;
-    margin-left: 366px;
+    margin-left: auto;
   }
 `;
 

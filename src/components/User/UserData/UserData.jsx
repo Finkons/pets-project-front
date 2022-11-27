@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { CameraButton, EditButton } from "components/Button";
-import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer } from "./UserData.styled";
+import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
 import PropTypes from "prop-types";
 import { InfoContainer, Container } from "../UserCommon.styled";
 import { default as UserTitle } from "./UserDataTitle";
@@ -46,37 +46,40 @@ const UserData = ({ user }) => {
     <Container>
       <UserTitle />
       <UserContainer>
-        <PhotoContainer>
-          <UserImage src={avatarURL} alt="userImage" />
-          <CameraButton onClick={onUploadClick} inputFile={inputFile} onChangeFile={onChangeFile} />
-        </PhotoContainer>
-        <InfoContainer>
-          <ItemContainer>
-            <InfoItem>Name:</InfoItem>
-            <EditableInfo className="userEditable_name">{name}</EditableInfo>
-            <EditButton onClick={() => editUserData("name")} />
-          </ItemContainer>
-          <ItemContainer>
-            <InfoItem>Email:</InfoItem>
-            <EditableInfo className="userEditable_email">{email}</EditableInfo>
-            <EditButton onClick={() => editUserData("email")} />
-          </ItemContainer>
-          <ItemContainer>
-            <InfoItem>Birthday:</InfoItem>
-            <EditableInfo className="userEditable_birthday">{birthday}</EditableInfo>
-            <EditButton onClick={() => editUserData("birthday")} />
-          </ItemContainer>
-          <ItemContainer>
-            <InfoItem>Phone:</InfoItem>
-            <EditableInfo className="userEditable_phone">{phone}</EditableInfo>
-            <EditButton onClick={() => editUserData("phone")} />
-          </ItemContainer>
-          <ItemContainer>
-            <InfoItem>City:</InfoItem>
-            <EditableInfo className="userEditable_address">{address}</EditableInfo>
-            <EditButton onClick={() => editUserData("address")} />
-          </ItemContainer>
-        </InfoContainer>
+        <Wrapper>
+          <PhotoContainer>
+            <UserImage src={avatarURL} alt="userImage" />
+            <CameraButton onClick={onUploadClick} inputFile={inputFile} onChangeFile={onChangeFile} />
+          </PhotoContainer>
+
+          <InfoContainer>
+            <ItemContainer>
+              <InfoItem>Name:</InfoItem>
+              <EditableInfo className="userEditable_name">{name}</EditableInfo>
+              <EditButton onClick={() => editUserData("name")} />
+            </ItemContainer>
+            <ItemContainer>
+              <InfoItem>Email:</InfoItem>
+              <EditableInfo className="userEditable_email">{email}</EditableInfo>
+              <EditButton onClick={() => editUserData("email")} />
+            </ItemContainer>
+            <ItemContainer>
+              <InfoItem>Birthday:</InfoItem>
+              <EditableInfo className="userEditable_birthday">{birthday}</EditableInfo>
+              <EditButton onClick={() => editUserData("birthday")} />
+            </ItemContainer>
+            <ItemContainer>
+              <InfoItem>Phone:</InfoItem>
+              <EditableInfo className="userEditable_phone">{phone}</EditableInfo>
+              <EditButton onClick={() => editUserData("phone")} />
+            </ItemContainer>
+            <ItemContainer>
+              <InfoItem>City:</InfoItem>
+              <EditableInfo className="userEditable_address">{address}</EditableInfo>
+              <EditButton onClick={() => editUserData("address")} />
+            </ItemContainer>
+          </InfoContainer>
+        </Wrapper>
         <Logout />
       </UserContainer>
     </Container>

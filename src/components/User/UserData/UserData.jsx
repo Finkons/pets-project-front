@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { CameraButton, EditButton } from "components/Button";
+import { CameraButton, EditButton, DoneButton } from "components/Button";
 import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
 import PropTypes from "prop-types";
 import { InfoContainer, Container } from "../UserCommon.styled";
@@ -10,23 +10,47 @@ import { Logout } from "../Logout";
 
 const UserData = ({ user }) => {
   const { avatarURL, name, email, birthday, phone, address } = user;
-  const [currentInfo, setCurrentInfo] = useState();
+  const [currentInfo, setCurrentInfo] = useState({});
+
+  let editBtnHiddenArray = [false, false, false, false, false, false];
+  let doneBtnHiddenArray = [true, true, true, true, true, true];
+  const [editBtnHidden, setEditBtnHidden] = useState(editBtnHiddenArray);
+  const [doneBtnHidden, setDoneBtnHidden] = useState(doneBtnHiddenArray);
   const [updateUserData] = useUpdateUserDataMutation();
   const [updateUserAvatar] = useUpdateUserAvatarMutation();
 
-  const editUserData = async infoName => {
+  const swapToDone = () => {
+    setEditBtnHidden(true);
+    setDoneBtnHidden(false);
+  };
+  const swapToEdit = () => {
+    setEditBtnHidden(false);
+    setDoneBtnHidden(true);
+  };
+
+  const editUserData = infoName => {
+    swapToDone();
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
-    editableInfo.toggleAttribute("contentEditable");
+    editableInfo.setAttribute("contentEditable", true);
     const newData = { [infoName]: editableInfo.innerHTML };
 
     if (editableInfo.hasAttribute("contentEditable")) {
       setCurrentInfo(newData);
       editableInfo.focus();
     }
+  };
+
+  const submitUserData = async infoName => {
+    swapToEdit();
+    const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
+    editableInfo.removeAttribute("contentEditable");
+    const newData = { [infoName]: editableInfo.innerHTML };
+
     if (!editableInfo.hasAttribute("contentEditable")) {
       if (JSON.stringify(currentInfo) !== JSON.stringify(newData)) {
         const result = await updateUserData(newData);
         if (result.error) {
+          swapToDone();
           editableInfo.setAttribute("contentEditable", true);
           editableInfo.focus();
         }
@@ -59,7 +83,8 @@ const UserData = ({ user }) => {
             <ItemContainer>
               <InfoItem>Name:</InfoItem>
               <EditableInfo className="userEditable_name">{name}</EditableInfo>
-              <EditButton onClick={() => editUserData("name")} />
+              <EditButton hidden={editBtnHidden} onClick={() => editUserData("name")} />
+              <DoneButton hidden={doneBtnHidden} onClick={() => submitUserData("name")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Email:</InfoItem>

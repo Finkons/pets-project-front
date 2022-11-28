@@ -1,9 +1,9 @@
 import { EditBtn } from "./EditButton.styled";
 import Icon from "../icons";
 
-export const EditButton = ({ onClick }) => {
+export const EditButton = ({ hidden, onClick }) => {
   return (
-    <EditBtn onClick={onClick}>
+    <EditBtn hidden={hidden} className="editBtn" onClick={onClick}>
       <Icon.Edit />
     </EditBtn>
   );

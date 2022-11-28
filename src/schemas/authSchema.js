@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const passwordRules = /^(?!.* ).{7,32}$/;
-const locationRules = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32},(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32}$/;
+const addressRules = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32},(?=.*[a-zа-я])(?=.*[A-ZА-Я]).{3,32}$/;
 const phoneRules = /[+380]+[0-9].{11}/;
 
 export const loginSchema = yup.object().shape({
@@ -30,6 +30,6 @@ export const stepOneRegistSchema = yup.object().shape({
 
 export const stepTwoRegistSchema = yup.object().shape({
   name: yup.string().required("This field is required"),
-  location: yup.string().matches(locationRules, { message: "Please enter a string in format city, region" }).required("This field is required"),
+  address: yup.string().matches(addressRules, { message: "Please enter a string in format city, region" }).required("This field is required"),
   phone: yup.string().min(8).matches(phoneRules, { message: "Please enter a string in format +380XXXXXXXXX" }).required("This field is required"),
 });

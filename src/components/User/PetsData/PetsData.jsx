@@ -3,7 +3,7 @@ import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./P
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
-import { useDeletePetByIdMutation } from "redux/userPets/userPetsApi";
+import { useDeletePetByIdMutation } from "redux/auth/authApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
 const PetsData = ({ pets }) => {

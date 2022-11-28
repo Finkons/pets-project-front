@@ -55,7 +55,7 @@ const CategoryLabel = styled.div`
   width: 158px;
   padding: 6px 20px;
   background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(2px);
   border-radius: 0 20px 20px 0;
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.heading};

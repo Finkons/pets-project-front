@@ -13,6 +13,7 @@ export const noticesApi = createApi({
       return headers;
     },
   }),
+  forceRefetch: true,
   tagTypes: ["Notices"],
   endpoints: build => ({
     getNoticesByCategory: build.query({

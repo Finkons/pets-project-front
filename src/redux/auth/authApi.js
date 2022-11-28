@@ -65,6 +65,21 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    addPet: build.mutation({
+      query: formData => ({
+        url: `/user `,
+        method: "POST",
+        body: formData,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    deletePetById: build.mutation({
+      query: id => ({
+        url: `/user/${id} `,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
@@ -75,4 +90,6 @@ export const {
   useLogoutMutation,
   useUpdateUserDataMutation,
   useUpdateUserAvatarMutation,
+  useAddPetMutation,
+  useDeletePetByIdMutation,
 } = authApi;

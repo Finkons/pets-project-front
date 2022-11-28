@@ -57,7 +57,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
     }
   };
 
-  const handleFormSubmit = async values => {
+  const handleFormSubmit = async (values, { resetForm }) => {
     try {
       if (!upload) {
         notifyError("Please, load file");
@@ -70,7 +70,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
         return;
       }
 
-      console.log(upload);
       let formValues = new FormData();
       formValues.append("avatar", upload);
 
@@ -88,7 +87,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
           comments: values.comments,
         })
       );
-
+      resetForm({ values: "" });
       await addNotice(formValues); //rtk query hook for api
       notifySuccess("Notice has been added!");
       handleModalToggle();
@@ -115,6 +114,10 @@ const AddNoticeModal = ({ handleModalToggle }) => {
             onSubmit={handlePriceField}
             validationSchema={Yup.object({
               category: Yup.string().required("required"),
+              birthday: Yup.string().matches(
+                /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$/,
+                "Date format should be DD.MM.YYYY"
+              ),
             })}
           >
             <S.Text>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </S.Text>
@@ -170,7 +173,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 name="birthday"
                 placeholder="Type date of birth"
                 required
-                pattern="^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$"
+                pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$"
                 title="Birthday should be in format dd.mm.yyyy"
               />
             </S.TextWrap>

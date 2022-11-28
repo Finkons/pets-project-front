@@ -25,6 +25,12 @@ export const ModalBtn = styled.button`
   fill: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
   stroke: ${props => (props.authorized ? "#f59256" : "rgba(17, 17, 17, 0.1)")};
 
+   @media ${props => props.theme.media.mobile} {
+    :not(:last-child) {
+    margin-bottom: 15px;
+  }
+  }
+  
   @media ${props => props.theme.media.tabletDesktop} {
     width: 180px;
     height: 44px;

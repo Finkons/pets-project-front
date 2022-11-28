@@ -6,6 +6,7 @@ export const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all 700ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: ${p => p.theme.colors.white};
   position: relative;
   margin-bottom: 50px;
@@ -13,7 +14,7 @@ export const Container = styled.div`
 
   @media ${p => p.theme.media.mobile} {
     width: 280px;
-    max-height: ${props => (props.extended === true ? "855px" : "800px")};
+    max-height: ${props => (props.extended === true ? "955px" : "900px")};
     padding: 40px 20px;
   }
   @media ${p => p.theme.media.tablet} {
@@ -29,6 +30,7 @@ export const Container = styled.div`
 `;
 
 export const ModalCloseButton = styled(CloseButton)`
+  cursor: pointer;
   @media ${p => p.theme.media.mobile} {
     position: absolute;
     top: 20px;
@@ -91,6 +93,7 @@ export const CategoryWrap = styled.div`
 
 export const CategoryLabel = styled.label`
   display: inline-block;
+  cursor: pointer;
   margin-right: 15px;
   :not(:last-child) {
     margin-bottom: 15px;
@@ -102,6 +105,10 @@ export const CategoryLabel = styled.label`
   border-radius: 40px;
   font-style: normal;
   line-height: 1.3;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.07);
+  }
   border: 2px solid ${p => p.theme.colors.accent};
   font-family: ${p => p.theme.fonts.body};
 
@@ -203,10 +210,15 @@ export const SexImage = styled.img`
 
 export const SexLabel = styled.label`
 display: inline-block;
+cursor: pointer;
 margin-right: 60px;
 font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
+transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.07);
+  }
 div {
   margin-bottom:23px;
 }
@@ -250,6 +262,10 @@ export const FileButton = styled.button`
   display: flex;
   border-radius: 20px;
   border: none;
+  transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.07);
+  }
   background: ${p => p.theme.colors.background};
   img {
     margin: auto;

@@ -12,8 +12,9 @@ export const ButtonsWrap = styled.div`
 
 export const Wrap = styled.div`
   display: flex;
+  justify-content: space-between;
+
   @media ${props => props.theme.media.tabletDesktop} {
     margin-left: 20px;
   }
-  justify-content: space-between;
 `;

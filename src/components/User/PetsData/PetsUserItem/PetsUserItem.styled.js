@@ -9,7 +9,7 @@ export const PetsItem = styled.div`
 
   padding: 16px 20px 40px 20px;
   margin-top: 32px;
-  // display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

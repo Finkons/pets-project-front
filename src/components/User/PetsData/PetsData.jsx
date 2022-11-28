@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd } from "./PetsData.styled";
+import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd, NoAdds } from "./PetsData.styled";
 import { Title, ContainerPets } from "../UserCommon.styled";
 import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
 import { useDeletePetByIdMutation } from "redux/auth/authApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
 
-const PetsData = ({ pets }) => {
+const PetsData = ({ pets, isFetching }) => {
   const [expanded, setExpanded] = useState(false);
   const [deletePet] = useDeletePetByIdMutation();
 
@@ -38,6 +38,7 @@ const PetsData = ({ pets }) => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
+        {!isFetching && !pets.length && <NoAdds>You haven't any ads</NoAdds>}
         {pets?.map(({ avatarURL, breed, comments, name, _id, birthday }) => (
           <PetsUserItem
             avatarURL={avatarURL}

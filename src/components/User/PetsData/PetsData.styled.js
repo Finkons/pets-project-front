@@ -56,3 +56,10 @@ export const Plus = styled.p`
   text-align: center;
   margin-bottom: 6px;
 `;
+
+export const NoAdds = styled.p`
+  font-weight: 700;
+  font-size: 35px;
+  text-align: center;
+  padding-top: 55px;
+`;

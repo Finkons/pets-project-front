@@ -1,4 +1,4 @@
-import { Container, Title, Div } from "./NoticesPage.styled";
+import { Container, Title, Div, NoAdds } from "./NoticesPage.styled";
 import { useEffect, useState } from "react";
 import NoticesCategoriesNav from "components/NoticesCategoriesNav";
 import NoticesSearch from "components/NoticesSearch";
@@ -7,6 +7,7 @@ import AddNoticeButton from "components/AddNoticeButton";
 import { useParams } from "react-router-dom";
 import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery, useGetUserNoticesQuery } from "redux/notices/noticesApi";
 import { useSelector } from "react-redux";
+// import Loader from "components/Loader";
 
 export default function NoticesPage() {
   const [filteredItems, setFilteredItems] = useState([]);
@@ -18,19 +19,23 @@ export default function NoticesPage() {
   });
   const { data: favorite = [] } = useGetFavoriteNoticesQuery();
   const { data: userNotices = [], refetch } = useGetUserNoticesQuery();
-
+  console.log(filteredItems);
   useEffect(() => {
-    const filterItems = arr => {
-      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter.toLowerCase())) : arr;
-    };
-    if (categoryName === "sell" || "for-free" || "lost-found") {
-      setFilteredItems(filterItems(firstNotices));
-    }
-    if (categoryName === "favorite") {
-      setFilteredItems(filterItems(favorite));
-    }
-    if (categoryName === "own") {
-      setFilteredItems(filterItems(userNotices));
+    try {
+      const filterItems = arr => {
+        return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter.toLowerCase())) : arr;
+      };
+      if (categoryName === "sell" || "for-free" || "lost-found") {
+        setFilteredItems(filterItems(firstNotices));
+      }
+      if (categoryName === "favorite") {
+        setFilteredItems(filterItems(favorite));
+      }
+      if (categoryName === "own") {
+        setFilteredItems(filterItems(userNotices));
+      }
+    } catch (error) {
+      console.log(error);
     }
   }, [categoryName, favorite, filter, firstNotices, setFilteredItems, userNotices]);
 
@@ -42,7 +47,9 @@ export default function NoticesPage() {
         <NoticesCategoriesNav onRefetch={refetch} />
         <AddNoticeButton />
       </Div>
+      {!filteredItems.length && <NoAdds>There are no ads</NoAdds>}
       <NoticesCategoriesList petsList={filteredItems} />
+      {/* {isLoading || favoriteLoading || adsLoading ? <Loader /> : <NoticesCategoriesList petsList={filteredItems} />} */}
     </Container>
   );
 }

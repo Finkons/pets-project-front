@@ -63,7 +63,7 @@ export const authApi = createApi({
         method: "PATCH",
         body: file,
       }),
-      providesTags: ["User"],
+      invalidatesTags: ["User"],
     }),
     addPet: build.mutation({
       query: formData => ({

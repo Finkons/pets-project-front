@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { CameraButton, EditButton } from "components/Button";
 import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
 import PropTypes from "prop-types";
@@ -9,27 +9,28 @@ import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/au
 import { Logout } from "../Logout";
 
 const UserData = ({ user }) => {
-  const {
-    avatarURL = "https://dummyimage.com/233x233",
-    name = "Name",
-    email = "mail@mail.ua",
-    birthday = "00.00.0000",
-    phone = "+3800000000",
-    address = "City, City",
-  } = user;
-
+  const { avatarURL, name, email, birthday, phone, address } = user;
+  const [currentInfo, setCurrentInfo] = useState();
   const [updateUserData] = useUpdateUserDataMutation();
   const [updateUserAvatar] = useUpdateUserAvatarMutation();
 
-  const editUserData = infoName => {
+  const editUserData = async infoName => {
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
     editableInfo.toggleAttribute("contentEditable");
+    const newData = { [infoName]: editableInfo.innerHTML };
+
     if (editableInfo.hasAttribute("contentEditable")) {
-      // console.log("should change color of background");
+      setCurrentInfo(newData);
+      editableInfo.focus();
     }
     if (!editableInfo.hasAttribute("contentEditable")) {
-      const infoJson = `${editableInfo.innerHTML}`;
-      updateUserData(infoJson);
+      if (JSON.stringify(currentInfo) !== JSON.stringify(newData)) {
+        const result = await updateUserData(newData);
+        if (result.error) {
+          editableInfo.setAttribute("contentEditable", true);
+          editableInfo.focus();
+        }
+      }
     }
   };
 

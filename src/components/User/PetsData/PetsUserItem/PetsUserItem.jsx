@@ -7,7 +7,7 @@ const PetsUserItem = ({ avatarURL, breed, comments, name, date, deletePet, id })
     <PetsItem>
       <PetsImage src={avatarURL} alt="Avatar URL" />
       <InfoContainer>
-        <PetsItemPara>Name: {name}.</PetsItemPara>
+        <PetsItemPara>Name: {name}</PetsItemPara>
         <PetsItemPara>Date of birth: {date}.</PetsItemPara>
         <PetsItemPara>Breed: {breed}</PetsItemPara>
         <PetsItemPara>Comments: {comments}</PetsItemPara>

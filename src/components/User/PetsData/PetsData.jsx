@@ -38,7 +38,7 @@ const PetsData = ({ pets }) => {
             </AddPetButton>
           </ButtonSection>
         </TitleContainer>
-        {pets?.map(({ avatarURL, breed, comments, name, _id, date }) => (
+        {pets?.map(({ avatarURL, breed, comments, name, _id, birthday }) => (
           <PetsUserItem
             avatarURL={avatarURL}
             breed={breed}
@@ -46,7 +46,7 @@ const PetsData = ({ pets }) => {
             name={name}
             key={_id}
             id={_id}
-            date={date}
+            date={birthday}
             deletePet={handleDeleteClick}
           />
         ))}

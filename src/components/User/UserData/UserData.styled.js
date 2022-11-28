@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 export const UserImage = styled.img`
   border-radius: 50%;
   width: 233px;
+  margin: auto;
+  @media ${p => p.theme.media.tablet} {
+  }
+  @media ${p => p.theme.media.desktop} {
+  }
 `;
 
 export const ItemContainer = styled.div`

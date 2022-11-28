@@ -7,23 +7,26 @@ export const PetsItem = styled.div`
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
 
-  padding: 16px 20px;
+  padding: 16px 20px 40px 20px;
   margin-top: 32px;
-  display: flex;
+  // display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media ${p => p.theme.media.tablet} {
     margin-top: 24px;
     flex-direction: row;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: start;
     padding: 20px;
   }
   @media ${p => p.theme.media.desktop} {
     margin-top: 24px;
     flex-direction: row;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: start;
     width: 900px;
+    padding: 20px;
   }
 `;
 
@@ -57,6 +60,8 @@ export const PetsItemPara = styled.p`
   margin-bottom: 12px;
   font-size: 14px;
   line-height: 22px;
+  // width: 235px;
+  overflow: hidden;
   @media ${p => p.theme.media.tablet} {
     font-size: 18px;
     line-height: 25px;
@@ -72,6 +77,13 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: 100%;
+  @media ${p => p.theme.media.tablet} {
+    margin-top: 0px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    margin-top: 0px;
+  }
 `;
 
 export const DeleteButton = styled(TrashButton)`
@@ -81,7 +93,8 @@ export const DeleteButton = styled(TrashButton)`
   font: inherit;
   background: rgba(17, 17, 17, 0.6);
   background-color: transparent;
-  right: 10px;
+  right: 20px;
+  top: 260px;
   @media ${p => p.theme.media.tablet} {
     background-color: #fdf7f2;
     backdrop-filter: blur(2px);

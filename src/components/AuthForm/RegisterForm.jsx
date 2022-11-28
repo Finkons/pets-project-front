@@ -17,7 +17,7 @@ export const RegisterForm = () => {
     password: "",
     confirmPassword: "",
     name: "",
-    location: "",
+    address: "",
     phone: "",
   });
   const [register] = useRegisterMutation();
@@ -29,7 +29,7 @@ export const RegisterForm = () => {
   const makeRequest = formData => {
     // console.log(formData);
 
-    const { email, password, confirmPassword, name, location: address, phone } = formData;
+    const { email, password, confirmPassword, name, address, phone } = formData;
     register({ email, password, confirmPassword, name, address, phone })
       .unwrap()
       .then(() => {
@@ -133,9 +133,9 @@ const StepTwo = props => {
             <Input type="text" name="name" id="name" placeholder="Name" />
             <FormError name="name" />
           </label>
-          <label htmlFor="location">
-            <Input type="text" name="location" id="location" placeholder="City, region" />
-            <FormError name="location" />
+          <label htmlFor="address">
+            <Input type="text" name="address" id="address" placeholder="City, region" />
+            <FormError name="address" />
           </label>
           <label htmlFor="phone">
             <Input type="tel" name="phone" id="phone" placeholder="Mobile phone" />

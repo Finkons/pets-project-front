@@ -32,3 +32,8 @@ export const Div = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const NoAdds = styled.p`
+  font-weight: 700;
+  font-size: 32px;
+`;

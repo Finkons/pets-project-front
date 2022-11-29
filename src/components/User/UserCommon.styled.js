@@ -36,6 +36,7 @@ export const ContainerPets = styled.div`
 
   @media ${p => p.theme.media.desktop} {
     justify-content: flex-start;
+    width: 100%;
     margin-right: 16px;
   }
 `;

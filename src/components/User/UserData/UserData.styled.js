@@ -4,34 +4,39 @@ export const UserImage = styled.img`
   border-radius: 50%;
   width: 233px;
   margin: auto;
+  box-shadow: 0px 4px 14px 0px #0000001c;
+
   @media ${p => p.theme.media.tablet} {
   }
   @media ${p => p.theme.media.desktop} {
   }
 `;
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.li`
   display: flex;
-  // justify-content: start;
+  align-items: center;
+  font-family: "Manrope";
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 16.39px;
 `;
 
 export const InfoItem = styled.p`
-  font-family: "Manrope";
-  font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
   display: flex;
-  letter-spacing: 0.04em;
-  color: #000000;
-  font-size: 12px;
-  line-height: 16px;
+  flex-grow: 1;
+  width: 56px;
+  margin-right: min(26px);
 
   @media ${p => p.theme.media.tablet} {
+    margin-right: min(36px);
+    width: 83px;
     font-size: 18px;
     line-height: 25px;
   }
   @media ${p => p.theme.media.desktop} {
+    margin-right: min(24px);
+    width: 83px;
     font-size: 18px;
     line-height: 25px;
   }
@@ -39,54 +44,62 @@ export const InfoItem = styled.p`
 
 export const EditableInfo = styled.p`
   width: 159px;
-  font-family: "Manrope";
-  font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #000000;
-  border-radius: 45px;
-  font-size: 12px;
-  line-height: 16px;
-  text-align: left;
-  margin: auto;
+  padding-left: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  &:read-write {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 17px;
+    border: 1px solid rgba(245, 146, 86, 0.5);
+    border-radius: 40px;
+  }
   @media ${p => p.theme.media.tablet} {
+    width: 216px;
+    padding-left: 12px;
     font-size: 18px;
     line-height: 25px;
   }
   @media ${p => p.theme.media.desktop} {
+    width: 216px;
+    padding-left: 12px;
+    justify-self: center;
     font-size: 18px;
     line-height: 25px;
-    justify-self: center;
   }
 `;
 
 export const UserContainer = styled.div`
-  // display: flex;
-  // flex-direction: column;
   align-items: center;
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
-  padding-left: 16px;
   padding-top: 20px;
-  padding-right: 12px;
   padding-bottom: 20px;
+  padding-left: 16px;
+  padding-right: 12px;
   margin-top: 18px;
   font-size: 12px;
   line-height: 16px;
 
   @media ${p => p.theme.media.tablet} {
-    flex-direction: row-reverse;
     margin-top: 40px;
-    padding: 24px 40px;
-    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 32px;
+    padding-right: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
   @media ${p => p.theme.media.desktop} {
     margin-top: 24px;
-
-    // margin-right: 20px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;
 
@@ -95,9 +108,14 @@ export const PhotoContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   @media ${p => p.theme.media.tablet} {
-    // margin-right: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: -50px;
   }
   @media ${p => p.theme.media.desktop} {
+    display: flex;
+    flex-direction: row;
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 36px;
@@ -107,7 +125,10 @@ export const PhotoContainer = styled.div`
 export const Wrapper = styled.div`
   @media ${p => p.theme.media.tablet} {
     display: flex;
+    align-items: flex-end;
     flex-direction: row-reverse;
-    margin: 0 auto;
+    justify-content: space-between;
+  }
+  @media ${p => p.theme.media.desktop} {
   }
 `;

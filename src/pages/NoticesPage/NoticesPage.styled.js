@@ -5,7 +5,7 @@ export const Container = styled.div`
   padding: 0 26px;
   margin: 0 auto;
   @media ${p => p.theme.media.tablet} {
-    // flex-direction: row;
+    width: 700px;
   }
   @media ${p => p.theme.media.desktop} {
     margin: 0 auto;

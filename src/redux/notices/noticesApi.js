@@ -13,14 +13,12 @@ export const noticesApi = createApi({
       return headers;
     },
   }),
-  // forceRefetch: true,
-  tagTypes: ["Notices"],
+  tagTypes: ["Notices", "Own"],
   endpoints: build => ({
     getNoticesByCategory: build.query({
       query: category => ({
         url: `/category/${category}`,
         method: "GET",
-        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),
@@ -28,14 +26,12 @@ export const noticesApi = createApi({
       query: () => ({
         url: `/owner/favorite`,
         method: "GET",
-        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),
     getUserNotices: build.query({
       query: userId => ({
         url: `/owner/${userId}`,
-        refetchOnMountOrArgChange: true,
       }),
       providesTags: ["Notices"],
     }),
@@ -52,9 +48,8 @@ export const noticesApi = createApi({
         url: `/category/addnotice `,
         method: "POST",
         body: formData,
-
-        invalidatesTags: ["Notices"],
       }),
+      invalidatesTags: ["Notices"],
     }),
 
     addNoticeToFavorites: build.mutation({
@@ -62,7 +57,7 @@ export const noticesApi = createApi({
         url: `/${noticeId}`,
         method: "PUT",
       }),
-      providesTags: ["Notices"],
+      invalidatesTags: ["Notices"],
     }),
     deleteNotice: build.mutation({
       query: noticeId => ({

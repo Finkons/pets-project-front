@@ -12,6 +12,14 @@ export const ExitBtn = styled.button`
   text-align: center;
   justify-content: center;
   margin-top: 0px;
+  margin-left: auto;
+
+  @media ${p => p.theme.media.tablet} {
+    margin-left: initial;
+  }
+  @media ${p => p.theme.media.desktop} {
+    margin-left: initial;
+  }
 `;
 
 export const Text = styled.p`

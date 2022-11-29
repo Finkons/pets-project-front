@@ -9,8 +9,13 @@ export const Container = styled.div`
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   border-radius: 0px 0px 40px 40px;
   background-color: #fff;
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.02);
+  }
   @media ${p => p.theme.media.tablet} {
-    width: 336px;
+    width: 288px;
+    height: 600px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 288px;

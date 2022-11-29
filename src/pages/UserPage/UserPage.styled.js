@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  // padding: 61px 20px;
   @media ${p => p.theme.media.tablet} {
     // padding: 88px 31px;
   }

@@ -28,6 +28,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
   const [petData, setPetData] = useState({});
   const currentUserEmail = useSelector(authSelectors.getUserEmail);
   const ownPet = useMemo(() => petData?.owner?.email === currentUserEmail, [currentUserEmail, petData?.owner?.email]);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const [deleteNotice] = useDeleteNoticeMutation();
 
@@ -58,7 +59,9 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
 
   const handleAddToFavorites = async () => {
     await handleAddToFavoritesClick();
-    notifySuccess("Added to favorites!");
+    if (isLoggedIn) {
+      notifySuccess("Added to favorites!");
+    }
   };
 
   return (

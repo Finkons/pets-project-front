@@ -17,8 +17,7 @@ const ModalAddsPet = ({ handleModalToggle }) => {
   const [isFormatValid, setIsFormatValid] = useState(true);
   const hiddenFileInput = useRef(null);
 
-  const [addPet, status] = useAddPetMutation();
-  console.log("status", status);
+  const [addPet, { isLoading }] = useAddPetMutation();
 
   const initialValues = {
     title: "",
@@ -173,6 +172,7 @@ const ModalAddsPet = ({ handleModalToggle }) => {
             </S.CommentsWrap>
           </WizardStep>
         </Wizard>
+        {isLoading && <Loader />}
       </S.Container>
     </Backdrop>
   );

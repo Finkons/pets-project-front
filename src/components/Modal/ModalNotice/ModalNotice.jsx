@@ -21,16 +21,17 @@ import {
 } from "./ModalNotice.styled";
 
 import modalImage from "../../../img/pet-photos/default.jpg";
+import Loader from "components/Loader/Loader";
 
 // props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
 const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorite }) => {
-  const { data, isSuccess } = useGetNoticeByIdQuery(id);
+  const { data, isLoading, isSuccess } = useGetNoticeByIdQuery(id);
   const [petData, setPetData] = useState({});
   const currentUserEmail = useSelector(authSelectors.getUserEmail);
   const ownPet = useMemo(() => petData?.owner?.email === currentUserEmail, [currentUserEmail, petData?.owner?.email]);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  const [deleteNotice] = useDeleteNoticeMutation();
+  const [deleteNotice, { isLoading: isDeleting }] = useDeleteNoticeMutation();
 
   useEffect(() => {
     if (!isSuccess) return;
@@ -92,6 +93,7 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
             Contact
           </ModalButton>
         </ActionButtons>
+        {(isLoading || isDeleting) && <Loader />}
       </Container>
     </Backdrop>
   );

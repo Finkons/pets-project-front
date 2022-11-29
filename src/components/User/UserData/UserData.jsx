@@ -8,28 +8,32 @@ import { notifyWarning } from "helpers/toastNotifications";
 import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/auth/authApi";
 import { Logout } from "../Logout";
 
+const swapButtons = (toWhat, infoName) => {
+  if (toWhat === "toDone") {
+    const editBtn = document.getElementsByClassName(`editBtn_${infoName}`).item(0);
+    editBtn.classList.add("editBtn_hidden");
+    const doneBtn = document.getElementsByClassName(`doneBtn_${infoName}`).item(0);
+    doneBtn.classList.remove("doneBtn_hidden");
+  }
+
+  if (toWhat === "toEdit") {
+    const editBtn = document.getElementsByClassName(`editBtn_${infoName}`).item(0);
+    editBtn.classList.remove("editBtn_hidden");
+    const doneBtn = document.getElementsByClassName(`doneBtn_${infoName}`).item(0);
+    doneBtn.classList.add("doneBtn_hidden");
+  }
+};
+
 const UserData = ({ user }) => {
   const { avatarURL, name, email, birthday, phone, address } = user;
   const [currentInfo, setCurrentInfo] = useState({});
 
-  let editBtnHiddenArray = [false, false, false, false, false, false];
-  let doneBtnHiddenArray = [true, true, true, true, true, true];
-  const [editBtnHidden, setEditBtnHidden] = useState(editBtnHiddenArray);
-  const [doneBtnHidden, setDoneBtnHidden] = useState(doneBtnHiddenArray);
   const [updateUserData] = useUpdateUserDataMutation();
   const [updateUserAvatar] = useUpdateUserAvatarMutation();
 
-  const swapToDone = () => {
-    setEditBtnHidden(true);
-    setDoneBtnHidden(false);
-  };
-  const swapToEdit = () => {
-    setEditBtnHidden(false);
-    setDoneBtnHidden(true);
-  };
-
   const editUserData = infoName => {
-    swapToDone();
+    swapButtons("toDone", infoName);
+
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
     editableInfo.setAttribute("contentEditable", true);
     const newData = { [infoName]: editableInfo.innerHTML };
@@ -41,7 +45,8 @@ const UserData = ({ user }) => {
   };
 
   const submitUserData = async infoName => {
-    swapToEdit();
+    swapButtons("toEdit", infoName);
+
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
     editableInfo.removeAttribute("contentEditable");
     const newData = { [infoName]: editableInfo.innerHTML };
@@ -50,7 +55,7 @@ const UserData = ({ user }) => {
       if (JSON.stringify(currentInfo) !== JSON.stringify(newData)) {
         const result = await updateUserData(newData);
         if (result.error) {
-          swapToDone();
+          swapButtons("toDone", infoName);
           editableInfo.setAttribute("contentEditable", true);
           editableInfo.focus();
         }
@@ -83,28 +88,32 @@ const UserData = ({ user }) => {
             <ItemContainer>
               <InfoItem>Name:</InfoItem>
               <EditableInfo className="userEditable_name">{name}</EditableInfo>
-              <EditButton hidden={editBtnHidden} onClick={() => editUserData("name")} />
-              <DoneButton hidden={doneBtnHidden} onClick={() => submitUserData("name")} />
+              <EditButton infoName={"name"} onClick={() => editUserData("name")} />
+              <DoneButton infoName={"name"} onClick={() => submitUserData("name")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Email:</InfoItem>
               <EditableInfo className="userEditable_email">{email}</EditableInfo>
-              <EditButton onClick={() => editUserData("email")} />
+              <EditButton infoName={"email"} onClick={() => editUserData("email")} />
+              <DoneButton infoName={"email"} onClick={() => submitUserData("email")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Birthday:</InfoItem>
               <EditableInfo className="userEditable_birthday">{birthday}</EditableInfo>
-              <EditButton onClick={() => editUserData("birthday")} />
+              <EditButton infoName={"birthday"} onClick={() => editUserData("birthday")} />
+              <DoneButton infoName={"birthday"} onClick={() => submitUserData("birthday")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Phone:</InfoItem>
               <EditableInfo className="userEditable_phone">{phone}</EditableInfo>
-              <EditButton onClick={() => editUserData("phone")} />
+              <EditButton infoName={"phone"} onClick={() => editUserData("phone")} />
+              <DoneButton infoName={"phone"} onClick={() => submitUserData("phone")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>City:</InfoItem>
               <EditableInfo className="userEditable_address">{address}</EditableInfo>
-              <EditButton onClick={() => editUserData("address")} />
+              <EditButton infoName={"address"} onClick={() => editUserData("address")} />
+              <DoneButton infoName={"address"} onClick={() => submitUserData("address")} />
             </ItemContainer>
           </InfoContainer>
         </Wrapper>

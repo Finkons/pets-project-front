@@ -86,6 +86,6 @@ export const UserTitle = styled.h1`
   }
 `;
 
-export const InfoContainer = styled.div`
+export const InfoContainer = styled.ul`
   // display: flex;
 `;

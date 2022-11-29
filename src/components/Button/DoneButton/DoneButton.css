@@ -1,0 +1,8 @@
+[class^="doneBtn_"] {
+  display: flex;
+  align-items: center;
+}
+
+.doneBtn_hidden {
+  display: none;
+}

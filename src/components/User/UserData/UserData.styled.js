@@ -10,9 +10,9 @@ export const UserImage = styled.img`
   }
 `;
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.li`
   display: flex;
-  // justify-content: start;
+  align-items: center;
 `;
 
 export const InfoItem = styled.p`
@@ -22,16 +22,20 @@ export const InfoItem = styled.p`
   font-size: 14px;
   line-height: 22px;
   display: flex;
+  flex-grow: 1;
+  width: 56px;
   letter-spacing: 0.04em;
   color: #000000;
   font-size: 12px;
   line-height: 16px;
 
   @media ${p => p.theme.media.tablet} {
+    width: 83px;
     font-size: 18px;
     line-height: 25px;
   }
   @media ${p => p.theme.media.desktop} {
+    width: 83px;
     font-size: 18px;
     line-height: 25px;
   }

@@ -1,0 +1,8 @@
+[class^="editBtn_"] {
+  display: flex;
+  align-items: center;
+}
+
+.editBtn_hidden {
+  display: none;
+}

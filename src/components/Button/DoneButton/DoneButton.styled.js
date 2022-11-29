@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
 export const DoneBtn = styled.button`
-  display: ${props => (props.hidden ? "none" : "flex")};
-  align-items: center;
   margin: 0;
   padding: 5px;
   border: 0;

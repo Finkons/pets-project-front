@@ -1,1 +1,1 @@
-export {default} from './ModalTimeFriends';
+export { default } from "./ModalTimeFriends";

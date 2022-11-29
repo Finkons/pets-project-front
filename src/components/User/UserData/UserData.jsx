@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { CameraButton, EditButton } from "components/Button";
+import { CameraButton, EditButton, DoneButton } from "components/Button";
 import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
 import PropTypes from "prop-types";
 import { InfoContainer, Container } from "../UserCommon.styled";
@@ -8,25 +8,54 @@ import { notifyWarning } from "helpers/toastNotifications";
 import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/auth/authApi";
 import { Logout } from "../Logout";
 
+const swapButtons = (toWhat, infoName) => {
+  if (toWhat === "toDone") {
+    const editBtn = document.getElementsByClassName(`editBtn_${infoName}`).item(0);
+    editBtn.classList.add("editBtn_hidden");
+    const doneBtn = document.getElementsByClassName(`doneBtn_${infoName}`).item(0);
+    doneBtn.classList.remove("doneBtn_hidden");
+  }
+
+  if (toWhat === "toEdit") {
+    const editBtn = document.getElementsByClassName(`editBtn_${infoName}`).item(0);
+    editBtn.classList.remove("editBtn_hidden");
+    const doneBtn = document.getElementsByClassName(`doneBtn_${infoName}`).item(0);
+    doneBtn.classList.add("doneBtn_hidden");
+  }
+};
+
 const UserData = ({ user }) => {
   const { avatarURL, name, email, birthday, phone, address } = user;
-  const [currentInfo, setCurrentInfo] = useState();
+  const [currentInfo, setCurrentInfo] = useState({});
+
   const [updateUserData] = useUpdateUserDataMutation();
   const [updateUserAvatar] = useUpdateUserAvatarMutation();
 
-  const editUserData = async infoName => {
+  const editUserData = infoName => {
+    swapButtons("toDone", infoName);
+
     const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
-    editableInfo.toggleAttribute("contentEditable");
+    editableInfo.setAttribute("contentEditable", true);
     const newData = { [infoName]: editableInfo.innerHTML };
 
     if (editableInfo.hasAttribute("contentEditable")) {
       setCurrentInfo(newData);
       editableInfo.focus();
     }
+  };
+
+  const submitUserData = async infoName => {
+    swapButtons("toEdit", infoName);
+
+    const editableInfo = document.getElementsByClassName(`userEditable_${infoName}`).item(0);
+    editableInfo.removeAttribute("contentEditable");
+    const newData = { [infoName]: editableInfo.innerHTML };
+
     if (!editableInfo.hasAttribute("contentEditable")) {
       if (JSON.stringify(currentInfo) !== JSON.stringify(newData)) {
         const result = await updateUserData(newData);
         if (result.error) {
+          swapButtons("toDone", infoName);
           editableInfo.setAttribute("contentEditable", true);
           editableInfo.focus();
         }
@@ -59,27 +88,32 @@ const UserData = ({ user }) => {
             <ItemContainer>
               <InfoItem>Name:</InfoItem>
               <EditableInfo className="userEditable_name">{name}</EditableInfo>
-              <EditButton onClick={() => editUserData("name")} />
+              <EditButton infoName={"name"} onClick={() => editUserData("name")} />
+              <DoneButton infoName={"name"} onClick={() => submitUserData("name")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Email:</InfoItem>
               <EditableInfo className="userEditable_email">{email}</EditableInfo>
-              <EditButton onClick={() => editUserData("email")} />
+              <EditButton infoName={"email"} onClick={() => editUserData("email")} />
+              <DoneButton infoName={"email"} onClick={() => submitUserData("email")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Birthday:</InfoItem>
               <EditableInfo className="userEditable_birthday">{birthday}</EditableInfo>
-              <EditButton onClick={() => editUserData("birthday")} />
+              <EditButton infoName={"birthday"} onClick={() => editUserData("birthday")} />
+              <DoneButton infoName={"birthday"} onClick={() => submitUserData("birthday")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>Phone:</InfoItem>
               <EditableInfo className="userEditable_phone">{phone}</EditableInfo>
-              <EditButton onClick={() => editUserData("phone")} />
+              <EditButton infoName={"phone"} onClick={() => editUserData("phone")} />
+              <DoneButton infoName={"phone"} onClick={() => submitUserData("phone")} />
             </ItemContainer>
             <ItemContainer>
               <InfoItem>City:</InfoItem>
               <EditableInfo className="userEditable_address">{address}</EditableInfo>
-              <EditButton onClick={() => editUserData("address")} />
+              <EditButton infoName={"address"} onClick={() => editUserData("address")} style={{ marginBottom: "0px" }} />
+              <DoneButton infoName={"address"} onClick={() => submitUserData("address")} style={{ marginBottom: "0px" }} />
             </ItemContainer>
           </InfoContainer>
         </Wrapper>

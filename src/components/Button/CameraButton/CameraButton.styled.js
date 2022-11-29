@@ -15,12 +15,22 @@ export const CameraBtn = styled.button`
   &:focus {
     opacity: 1;
   }
+
+  @media ${p => p.theme.media.tablet} {
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: -65px;
+  }
 `;
 
 export const CameraText = styled.p`
   line-height: 22px;
-  font-weight: normal;
   font-family: "Manrope";
-  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
   margin-left: 4px;
 `;

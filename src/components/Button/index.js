@@ -7,3 +7,5 @@ export { ModalButton } from "./ModalButton/ModalButton";
 export { CameraButton } from "./CameraButton/CameraButton";
 export { EditButton } from "./EditButton/EditButton";
 export { CloseButton } from "./CloseButton/CloseButton";
+export { ExitButton } from "./ExitButton/ExitButton";
+export { DoneButton } from "./DoneButton/DoneButton";

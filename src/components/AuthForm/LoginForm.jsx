@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth/authApi";
 // import { toast } from "react-toastify";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
+import Loader from "components/Loader/Loader";
 
 const initialValues = {
   email: "",
@@ -17,8 +18,8 @@ const FormError = ({ name }) => {
 };
 
 export const LoginForm = () => {
-  const [login] = useLoginMutation();
-  //status should be used for spinner
+  const [login, { isLoading }] = useLoginMutation();
+
   const navigate = useNavigate();
 
   const [visible, setVisible] = useState(false);
@@ -35,15 +36,13 @@ export const LoginForm = () => {
         navigate("/user");
       })
       .catch(error => {
-        console.log("Handle errors");
+        console.log(error.message);
         // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
 
     await new Promise(resolve => setTimeout(resolve, 1000));
     actions.resetForm();
   };
-
-  // console.log(status);
 
   return (
     <Container>
@@ -71,6 +70,7 @@ export const LoginForm = () => {
       <LinkBox>
         Don't have an account? <Link to={"/register"}>Register</Link>
       </LinkBox>
+      {isLoading && <Loader />}
     </Container>
   );
 };

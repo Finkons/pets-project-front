@@ -5,10 +5,11 @@ import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
 import { useDeletePetByIdMutation } from "redux/auth/authApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
+import Loader from "components/Loader/Loader";
 
 const PetsData = ({ pets, isFetching }) => {
   const [expanded, setExpanded] = useState(false);
-  const [deletePet] = useDeletePetByIdMutation();
+  const [deletePet, { isLoading }] = useDeletePetByIdMutation();
 
   const handleModalToggle = () => {
     setExpanded(prev => {
@@ -54,6 +55,7 @@ const PetsData = ({ pets, isFetching }) => {
       </ContainerPets>
 
       {expanded && <ModalAddsPet handleModalToggle={handleModalToggle} />}
+      {isLoading && <Loader />}
     </>
   );
 };

@@ -7,6 +7,7 @@ import { default as UserTitle } from "./UserDataTitle";
 import { notifyWarning } from "helpers/toastNotifications";
 import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/auth/authApi";
 import { Logout } from "../Logout";
+import Loader from "components/Loader/Loader";
 
 const swapButtons = (toWhat, infoName) => {
   if (toWhat === "toDone") {
@@ -29,7 +30,7 @@ const UserData = ({ user }) => {
   const [currentInfo, setCurrentInfo] = useState({});
 
   const [updateUserData] = useUpdateUserDataMutation();
-  const [updateUserAvatar] = useUpdateUserAvatarMutation();
+  const [updateUserAvatar, { isLoading }] = useUpdateUserAvatarMutation();
 
   const editUserData = infoName => {
     swapButtons("toDone", infoName);
@@ -119,6 +120,7 @@ const UserData = ({ user }) => {
         </Wrapper>
         <Logout />
       </UserContainer>
+      {isLoading && <Loader />}
     </Container>
   );
 };

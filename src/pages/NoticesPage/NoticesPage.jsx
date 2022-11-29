@@ -19,7 +19,7 @@ export default function NoticesPage() {
   });
   const { data: favorite = [] } = useGetFavoriteNoticesQuery();
   const { data: userNotices = [], refetch } = useGetUserNoticesQuery();
-  console.log(filteredItems);
+
   useEffect(() => {
     try {
       const filterItems = arr => {

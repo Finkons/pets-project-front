@@ -7,6 +7,7 @@ import { SUPPORTED_FORMATS } from "constants/petInfoKeys";
 import UploadIcon from "../../../../img/addnotice/uploadfile.svg";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
+import Loader from "components/Loader/Loader";
 
 const WizardStep = ({ children }) => children;
 
@@ -16,7 +17,8 @@ const ModalAddsPet = ({ handleModalToggle }) => {
   const [isFormatValid, setIsFormatValid] = useState(true);
   const hiddenFileInput = useRef(null);
 
-  const [addPet] = useAddPetMutation(); // create fn for adding and get status
+  const [addPet, status] = useAddPetMutation();
+  console.log("status", status);
 
   const initialValues = {
     title: "",

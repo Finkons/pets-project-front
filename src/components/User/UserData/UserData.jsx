@@ -112,8 +112,8 @@ const UserData = ({ user }) => {
             <ItemContainer>
               <InfoItem>City:</InfoItem>
               <EditableInfo className="userEditable_address">{address}</EditableInfo>
-              <EditButton infoName={"address"} onClick={() => editUserData("address")} />
-              <DoneButton infoName={"address"} onClick={() => submitUserData("address")} />
+              <EditButton infoName={"address"} onClick={() => editUserData("address")} style={{ marginBottom: "0px" }} />
+              <DoneButton infoName={"address"} onClick={() => submitUserData("address")} style={{ marginBottom: "0px" }} />
             </ItemContainer>
           </InfoContainer>
         </Wrapper>

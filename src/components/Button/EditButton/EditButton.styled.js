@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Icon from "../icons";
 
 export const EditBtn = styled.button`
   margin: 0;
@@ -15,5 +16,28 @@ export const EditBtn = styled.button`
   &:hover,
   &:focus {
     opacity: 1;
+  }
+
+  @media ${p => p.theme.media.tablet} {
+    width: 32px;
+    height: 32px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const EditIcon = styled(Icon.Edit)`
+  width: 9.5px;
+  height: 9.5px;
+
+  @media ${p => p.theme.media.tablet} {
+    width: 15.18px;
+    height: 15.19px;
+  }
+  @media ${p => p.theme.media.desktop} {
+    width: 15.18px;
+    height: 15.19px;
   }
 `;

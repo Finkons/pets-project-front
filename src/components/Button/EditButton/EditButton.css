@@ -1,6 +1,7 @@
 [class^="editBtn_"] {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .editBtn_hidden {

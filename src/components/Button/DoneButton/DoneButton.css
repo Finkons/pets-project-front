@@ -1,6 +1,7 @@
 [class^="doneBtn_"] {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .doneBtn_hidden {

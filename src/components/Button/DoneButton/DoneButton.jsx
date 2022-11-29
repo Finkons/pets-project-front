@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import { DoneBtn } from "./DoneButton.styled";
-import Icon from "../icons";
+import { EditBtn } from "../EditButton/EditButton.styled";
+import { DoneIcon } from "./DoneButton.styled";
 import "./DoneButton.css";
 
-export const DoneButton = ({ infoName, onClick }) => {
+export const DoneButton = ({ infoName, onClick, style }) => {
   const doneBtn = document.getElementsByClassName(`doneBtn_${infoName}`).item(0);
   useEffect(() => {
     doneBtn?.classList.add("doneBtn_hidden");
   }, [doneBtn]);
 
   return (
-    <DoneBtn className={`doneBtn_${infoName}`} onClick={onClick}>
-      <Icon.CheckMark />
-    </DoneBtn>
+    <EditBtn className={`doneBtn_${infoName}`} onClick={onClick} style={style}>
+      <DoneIcon />
+    </EditBtn>
   );
 };

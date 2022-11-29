@@ -9,12 +9,13 @@ export const Container = styled.div`
   margin-right: 20px;
   @media ${p => p.theme.media.tablet} {
     justify-content: left;
+    margin-left: 0px;
     margin-top: 88px;
     margin-right: 32px;
   }
-
   @media ${p => p.theme.media.desktop} {
     justify-content: flex-start;
+    margin-left: 0px;
     margin-right: 16px;
     margin-top: 0px;
   }
@@ -87,5 +88,10 @@ export const UserTitle = styled.h1`
 `;
 
 export const InfoContainer = styled.ul`
-  // display: flex;
+  @media ${p => p.theme.media.tablet} {
+    height: 192px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;

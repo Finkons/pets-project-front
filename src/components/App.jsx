@@ -8,8 +8,8 @@ import OurFriendsPage from "pages/OurFriendsPage";
 import NewsPage from "pages/NewsPage";
 import { useGetCurrentUserQuery } from "redux/auth/authApi";
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 import theme from "styles/theme";
 
@@ -62,7 +62,7 @@ export const App = () => {
           </Routes>
         </Suspense>
       </BrowserRouter>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </ThemeProvider>
   );
 };

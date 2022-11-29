@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { Div, UserBtn, LogoutBtn, TextBtn } from "./UserNav.styled";
-
+import Loader from "components/Loader/Loader";
 import { useLogoutMutation } from "redux/auth/authApi";
 import Icon from "../Button/icons/index";
 
 const UserNav = () => {
-  const [logout] = useLogoutMutation();
+  const [logout, { isLoading }] = useLogoutMutation();
 
   return (
     <Div>
@@ -20,6 +20,7 @@ const UserNav = () => {
           Log Out
         </LogoutBtn>
       </NavLink>
+      {isLoading && <Loader />}
     </Div>
   );
 };

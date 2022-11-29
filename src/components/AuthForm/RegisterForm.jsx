@@ -6,6 +6,7 @@ import { Container, Text, Input, InputWrapper, IconEye, IconEyeConfirm, Button, 
 // import { toast } from "react-toastify";
 import { useRegisterMutation } from "redux/auth/authApi";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
+import Loader from "components/Loader/Loader";
 
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
@@ -20,7 +21,7 @@ export const RegisterForm = () => {
     address: "",
     phone: "",
   });
-  const [register] = useRegisterMutation();
+  const [register, { isLoading }] = useRegisterMutation();
   //status should be used for spinner
   const navigate = useNavigate();
 
@@ -73,6 +74,7 @@ export const RegisterForm = () => {
       <LinkBox>
         Already have an account? <Link to={"/login"}>Login</Link>
       </LinkBox>
+      {isLoading && <Loader />}
     </Container>
   );
 };

@@ -8,8 +8,9 @@ import Female from "../../../img/addnotice/female.svg";
 import Upload from "../../../img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
-import { useAddNoticeMutation } from "redux/notices/noticesApi"; // import hook for api
+import { useAddNoticeMutation } from "redux/notices/noticesApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
+import Loader from "components/Loader/Loader";
 
 const WizardStep = ({ children }) => children;
 
@@ -20,7 +21,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [isFomatValid, setIsFormatValid] = useState(true);
   const hiddenFileInput = useRef(null);
 
-  const [addNotice] = useAddNoticeMutation(); // create fn for adding and get status
+  const [addNotice, { isLoading }] = useAddNoticeMutation();
 
   const initialValues = {
     category: "lost-found",
@@ -274,6 +275,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
             </S.CommentsWrap>
           </WizardStep>
         </Wizard>
+        {isLoading && <Loader />}
       </S.Container>
     </Backdrop>
   );

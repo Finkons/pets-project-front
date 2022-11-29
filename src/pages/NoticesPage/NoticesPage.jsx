@@ -7,19 +7,19 @@ import AddNoticeButton from "components/AddNoticeButton";
 import { useParams } from "react-router-dom";
 import { useGetNoticesByCategoryQuery, useGetFavoriteNoticesQuery, useGetUserNoticesQuery } from "redux/notices/noticesApi";
 import { useSelector } from "react-redux";
-// import Loader from "components/Loader";
+import Loader from "components/Loader";
 
 export default function NoticesPage() {
   const [filteredItems, setFilteredItems] = useState([]);
   const { categoryName } = useParams();
   const filter = useSelector(state => state.filter.value);
 
-  const { data: firstNotices = [] } = useGetNoticesByCategoryQuery(categoryName, {
+  const { data: firstNotices = [], status } = useGetNoticesByCategoryQuery(categoryName, {
     skip: categoryName === "favorite" || categoryName === "own",
   });
   const { data: favorite = [] } = useGetFavoriteNoticesQuery();
   const { data: userNotices = [], refetch } = useGetUserNoticesQuery();
-  console.log(filteredItems);
+
   useEffect(() => {
     try {
       const filterItems = arr => {
@@ -50,6 +50,7 @@ export default function NoticesPage() {
       {!filteredItems.length && <NoAdds>There are no ads</NoAdds>}
       <NoticesCategoriesList petsList={filteredItems} />
       {/* {isLoading || favoriteLoading || adsLoading ? <Loader /> : <NoticesCategoriesList petsList={filteredItems} />} */}
+      {status === "pending" && <Loader />}
     </Container>
   );
 }

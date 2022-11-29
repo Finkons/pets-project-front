@@ -6,7 +6,6 @@ import { authSlice } from "redux/auth/authSlice";
 import { authApi } from "redux/auth/authApi";
 import { noticesApi } from "redux/notices/noticesApi";
 // import { userPetsApi } from "redux/userPets/userPetsApi";
-import { errorHandler } from "./errorHandler";
 import { filterReducer } from "./filter";
 
 const authPersistConfig = {
@@ -30,7 +29,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authApi.middleware, noticesApi.middleware, errorHandler),
+    }).concat(authApi.middleware, noticesApi.middleware),
 });
 
 export const persistor = persistStore(store);

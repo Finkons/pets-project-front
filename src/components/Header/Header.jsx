@@ -10,7 +10,6 @@ const Header = () => {
 
   const isMobile = window.screen.width <= 767;
   const isDesktop = window.screen.width >= 1280;
-  // const isTablet = window.screen.width <= 1279 && window.screen.height >= 321;
 
   const toggleBurgerMenu = () => {
     setExpanded(prev => {

@@ -20,10 +20,9 @@ import {
   ActionButtons,
 } from "./ModalNotice.styled";
 
-import modalImage from "../../../img/pet-photos/default.jpg";
-import Loader from "components/Loader/Loader";
+import modalImage from "img/pet-photos/default.jpg";
+import Loader from "components/Loader";
 
-// props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
 const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorite }) => {
   const { data, isLoading, isSuccess } = useGetNoticeByIdQuery(id);
   const [petData, setPetData] = useState({});

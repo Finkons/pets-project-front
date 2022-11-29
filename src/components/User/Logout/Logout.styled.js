@@ -8,6 +8,4 @@ export const Container = styled.div`
   @media ${p => p.theme.media.tablet} {
     margin-top: 33px;
   }
-  @media ${p => p.theme.media.desktop} {
-  }
 `;

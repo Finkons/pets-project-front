@@ -9,9 +9,8 @@ import { useParams } from "react-router-dom";
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
 
-import itemImage from "../../img/pet-photos/default.jpg";
+import itemImage from "img/pet-photos/default.jpg";
 
-// props = { data: { }}
 const NoticeCategoryItem = ({ data }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userId = useSelector(authSelectors.getUserId);

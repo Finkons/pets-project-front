@@ -31,10 +31,6 @@ export const TitleAdd = styled.div`
   }
 `;
 
-// export const Container = styled.div`
-//   margin-top: 200px;
-// `;
-
 export const AddPetButton = styled.button`
   z-index: 10;
   display: flex;

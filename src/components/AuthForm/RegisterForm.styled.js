@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import colors from "../../styles/theme";
+import colors from "styles/theme";
 import { Field } from "formik";
 import { Link as link } from "react-router-dom";
 

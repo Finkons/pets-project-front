@@ -1,1 +1,1 @@
-export {default} from './AddNoticeModal'
+export { default } from "./AddNoticeModal";

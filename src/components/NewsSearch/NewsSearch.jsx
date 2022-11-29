@@ -15,7 +15,6 @@ export default function NewsSearch({ onChange }) {
     const form = e.currentTarget;
     setSearchParams({ query: form.elements.query.value });
     const query = searchParams.get("query");
-    // console.log(query);
     query &&
       fetchByName(query)
         .then(data => setSearchValue(data))

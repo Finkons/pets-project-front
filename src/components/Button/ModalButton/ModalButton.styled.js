@@ -17,7 +17,6 @@ export const ModalBtn = styled.button`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  // line-height: 1.37;
 
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 

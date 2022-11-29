@@ -5,7 +5,7 @@ import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
 import { useDeletePetByIdMutation } from "redux/auth/authApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const PetsData = ({ pets, isFetching }) => {
   const [expanded, setExpanded] = useState(false);

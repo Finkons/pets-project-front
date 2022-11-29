@@ -8,13 +8,11 @@ export const NextBtn = styled.button`
   border: 2px solid #f59256;
   border-radius: 40px;
   cursor: pointer;
-  // margin-bottom: 24px;
 
   font-family: "Manrope";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  //   line-height: 1.35;
 
   transition: color, border 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 

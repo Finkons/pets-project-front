@@ -19,13 +19,12 @@ export const Container = styled.div`
   }
 `;
 
-
 export const Title = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 1.37;
   margin-bottom: 28px;
-  
+
   @media ${p => p.theme.media.tablet} {
     margin-bottom: 40px;
     font-size: 48px;
@@ -40,6 +39,6 @@ export const Title = styled.h2`
 `;
 
 export const NewsBoard = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 `;

@@ -2,15 +2,15 @@ import * as Yup from "yup";
 import * as S from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
-import { SUPPORTED_FORMATS } from "../../../constants/petInfoKeys";
-import Male from "../../../img/addnotice/male.svg";
-import Female from "../../../img/addnotice/female.svg";
-import Upload from "../../../img/addnotice/uploadfile.svg";
+import { SUPPORTED_FORMATS } from "constants/petInfoKeys";
+import Male from "img/addnotice/male.svg";
+import Female from "img/addnotice/female.svg";
+import Upload from "img/addnotice/uploadfile.svg";
 import Backdrop from "../Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddNoticeMutation } from "redux/notices/noticesApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const WizardStep = ({ children }) => children;
 
@@ -89,11 +89,9 @@ const AddNoticeModal = ({ handleModalToggle }) => {
         })
       );
       resetForm({ values: "" });
-      await addNotice(formValues); //rtk query hook for api
+      await addNotice(formValues);
       notifySuccess("Notice has been added!");
       handleModalToggle();
-      // console.log(isAdding); // fetching status here
-      // console.log("Form values", values);
     } catch ({ response: { data } }) {
       notifyError(data.message);
     }
@@ -185,8 +183,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
               <S.TextFild id="breed" name="breed" placeholder="Type breed" required minLength="2" maxLength="24" />
             </S.BreedWrap>
           </WizardStep>
-
-          {/* SECOND STEP */}
 
           <WizardStep
             onSubmit={() => console.log("Step2 onSubmit")}

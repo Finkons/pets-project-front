@@ -12,18 +12,11 @@ export const MenuContainer = styled.div`
   flex-direction: column;
 
   @media ${p => p.theme.media.tablet} {
-    // width: 768px;
     width: 100%;
-    // margin-top: 0;
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  @media ${p => p.theme.media.tablet} {
-  }
-  @media ${p => p.theme.media.desktop} {
-  }
-`;
+export const ButtonWrapper = styled.div``;
 
 export const Link = styled.div`
   &:hover {
@@ -33,9 +26,5 @@ export const Link = styled.div`
   &:active {
     color: ${p => p.theme.colors.accent};
     text-decoration: underline;
-  }
-  @media ${p => p.theme.media.tablet} {
-  }
-  @media ${p => p.theme.media.desktop} {
   }
 `;

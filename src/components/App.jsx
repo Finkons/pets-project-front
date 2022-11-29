@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { PrivateRoute, PublicRoute } from "components/Routes";
 import { ThemeProvider } from "@emotion/react";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 import NoticesPage from "pages/NoticesPage";
 import OurFriendsPage from "pages/OurFriendsPage";
 import NewsPage from "pages/NewsPage";

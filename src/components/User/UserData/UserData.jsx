@@ -1,13 +1,13 @@
+import PropTypes from "prop-types";
 import { useRef, useState } from "react";
 import { CameraButton, EditButton, DoneButton } from "components/Button";
-import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
-import PropTypes from "prop-types";
-import { InfoContainer, Container } from "../UserCommon.styled";
 import { default as UserTitle } from "./UserDataTitle";
+import { Logout } from "../Logout";
+import Loader from "components/Loader";
+import { UserImage, ItemContainer, InfoItem, EditableInfo, PhotoContainer, UserContainer, Wrapper } from "./UserData.styled";
+import { InfoContainer, Container } from "../UserCommon.styled";
 import { notifyWarning } from "helpers/toastNotifications";
 import { useUpdateUserDataMutation, useUpdateUserAvatarMutation } from "redux/auth/authApi";
-import { Logout } from "../Logout";
-import Loader from "components/Loader/Loader";
 
 const swapButtons = (toWhat, infoName) => {
   if (toWhat === "toDone") {

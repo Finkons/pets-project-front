@@ -1,15 +1,10 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  @media ${p => p.theme.media.tablet} {
-    // padding: 88px 31px;
-  }
   @media ${p => p.theme.media.desktop} {
     padding-top: 58px;
     margin: auto;
     display: flex;
-    // gap: 32px;
-    // justify-content: center;
     width: 1280px;
   }
 `;

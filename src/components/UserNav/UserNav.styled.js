@@ -13,7 +13,6 @@ export const Div = styled.div`
 `;
 
 export const UserBtn = styled.button`
-  //   margin-right: 20px;
   margin: auto;
   font-size: 15px;
   border: 2px solid #f59256;
@@ -51,7 +50,6 @@ export const UserBtn = styled.button`
 `;
 
 export const LogoutBtn = styled.button`
-  //   margin-right: 20px;
   margin: 10px 110px;
   font-size: 15px;
   border: 2px solid #f59256;
@@ -59,7 +57,6 @@ export const LogoutBtn = styled.button`
   color: black;
   width: 100px;
   height: 35px;
-  // padding: 10px 28px;
   text-align: center;
   font-weight: 500;
   font-size: 20px;
@@ -79,10 +76,6 @@ export const LogoutBtn = styled.button`
   @media ${p => p.theme.media.desktop} {
     height: 44px;
     margin: 0 10px;
-    // &:hover {
-    //   color: #ffffff;
-    //   background-color: #f59256;
-    // }
   }
 `;
 

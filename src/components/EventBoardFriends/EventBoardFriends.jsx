@@ -1,8 +1,9 @@
-import EventFriends from "components/EventFriends";
 import PropTypes from "prop-types";
+import EventFriends from "components/EventFriends";
 import { EventBoard } from "./EvenBoardFriends.styled";
 
 export const EventBoardFriends = ({ events }) => {
+  console.log(events);
   return (
     <EventBoard>
       {events.map(({ logo, name, link, workspace, adress, email, phone }) => (
@@ -15,6 +16,7 @@ export const EventBoardFriends = ({ events }) => {
 EventBoardFriends.propTypes = {
   events: PropTypes.arrayOf(
     PropTypes.exact({
+      _id: PropTypes.string,
       logo: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,

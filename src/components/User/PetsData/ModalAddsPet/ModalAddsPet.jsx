@@ -4,10 +4,10 @@ import Backdrop from "components/Modal/Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddPetMutation } from "redux/auth/authApi";
 import { SUPPORTED_FORMATS } from "constants/petInfoKeys";
-import UploadIcon from "../../../../img/addnotice/uploadfile.svg";
+import UploadIcon from "img/addnotice/uploadfile.svg";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const WizardStep = ({ children }) => children;
 

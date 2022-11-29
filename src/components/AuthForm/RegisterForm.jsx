@@ -3,10 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { stepOneRegistSchema, stepTwoRegistSchema } from "schemas/authSchema";
 import { Container, Text, Input, InputWrapper, IconEye, IconEyeConfirm, Button, ButtonBack, LinkBox, Link, ErrorText } from "./RegisterForm.styled";
-// import { toast } from "react-toastify";
 import { useRegisterMutation } from "redux/auth/authApi";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
@@ -22,14 +21,11 @@ export const RegisterForm = () => {
     phone: "",
   });
   const [register, { isLoading }] = useRegisterMutation();
-  //status should be used for spinner
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(0);
 
   const makeRequest = formData => {
-    // console.log(formData);
-
     const { email, password, confirmPassword, name, address, phone } = formData;
     register({ email, password, confirmPassword, name, address, phone })
       .unwrap()
@@ -38,7 +34,6 @@ export const RegisterForm = () => {
       })
       .catch(error => {
         console.log("Handle errors");
-        // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
   };
 
@@ -56,16 +51,7 @@ export const RegisterForm = () => {
     setCurrentStep(prev => prev - 1);
   };
 
-  const steps = [
-    <StepOne
-      next={handleNextStep}
-      data={data}
-      // errors={errors}
-    />,
-    <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
-  ];
-
-  // console.log(status);
+  const steps = [<StepOne next={handleNextStep} data={data} />, <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />];
 
   return (
     <Container>

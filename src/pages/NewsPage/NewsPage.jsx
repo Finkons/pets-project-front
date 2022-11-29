@@ -18,7 +18,7 @@ export default function App() {
   }, []);
   useEffect(() => {
     const filterItems = arr => {
-   return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter.toLowerCase())) : arr;
+      return filter ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter.toLowerCase())) : arr;
     };
     setFilteredItems(filterItems(data));
   }, [filter, data]);

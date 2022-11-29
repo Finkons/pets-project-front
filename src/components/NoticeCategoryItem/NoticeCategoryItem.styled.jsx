@@ -14,7 +14,8 @@ export const Container = styled.div`
     transform: scale(1.02);
   }
   @media ${p => p.theme.media.tablet} {
-    width: 336px;
+    width: 288px;
+    height: 600px;
   }
   @media ${p => p.theme.media.desktop} {
     width: 288px;

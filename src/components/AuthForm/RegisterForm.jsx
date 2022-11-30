@@ -33,7 +33,7 @@ export const RegisterForm = () => {
         navigate("/user");
       })
       .catch(error => {
-        console.log("Handle errors");
+        console.log(error.message);
       });
   };
 

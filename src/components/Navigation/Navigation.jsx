@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import Nav from "components/Nav/Nav";
 import AuthNav from "components/AuthNav/AuthNav";
@@ -13,6 +14,12 @@ const Navigation = ({ isMobile, isDesktop, expanded }) => {
       {!isMobile && !expanded && <>{!isLoggedIn ? <AuthNav /> : <UserNav />}</>}
     </>
   );
+};
+
+Navigation.propTypes = {
+  isMobile: PropTypes.bool,
+  isDesktop: PropTypes.bool,
+  expanded: PropTypes.bool,
 };
 
 export default Navigation;

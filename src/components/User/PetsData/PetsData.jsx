@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd, NoAdds } from "./PetsData.styled";
 import { Title, ContainerPets } from "../UserCommon.styled";
@@ -58,6 +59,11 @@ const PetsData = ({ pets, isFetching }) => {
       {isLoading && <Loader />}
     </>
   );
+};
+
+PetsData.propTypes = {
+  pets: PropTypes.array,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 export default PetsData;

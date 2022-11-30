@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { EditBtn } from "../EditButton/EditButton.styled";
 import { DoneIcon } from "./DoneButton.styled";
@@ -14,4 +15,10 @@ export const DoneButton = ({ infoName, onClick, style }) => {
       <DoneIcon />
     </EditBtn>
   );
+};
+
+DoneButton.propTypes = {
+  infoName: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  style: PropTypes.object,
 };

@@ -3,7 +3,6 @@ import EventFriends from "components/EventFriends";
 import { EventBoard } from "./EvenBoardFriends.styled";
 
 export const EventBoardFriends = ({ events }) => {
-  console.log(events);
   return (
     <EventBoard>
       {events.map(({ logo, name, link, workspace, adress, email, phone }) => (

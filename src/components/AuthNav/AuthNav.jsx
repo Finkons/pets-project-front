@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Div, AuthBtn } from "./AuthNav.styled";
 
@@ -16,6 +17,10 @@ const AuthNav = ({ toggleBurgerMenu }) => {
       </NavLink>
     </Div>
   );
+};
+
+AuthNav.propTypes = {
+  toggleBurgerMenu: PropTypes.func,
 };
 
 export default AuthNav;

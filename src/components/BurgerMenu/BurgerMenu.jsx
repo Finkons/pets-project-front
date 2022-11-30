@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { MenuContainer, ButtonWrapper } from "./BurgerMenu.styled";
 import { NavHeader, Link, Text } from "../Nav/Nav.styled";
 import { useSelector } from "react-redux";
@@ -31,6 +32,11 @@ const BurgerMenu = ({ toggleBurgerMenu, isMobile }) => {
     </MenuContainer>,
     modalRoot
   );
+};
+
+BurgerMenu.propTypes = {
+  toggleBurgerMenu: PropTypes.func,
+  isMobile: PropTypes.bool,
 };
 
 export default BurgerMenu;

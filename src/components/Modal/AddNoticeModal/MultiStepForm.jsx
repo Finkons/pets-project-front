@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import { ModalButton } from "components/Button";
@@ -34,9 +35,6 @@ const Wizard = ({ children, initialValues, onSubmit, handleCancelModal }) => {
     }
   };
 
-  console.log("stepNumber", stepNumber);
-  console.log("isLastStep", isLastStep);
-
   return (
     <Formik initialValues={snapshot} onSubmit={handleSubmit} validationSchema={step.props.validationSchema}>
       {formik => (
@@ -53,6 +51,13 @@ const Wizard = ({ children, initialValues, onSubmit, handleCancelModal }) => {
       )}
     </Formik>
   );
+};
+
+Wizard.propTypes = {
+  children: PropTypes.array.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  handleCancelModal: PropTypes.func.isRequired,
 };
 
 export default Wizard;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import * as Yup from "yup";
 import * as S from "./AddNoticeModal.styled";
 import { useRef, useEffect, useState } from "react";
@@ -44,7 +45,6 @@ const AddNoticeModal = ({ handleModalToggle }) => {
     if (value.category === "sell") {
       setIsSell(true);
     }
-    console.log("Step1 onSubmit", isSell);
   };
 
   const handleUploadClick = event => {
@@ -103,12 +103,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
         <S.ModalCloseButton onClick={handleModalToggle} />
         <S.Title>Add pet</S.Title>
 
-        <Wizard
-          initialValues={initialValues}
-          onSubmit={handleFormSubmit}
-          handleCancelModal={handleModalToggle}
-          handlePriceField={value => console.log("Next click", value)}
-        >
+        <Wizard initialValues={initialValues} onSubmit={handleFormSubmit} handleCancelModal={handleModalToggle} handlePriceField={{}}>
           <WizardStep
             onSubmit={handlePriceField}
             validationSchema={Yup.object({
@@ -185,7 +180,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
           </WizardStep>
 
           <WizardStep
-            onSubmit={() => console.log("Step2 onSubmit")}
+            onSubmit={{}}
             validationSchema={Yup.object({
               category: Yup.string(),
               price: Yup.number().when("category", { is: "sell", then: Yup.number().required("Price required") }),
@@ -275,6 +270,10 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       </S.Container>
     </Backdrop>
   );
+};
+
+AddNoticeModal.propTypes = {
+  handleModalToggle: PropTypes.func.isRequired,
 };
 
 export default AddNoticeModal;

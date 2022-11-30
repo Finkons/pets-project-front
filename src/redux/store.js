@@ -5,7 +5,6 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import { authSlice } from "redux/auth/authSlice";
 import { authApi } from "redux/auth/authApi";
 import { noticesApi } from "redux/notices/noticesApi";
-// import { userPetsApi } from "redux/userPets/userPetsApi";
 import { filterReducer } from "./filter";
 
 const authPersistConfig = {

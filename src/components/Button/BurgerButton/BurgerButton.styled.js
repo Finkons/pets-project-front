@@ -19,7 +19,4 @@ export const BurgerBtn = styled.button`
     margin-left: auto;
     margin-right: 32px;
   }
-  // @media ${p => p.theme.media.desktop} {
-  //     display: none;
-  // }
 `;

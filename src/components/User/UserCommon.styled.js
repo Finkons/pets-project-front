@@ -25,7 +25,6 @@ export const ContainerPets = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // margin-top: 47px;
   margin-left: 20px;
   margin-right: 20px;
   @media ${p => p.theme.media.tablet} {
@@ -45,7 +44,6 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // margin-top: 47px;
 `;
 
 export const Title = styled.h1`
@@ -75,7 +73,6 @@ export const UserTitle = styled.h1`
   line-height: 27px;
   display: flex;
   letter-spacing: 0.04em;
-  // margin-left: 20px;
   @media ${p => p.theme.media.tablet} {
     font-size: 28px;
     line-height: 38px;

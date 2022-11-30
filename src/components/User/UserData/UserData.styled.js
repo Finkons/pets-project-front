@@ -5,11 +5,6 @@ export const UserImage = styled.img`
   width: 233px;
   margin: auto;
   box-shadow: 0px 4px 14px 0px #0000001c;
-
-  @media ${p => p.theme.media.tablet} {
-  }
-  @media ${p => p.theme.media.desktop} {
-  }
 `;
 
 export const ItemContainer = styled.li`
@@ -128,7 +123,5 @@ export const Wrapper = styled.div`
     align-items: flex-end;
     flex-direction: row-reverse;
     justify-content: space-between;
-  }
-  @media ${p => p.theme.media.desktop} {
   }
 `;

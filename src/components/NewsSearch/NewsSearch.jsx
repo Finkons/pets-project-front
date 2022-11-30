@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Form, Input, Button, InputContainer } from "./NewsSearch.styled";
 import { searchIcon } from "img/svgIcons";
 import { useSearchParams } from "react-router-dom";
@@ -15,7 +16,6 @@ export default function NewsSearch({ onChange }) {
     const form = e.currentTarget;
     setSearchParams({ query: form.elements.query.value });
     const query = searchParams.get("query");
-    // console.log(query);
     query &&
       fetchByName(query)
         .then(data => setSearchValue(data))
@@ -33,3 +33,7 @@ export default function NewsSearch({ onChange }) {
     </Form>
   );
 }
+
+NewsSearch.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};

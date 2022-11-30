@@ -4,9 +4,8 @@ import { Container, Text, Input, InputWrapper, IconEye, Button, ErrorText, LinkB
 import { loginSchema } from "schemas/authSchema";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth/authApi";
-// import { toast } from "react-toastify";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const initialValues = {
   email: "",
@@ -37,7 +36,6 @@ export const LoginForm = () => {
       })
       .catch(error => {
         console.log(error.message);
-        // toast.error("Sorry, your email or password is incorrect! Try again!");
       });
 
     await new Promise(resolve => setTimeout(resolve, 1000));

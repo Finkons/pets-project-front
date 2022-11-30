@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import NoticeCategoryItem from "components/NoticeCategoryItem";
 import { List, Item } from "./NoticesCategoriesList.styled";
 
@@ -13,3 +14,7 @@ export default function NoticesCategoriesList({ petsList }) {
     </List>
   );
 }
+
+NoticesCategoriesList.propTypes = {
+  petsList: PropTypes.array.isRequired,
+};

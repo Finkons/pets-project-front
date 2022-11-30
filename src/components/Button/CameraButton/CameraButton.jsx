@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { CameraBtn, CameraText } from "./CameraButton.styled";
 import Icon from "../icons";
 
@@ -9,4 +10,10 @@ export const CameraButton = ({ onClick, inputFile, onChangeFile }) => {
       <CameraText>Edit photo</CameraText>
     </CameraBtn>
   );
+};
+
+CameraButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  inputFile: PropTypes.object.isRequired,
+  onChangeFile: PropTypes.func.isRequired,
 };

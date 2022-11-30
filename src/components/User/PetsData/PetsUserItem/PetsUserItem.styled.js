@@ -60,7 +60,6 @@ export const PetsItemPara = styled.p`
   margin-bottom: 12px;
   font-size: 14px;
   line-height: 22px;
-  // width: 235px;
   overflow: hidden;
   @media ${p => p.theme.media.tablet} {
     font-size: 18px;
@@ -98,7 +97,6 @@ export const DeleteButton = styled(TrashButton)`
   @media ${p => p.theme.media.tablet} {
     background-color: #fdf7f2;
     backdrop-filter: blur(2px);
-    // border: 1px solid red;
     width: 44px;
     top: 20px;
     right: 20px;
@@ -106,7 +104,6 @@ export const DeleteButton = styled(TrashButton)`
   @media ${p => p.theme.media.desktop} {
     background-color: #fdf7f2;
     backdrop-filter: blur(2px);
-    // border: 1px solid red;
     width: 44px;
     top: 20px;
     right: 20px;

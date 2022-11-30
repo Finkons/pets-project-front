@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Button, List, Li } from "./NoticesCategoriesNav.styled";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
@@ -30,3 +31,7 @@ export default function NoticesCategoriesNav({ onRefetch }) {
     </List>
   );
 }
+
+NoticesCategoriesNav.propTypes = {
+  onRefetch: PropTypes.func.isRequired,
+};

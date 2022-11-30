@@ -50,7 +50,6 @@ export const LinkCompany = styled.a`
   color: #f59256;
 `;
 
-
 export const Logo = styled.div`
   width: 110px;
   height: 78px;
@@ -124,32 +123,29 @@ export const InfoLink = styled.a`
 `;
 
 export const Button = styled.button`
-outline: 0 !important;
-border: 0;
-background:none;
-font-family: 'Manrope';
-font-family: sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 1.33;
-padding: 0;
-&:hover,
-&:focus {
-  color: #F59256;
-  cursor: pointer;
+  outline: 0 !important;
+  border: 0;
+  background: none;
+  font-family: "Manrope";
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  padding: 0;
+  &:hover,
+  &:focus {
+    color: #f59256;
+    cursor: pointer;
   }
   @media ${p => p.theme.media.tablet} {
     font-size: 14px;
-    
+
     line-height: 1.35;
     color: #000000;
   }
   @media ${p => p.theme.media.desktop} {
     font-size: 16px;
     line-height: 1.37;
-    
   }
 `;
-
-

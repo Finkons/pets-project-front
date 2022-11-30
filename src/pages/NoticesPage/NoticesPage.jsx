@@ -49,7 +49,6 @@ export default function NoticesPage() {
       </Div>
       {!filteredItems.length && <NoAdds>There are no ads</NoAdds>}
       <NoticesCategoriesList petsList={filteredItems} />
-      {/* {isLoading || favoriteLoading || adsLoading ? <Loader /> : <NoticesCategoriesList petsList={filteredItems} />} */}
       {status === "pending" && <Loader />}
     </Container>
   );

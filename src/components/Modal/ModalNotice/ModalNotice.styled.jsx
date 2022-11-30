@@ -18,12 +18,10 @@ export const Container = styled.div`
     max-width: 500px;
   }
   @media ${p => p.theme.media.tablet} {
-    // margin-top: 262px;
     padding: 32px 20px;
     width: 704px;
   }
   @media ${p => p.theme.media.desktop} {
-    // margin-top: 400px;
     padding: 32px 20px;
     width: 704px;
   }

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Div, UserBtn, LogoutBtn, TextBtn } from "./UserNav.styled";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 import { useLogoutMutation } from "redux/auth/authApi";
 import Icon from "../Button/icons/index";
 

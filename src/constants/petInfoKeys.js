@@ -1,5 +1,3 @@
-// keys may change depending on api response schema
-
 export const PET_MODAL_KEYS = [
   {
     label: "Name:",
@@ -83,10 +81,4 @@ export const NOTICE_CATEGORY_LABELS = {
   [NOTICE_CATEGORIES.forFree.key]: NOTICE_CATEGORIES.forFree.label,
 };
 
-
-export const SUPPORTED_FORMATS =[
-    'image/jpg',
-    'image/jpeg',
-    'image/gif',
-    'image/png',
-  ];
+export const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];

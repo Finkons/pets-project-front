@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
@@ -9,10 +10,10 @@ import { useParams } from "react-router-dom";
 import { Container, InfoItem, ImageWrapper, CategoryLabel, InfoWrapper, Title, AddToFavorites } from "./NoticeCategoryItem.styled";
 import { LearnMoreBtn } from "components/Button/LearnMoreButton/LearnMoreButton.styled";
 
-import itemImage from "../../img/pet-photos/default.jpg";
+import itemImage from "img/pet-photos/default.jpg";
 
-// props = { data: { }}
 const NoticeCategoryItem = ({ data }) => {
+  const { _id, fans, avatarURL, title } = data;
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userId = useSelector(authSelectors.getUserId);
   const [addNoticeToFavorites, { isLoading }] = useAddNoticeToFavoritesMutation();
@@ -22,7 +23,7 @@ const NoticeCategoryItem = ({ data }) => {
     skip: categoryName === "favorite" || categoryName === "own",
   });
   const [expanded, setExpanded] = useState(false);
-  const [favorite, setFavorite] = useState(!isLoading && data.fans.includes(userId));
+  const [favorite, setFavorite] = useState(!isLoading && fans.includes(userId));
 
   const handleModalToggle = () => {
     setExpanded(prev => {
@@ -34,7 +35,7 @@ const NoticeCategoryItem = ({ data }) => {
   const handleAddToFavoritesClick = async () => {
     if (!isLoggedIn) return notifyWarning("You need to log in to perform this action");
     try {
-      await addNoticeToFavorites(data._id);
+      await addNoticeToFavorites(_id);
       setFavorite(!favorite);
       refetch();
       categoryRefetch();
@@ -47,12 +48,12 @@ const NoticeCategoryItem = ({ data }) => {
     <>
       <Container>
         <ImageWrapper>
-          <img src={data.avatarURL || itemImage} alt={data.title} />
+          <img src={avatarURL || itemImage} alt={title} />
           <CategoryLabel>{NOTICE_CATEGORY_LABELS[data?.category]}</CategoryLabel>
         </ImageWrapper>
 
         <InfoWrapper>
-          <Title>{data.title}</Title>
+          <Title>{title}</Title>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== data.category) return null;
@@ -70,6 +71,16 @@ const NoticeCategoryItem = ({ data }) => {
       )}
     </>
   );
+};
+
+NoticeCategoryItem.propTypes = {
+  data: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    avatarURL: PropTypes.string,
+    fans: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }),
 };
 
 export default NoticeCategoryItem;

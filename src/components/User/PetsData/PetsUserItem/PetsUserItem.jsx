@@ -1,5 +1,5 @@
+import PropTypes from "prop-types";
 import React from "react";
-
 import { DeleteButton, InfoContainer, PetsItem, PetsImage, PetsItemPara } from "./PetsUserItem.styled";
 
 const PetsUserItem = ({ avatarURL, breed, comments, name, date, deletePet, id }) => {
@@ -15,6 +15,16 @@ const PetsUserItem = ({ avatarURL, breed, comments, name, date, deletePet, id })
       <DeleteButton onClick={() => deletePet(id)} />
     </PetsItem>
   );
+};
+
+PetsUserItem.propTypes = {
+  avatarURL: PropTypes.string.isRequired,
+  breed: PropTypes.string.isRequired,
+  comments: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  deletePet: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default PetsUserItem;

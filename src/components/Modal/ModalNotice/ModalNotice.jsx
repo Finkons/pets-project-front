@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
@@ -20,10 +21,9 @@ import {
   ActionButtons,
 } from "./ModalNotice.styled";
 
-import modalImage from "../../../img/pet-photos/default.jpg";
-import Loader from "components/Loader/Loader";
+import modalImage from "img/pet-photos/default.jpg";
+import Loader from "components/Loader";
 
-// props = { _id: string, handleModalToggle: ()=>{}, handleAddToFavoritesClick: ()=>{}}
 const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorite }) => {
   const { data, isLoading, isSuccess } = useGetNoticeByIdQuery(id);
   const [petData, setPetData] = useState({});
@@ -97,6 +97,13 @@ const ModalNotice = ({ id, handleModalToggle, handleAddToFavoritesClick, favorit
       </Container>
     </Backdrop>
   );
+};
+// { id, handleModalToggle, handleAddToFavoritesClick, favorite }
+ModalNotice.propTypes = {
+  id: PropTypes.string,
+  handleModalToggle: PropTypes.func.isRequired,
+  handleAddToFavoritesClick: PropTypes.func.isRequired,
+  favorite: PropTypes.bool.isRequired,
 };
 
 export default ModalNotice;

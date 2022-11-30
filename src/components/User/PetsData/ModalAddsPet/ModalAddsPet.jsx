@@ -1,13 +1,14 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 import * as S from "./ModalAddsPet.styled";
 import Backdrop from "components/Modal/Backdrop";
 import { handleBackdropClick, handleEscClick } from "helpers/modalHelpers";
 import { useAddPetMutation } from "redux/auth/authApi";
 import { SUPPORTED_FORMATS } from "constants/petInfoKeys";
-import UploadIcon from "../../../../img/addnotice/uploadfile.svg";
+import UploadIcon from "img/addnotice/uploadfile.svg";
 import Wizard from "components/Modal/AddNoticeModal/MultiStepForm";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const WizardStep = ({ children }) => children;
 
@@ -73,10 +74,6 @@ const ModalAddsPet = ({ handleModalToggle }) => {
     }
   };
 
-  const handleStep = () => {
-    console.log("Step1 onSubmit");
-  };
-
   useEffect(() => {
     const escClose = handleEscClick(handleModalToggle);
     return () => escClose();
@@ -96,7 +93,7 @@ const ModalAddsPet = ({ handleModalToggle }) => {
           handleCancelModal={handleModalToggle}
           handlePriceField={value => console.log("Next click", value)}
         >
-          <WizardStep onSubmit={handleStep}>
+          <WizardStep>
             <S.TextWrap type="text" htmlFor="name">
               <S.TextLabel>Name pet</S.TextLabel>
               <S.TextField
@@ -129,7 +126,7 @@ const ModalAddsPet = ({ handleModalToggle }) => {
               <S.TextField id="breed" name="breed" placeholder="Type breed" required minLength="2" maxLength="24" />
             </S.TextWrap>
           </WizardStep>
-          <WizardStep onClick={handleStep}>
+          <WizardStep>
             <S.Text>Add photo and some comments </S.Text>
             <S.FileWrap>
               <S.TextWrap>
@@ -176,6 +173,10 @@ const ModalAddsPet = ({ handleModalToggle }) => {
       </S.Container>
     </Backdrop>
   );
+};
+
+ModalAddsPet.propTypes = {
+  handleModalToggle: PropTypes.func.isRequired,
 };
 
 export default ModalAddsPet;

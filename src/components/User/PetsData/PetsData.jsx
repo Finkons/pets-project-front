@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { TitleContainer, AddPetButton, Plus, ButtonSection, TitleAdd, NoAdds } from "./PetsData.styled";
 import { Title, ContainerPets } from "../UserCommon.styled";
@@ -5,7 +6,7 @@ import { ModalAddsPet } from "./ModalAddsPet";
 import { PetsUserItem } from "./PetsUserItem";
 import { useDeletePetByIdMutation } from "redux/auth/authApi";
 import { notifySuccess, notifyError } from "helpers/toastNotifications";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 
 const PetsData = ({ pets, isFetching }) => {
   const [expanded, setExpanded] = useState(false);
@@ -58,6 +59,11 @@ const PetsData = ({ pets, isFetching }) => {
       {isLoading && <Loader />}
     </>
   );
+};
+
+PetsData.propTypes = {
+  pets: PropTypes.array,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 export default PetsData;

@@ -1,15 +1,15 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const LogoImg = styled.img`
-width: 82px;
-height: 36px;
+  width: 82px;
+  height: 36px;
 
-@media ${p => p.theme.media.tablet} {
+  @media ${p => p.theme.media.tablet} {
     width: 94px;
     height: 36px;
-}
-@media ${p => p.theme.media.desktop} {
+  }
+  @media ${p => p.theme.media.desktop} {
     width: 94px;
     height: 36px;
-}
-`
+  }
+`;

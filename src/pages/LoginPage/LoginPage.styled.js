@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import wavesMobile from "../../img/authPages-photos/waves-mobile.png";
-import wavesTablet from "../../img/authPages-photos/waves-tablet.png";
-import wavesDesktop from "../../img/authPages-photos/waves-desktop.png";
+import wavesMobile from "img/authPages-photos/waves-mobile.png";
+import wavesTablet from "img/authPages-photos/waves-tablet.png";
+import wavesDesktop from "img/authPages-photos/waves-desktop.png";
 
 export const Container = styled.div`
   max-width: 100vw;

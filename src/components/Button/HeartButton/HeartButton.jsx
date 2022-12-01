@@ -1,9 +1,9 @@
 import { HeartBtn } from "./HeartButton.styled";
 import Icon from "../icons/index";
 
-export const HeartButton = () => {
+export const HeartButton = ({ onClick, className, authorized }) => {
   return (
-    <HeartBtn>
+    <HeartBtn onClick={onClick} className={className || ""} authorized={authorized}>
       <Icon.Heart />
     </HeartBtn>
   );
